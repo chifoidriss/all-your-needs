@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/OwlCarousel2-2.2.1/animate.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/main_styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/default.css') }}">
 
     <!-- Fonts -->
 
@@ -74,8 +75,33 @@
                                             <i class="fa fa-angle-down"></i>
                                         </a>
                                         <ul class="account_selection">
-                                            <li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
-                                            <li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
+                                            @auth
+                                            <li>
+                                                <a href="{{ route('user.profile') }}">
+                                                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                                    Profile
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('logout') }}">
+                                                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                                    Logout
+                                                </a>
+                                            </li>
+                                            @else
+                                            <li>
+                                                <a href="{{ route('login') }}">
+                                                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                                    Sign In
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('register') }}">
+                                                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                                    Register
+                                                </a>
+                                            </li>
+                                            @endauth
                                         </ul>
                                     </li>
                                 </ul>
@@ -92,16 +118,17 @@
                     <div class="row">
                         <div class="col-lg-12 text-right">
                             <div class="logo_container">
-                                <a href="#">colo<span>shop</span></a>
+                                <a href="#">
+                                    All<span>Your</span><Span class="text-primary">Needs</Span>
+                                </a>
                             </div>
                             <nav class="navbar">
                                 <ul class="navbar_menu">
                                     <li><a href="#">home</a></li>
-                                    <li><a href="#">shop</a></li>
+                                    <li><a href="{{ route('shop.create') }}">shop</a></li>
                                     <li><a href="#">promotion</a></li>
-                                    <li><a href="#">pages</a></li>
                                     <li><a href="#">blog</a></li>
-                                    <li><a href="contact.html">contact</a></li>
+                                    <li><a href="{{ route('contact') }}">contact</a></li>
                                 </ul>
                                 <ul class="navbar_user">
                                     <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
@@ -289,6 +316,7 @@
     <script src="{{ asset('assets/plugins/OwlCarousel2-2.2.1/owl.carousel.js') }}"></script>
     <script src="{{ asset('assets/plugins/easing/easing.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script src="{{ asset('assets/js/countries.js') }}"></script>
 
     @yield('js')
 </body>

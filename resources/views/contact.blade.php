@@ -2,6 +2,10 @@
 
 @section('title', 'Contacter Nous')
 
+@section('css')
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/contact_styles.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/contact_responsive.css') }}">
+@endsection
 
 @section('content')
 <div class="container contact_container">

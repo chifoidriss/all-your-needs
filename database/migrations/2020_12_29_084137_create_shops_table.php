@@ -19,6 +19,7 @@ class CreateShopsTable extends Migration
             $table->foreignId('type_shop_id')->constrained()->onDelete('restrict');
             $table->string('name');
             $table->boolean('status')->default(false);
+            $table->string('logo')->nullable();
             $table->string('banner')->nullable();
             $table->longText('description')->nullable();
             $table->longText('information')->nullable();
