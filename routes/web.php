@@ -29,13 +29,11 @@ Route::group(['middleware' => 'auth:web'], function () {
     
     Route::get('create-my-shop', 'ShopController@create')->name('shop.create');
     Route::post('store-my-shop', 'ShopController@store')->name('shop.store');
-    Route::group(['prefix' => 'shop'], function () {
+    Route::group(['prefix' => 'my-shop'], function () {
         Route::get('/', 'ShopController@show')->name('shop.show');
     });
 });
-Route::get('/', function () {
-    return view('index');
-});
+
 
 Route::get("/dash",function(){
     return view('');
