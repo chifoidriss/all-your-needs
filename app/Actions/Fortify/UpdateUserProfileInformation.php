@@ -41,8 +41,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'name' => $input['name'],
                 'surname' => $input['surname'],
                 'email' => $input['email'],
-                'phone' => $input['number'],
-                'country' => $input['country'],
+                'phone' => $input['phone'],
+                'nationality' => $input['nationality'],
                 'birth_day' => $input['birth_day'],
             ])->save();
         }

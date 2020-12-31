@@ -4,8 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Shards Dashboard Lite</title>
-    <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
+    <title>Dashboard - All Your Needs</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="{{ asset('assets/admin/css/all.css') }}">
@@ -16,39 +15,6 @@
 </head>
 
 <body class="h-100">
-    <div class="color-switcher animated">
-        <h5>Accent Color</h5>
-        <ul class="accent-colors">
-            <li class="accent-primary active" data-color="primary">
-                <i class="material-icons">check</i>
-            </li>
-            <li class="accent-secondary" data-color="secondary">
-                <i class="material-icons">check</i>
-            </li>
-            <li class="accent-success" data-color="success">
-                <i class="material-icons">check</i>
-            </li>
-        </ul>
-
-        {{-- <div class="actions mb-4">
-            <a class="mb-2 btn btn-sm btn-primary w-100 d-table mx-auto extra-action" href="https://designrevision.com/downloads/shards-dashboard-lite/">
-                <i class="material-icons">cloud</i>
-                Download
-            </a>
-            <a class="mb-2 btn btn-sm btn-white w-100 d-table mx-auto extra-action" href="https://designrevision.com/docs/shards-dashboard-lite">
-                <i class="material-icons">book</i>
-                Documentation
-            </a>
-        </div> --}}
-
-        <div class="close">
-            <i class="material-icons">close</i>
-        </div>
-    </div>
-    
-    <div class="color-switcher-toggle animated pulse infinite">
-        <i class="material-icons">settings</i>
-    </div>
 
     <div class="container-fluid">
         <div class="row">
@@ -82,45 +48,15 @@
                 <div class="nav-wrapper">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="index-2.html">
-                                <i class="material-icons">edit</i>
-                                <span>Blog Dashboard</span>
+                            <a class="nav-link active" href="{{ route('admin.index') }}">
+                                <i class="material-icons">dashboard</i>
+                                <span>Dashboard</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="components-blog-posts.html">
-                                <i class="material-icons">note_add</i>
-                                <span>Blog Posts</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="add-new-post.html">
-                                <i class="material-icons">note_add</i>
-                                <span>Add New Post</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="form-components.html">
-                                <i class="material-icons">view_module</i>
-                                <span>Forms &amp; Components</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="tables.html">
-                                <i class="material-icons">note_add</i>
-                                <span>Tables</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="user-profile-lite.html">
-                                <i class="material-icons">person</i>
-                                <span>User Profile</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="errors.html">
-                                <i class="material-icons">error</i>
-                                <span>Errors</span>
+                            <a class="nav-link " href="{{ route('admin.type-shop.index') }}">
+                                <i class="material-icons">shop_two</i>
+                                <span>Type of Shop</span>
                             </a>
                         </li>
                     </ul>
@@ -202,7 +138,21 @@
                 <!-- / .main-navbar -->
 
 
-                @yield('content')
+                <div class="main-content-container container-fluid px-4">
+                    <!-- Page Header -->
+                    <div class="page-header row no-gutters py-4">
+                        <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                            <span class="text-uppercase page-subtitle">Administration</span>
+                            <h3 class="page-title">
+                                @yield('page-header')
+                            </h3>
+                        </div>
+                    </div>
+                    <!-- End Page Header -->
+
+
+                    @yield('content')
+                </div>
 
 
                 <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
@@ -235,15 +185,22 @@
     </div>
     
 
-    <script src="assets/admin/js/jquery-3.3.1.min.js"></script>
-    <script src="assets/admin/js/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="assets/admin/js/bootstrap.min.js"></script>
-    <script src="assets/admin/js/libs/Chart.js/2.7.1/Chart.min.js"></script>
-    <script src="assets/admin/js/shards.min.js"></script>
-    <script src="assets/admin/js/libs/Sharrre/2.0.1/jquery.sharrre.min.js"></script>
-    <script src="assets/admin/js/extras.1.1.0.min.js"></script>
-    <script src="assets/admin/js/shards-dashboards.1.1.0.min.js"></script>
-    <script src="assets/admin/js/app/app-blog-overview.1.1.0.min.js"></script>
+    <script src="{{ asset('assets/admin/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/libs/popper.js/1.14.3/umd/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/libs/Chart.js/2.7.1/Chart.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/shards.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/libs/Sharrre/2.0.1/jquery.sharrre.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/extras.1.1.0.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/shards-dashboards.1.1.0.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/app/app-blog-overview.1.1.0.min.js') }}"></script>
+
+    <script>
+        $('.call-to-action-form').click(function (e){
+            e.preventDefault();
+            $(this).next('form').trigger('submit');
+        });
+    </script>
 </body>
 
 </html>

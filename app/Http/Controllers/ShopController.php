@@ -59,7 +59,7 @@ class ShopController extends Controller
         $shop = Shop::whereUserId(Auth::id())->firstOrFail();
         $shopTypes = TypeShop::all();
         
-        return view('shops.create', compact([
+        return view('shops.edit', compact([
             'shopTypes',
             'shop'
         ]));

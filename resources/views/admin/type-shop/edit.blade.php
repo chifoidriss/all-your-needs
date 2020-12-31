@@ -1,4 +1,4 @@
-@extends('categorie.layout.tablelayout')
+@extends('admin.layouts.master')
 <center>
 <div class="container">
  <div  class="card card-small mb-4 mt-4">

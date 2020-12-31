@@ -4,11 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Shards Dashboard Lite</title>
-    <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
+    <title>
+        @yield('title') - All Your Needs
+    </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="{{ asset('assets/admin/css/+.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/all.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/material/material-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/shards-dashboards.1.1.0.min.css') }}" id="main-stylesheet" data-version="1.1.0">
@@ -16,40 +17,6 @@
 </head>
 
 <body class="h-100">
-    <div class="color-switcher animated">
-        <h5>Accent Color</h5>
-        <ul class="accent-colors">
-            <li class="accent-primary active" data-color="primary">
-                <i class="material-icons">check</i>
-            </li>
-            <li class="accent-secondary" data-color="secondary">
-                <i class="material-icons">check</i>
-            </li>
-            <li class="accent-success" data-color="success">
-                <i class="material-icons">check</i>
-            </li>
-        </ul>
-
-        {{-- <div class="actions mb-4">
-            <a class="mb-2 btn btn-sm btn-primary w-100 d-table mx-auto extra-action" href="https://designrevision.com/downloads/shards-dashboard-lite/">
-                <i class="material-icons">cloud</i>
-                Download
-            </a>
-            <a class="mb-2 btn btn-sm btn-white w-100 d-table mx-auto extra-action" href="https://designrevision.com/docs/shards-dashboard-lite">
-                <i class="material-icons">book</i>
-                Documentation
-            </a>
-        </div> --}}
-
-        <div class="close">
-            <i class="material-icons">close</i>
-        </div>
-    </div>
-    
-    <div class="color-switcher-toggle animated pulse infinite">
-        <i class="material-icons">settings</i>
-    </div>
-
     <div class="container-fluid">
         <div class="row">
             <!-- Main Sidebar -->
@@ -59,7 +26,7 @@
                         <a class="navbar-brand w-100 mr-0" href="#" style="line-height: 25px;">
                             <div class="d-table m-auto">
                                 <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="/assets/admin/images/shards-dashboards-logo.svg" alt="Shards Dashboard">
-                                <span class="d-none d-md-inline ml-1">Shards Dashboard</span>
+                                <span class="d-none d-md-inline ml-1">Shop Dashboard</span>
                             </div>
                         </a>
                         <a class="toggle-sidebar d-sm-inline d-md-none d-lg-none">
@@ -69,58 +36,46 @@
                 </div>
 
                 <form action="#" class="main-sidebar__search w-100 border-right d-sm-flex d-md-none d-lg-none">
-                    {{-- <div class="input-group input-group-seamless ml-3">
+                    <div class="input-group input-group-seamless ml-3">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
                                 <i class="fas fa-search"></i>
                             </div>
                         </div>
                         <input class="navbar-search form-control" type="text" placeholder="Search for something..." aria-label="Search">
-                    </div> --}}
+                    </div>
                 </form>
 
                 <div class="nav-wrapper">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="index-2.html">
-                                <i class="material-icons">edit</i>
-                                <span>Blog Dashboard</span>
+                            <a class="nav-link @if(Route::is('shop.show')) active @endif" href="{{ route('shop.show') }}">
+                                <i class="material-icons">shop</i>
+                                <span>Shop Overview</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="components-blog-posts.html">
-                                <i class="material-icons">note_add</i>
-                                <span>Blog Posts</span>
+                            <a class="nav-link @if(Route::is('shop.product.*')) active @endif" href="{{ route('shop.product.index') }}">
+                                <i class="material-icons">work</i>
+                                <span>Products</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="add-new-post.html">
-                                <i class="material-icons">note_add</i>
-                                <span>Add New Post</span>
+                            <a class="nav-link @if(Route::is('shop.subscription.*')) active @endif" href="{{ route('shop.subscription.index') }}">
+                                <i class="material-icons">payment</i>
+                                <span>Subscriptions</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="form-components.html">
+                            <a class="nav-link @if(Route::is('shop.blog.*')) active @endif" href="{{ route('shop.blog.index') }}">
                                 <i class="material-icons">view_module</i>
-                                <span>Forms &amp; Components</span>
+                                <span>Blogs</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="tables.html">
-                                <i class="material-icons">note_add</i>
-                                <span>Tables</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="user-profile-lite.html">
-                                <i class="material-icons">person</i>
-                                <span>User Profile</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="errors.html">
-                                <i class="material-icons">error</i>
-                                <span>Errors</span>
+                            <a class="nav-link @if(Route::is('shop.edit')) active @endif" href="{{ route('shop.edit') }}">
+                                <i class="material-icons">edit</i>
+                                <span>Shop Informations</span>
                             </a>
                         </li>
                     </ul>
@@ -134,61 +89,81 @@
                     <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
                         <form action="#" class="main-navbar__search w-100 d-none d-md-flex d-lg-flex">
                             <div class="input-group input-group-seamless ml-3">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <i class="fas fa-search"></i>
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fas fa-search"></i>
+                                    </div>
                                 </div>
-                            </div>
-                            <input class="navbar-search form-control" type="text" placeholder="Search for something..." aria-label="Search">
+                                <input class="navbar-search form-control" type="text" placeholder="Search for something..." aria-label="Search">
                             </div>
                         </form>
 
                         <ul class="navbar-nav border-left flex-row ">
                             <li class="nav-item border-right dropdown notifications">
-                            <a class="nav-link nav-link-icon text-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <div class="nav-link-icon__wrapper">
-                                    <i class="material-icons">&#xE7F4;</i>
-                                <span class="badge badge-pill badge-danger">2</span>
-                                </div>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-small" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">
-                                <div class="notification__icon-wrapper">
-                                    <div class="notification__icon">
-                                        <i class="material-icons">&#xE6E1;</i>
+                                <a class="nav-link nav-link-icon text-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="nav-link-icon__wrapper">
+                                        <i class="material-icons">&#xE7F4;</i>
+                                        <span class="badge badge-pill badge-danger">2</span>
                                     </div>
-                                </div>
-                                <div class="notification__content">
-                                    <span class="notification__category">Analytics</span>
-                                    <p>Your website’s active users count increased by <span class="text-success text-semibold">28%</span> in the last week. Great job!</p>
-                                </div>
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                <div class="notification__icon-wrapper">
-                                    <div class="notification__icon">
-                                        <i class="material-icons">&#xE8D1;</i>
-                                    </div>
+                                <div class="dropdown-menu dropdown-menu-small" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="#">
+                                        <div class="notification__icon-wrapper">
+                                            <div class="notification__icon">
+                                                <i class="material-icons">&#xE6E1;</i>
+                                            </div>
+                                        </div>
+                                        <div class="notification__content">
+                                            <span class="notification__category">Analytics</span>
+                                            <p>
+                                                Your website’s active users count increased by
+                                                <span class="text-success text-semibold">28%</span>
+                                                in the last week. Great job!
+                                            </p>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <div class="notification__icon-wrapper">
+                                            <div class="notification__icon">
+                                                <i class="material-icons">&#xE8D1;</i>
+                                            </div>
+                                        </div>
+                                        <div class="notification__content">
+                                            <span class="notification__category">Sales</span>
+                                            <p>Last week your store’s sales count decreased by
+                                                <span class="text-danger text-semibold">5.52%</span>.
+                                                It could have been worse!
+                                            </p>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item notification__all text-center" href="#">
+                                        View all Notifications
+                                    </a>
                                 </div>
-                                <div class="notification__content">
-                                    <span class="notification__category">Sales</span>
-                                    <p>Last week your store’s sales count decreased by <span class="text-danger text-semibold">5.52%</span>. It could have been worse!</p>
-                                </div>
-                                </a>
-                                <a class="dropdown-item notification__all text-center" href="#"> View all Notifications </a>
-                            </div>
                             </li>
                             <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                <img class="user-avatar rounded-circle mr-2" src="/assets/admin/images/avatars/0.jpg" alt="User Avatar"> <span class="d-none d-md-inline-block">Sierra Brooks</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-small">
-                                <a class="dropdown-item" href="user-profile-lite.html"><i class="material-icons">&#xE7FD;</i> Profile</a>
-                                <a class="dropdown-item" href="components-blog-posts.html"><i class="material-icons">vertical_split</i> Blog Posts</a>
-                                <a class="dropdown-item" href="add-new-post.html"><i class="material-icons">note_add</i> Add New Post</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item text-danger" href="#">
-                                <i class="material-icons text-danger">&#xE879;</i> Logout </a>
-                            </div>
+                                <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <img class="user-avatar rounded-circle mr-2" src="/assets/admin/images/avatars/0.jpg" alt="User Avatar">
+                                    <span class="d-none d-md-inline-block">
+                                        {{ ucfirst(Auth::user()->surname) }}
+                                        {{ ucfirst(Auth::user()->name) }}
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-small">
+                                    <a class="dropdown-item" href="{{ route('user.profile') }}">
+                                        <i class="material-icons">&#xE7FD;</i> Profile
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('shop.show') }}">
+                                        <i class="material-icons">shop</i> My Shop
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('index') }}">
+                                        <i class="material-icons">home</i> Home Page
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item text-danger" href="#">
+                                        <i class="material-icons text-danger">&#xE879;</i> Logout
+                                    </a>
+                                </div>
                             </li>
                         </ul>
 
@@ -202,7 +177,21 @@
                 <!-- / .main-navbar -->
 
 
-                @yield('content')
+                <div class="main-content-container container-fluid px-4">
+                    <!-- Page Header -->
+                    <div class="page-header row no-gutters py-4">
+                        <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                            <span class="text-uppercase page-subtitle">{{ Auth::user()->shop->name }}</span>
+                            <h3 class="page-title">
+                                @yield('page-header')
+                            </h3>
+                        </div>
+                    </div>
+                    <!-- End Page Header -->
+
+
+                    @yield('content')
+                </div>
 
 
                 <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
@@ -235,15 +224,15 @@
     </div>
     
 
-    <script src="assets/admin/js/jquery-3.3.1.min.js"></script>
-    <script src="assets/admin/js/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="assets/admin/js/bootstrap.min.js"></script>
-    <script src="assets/admin/js/libs/Chart.js/2.7.1/Chart.min.js"></script>
-    <script src="assets/admin/js/shards.min.js"></script>
-    <script src="assets/admin/js/libs/Sharrre/2.0.1/jquery.sharrre.min.js"></script>
-    <script src="assets/admin/js/extras.1.1.0.min.js"></script>
-    <script src="assets/admin/js/shards-dashboards.1.1.0.min.js"></script>
-    <script src="assets/admin/js/app/app-blog-overview.1.1.0.min.js"></script>
+    <script src="{{ asset('assets/admin/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/libs/popper.js/1.14.3/umd/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/libs/Chart.js/2.7.1/Chart.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/shards.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/libs/Sharrre/2.0.1/jquery.sharrre.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/extras.1.1.0.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/shards-dashboards.1.1.0.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/app/app-blog-overview.1.1.0.min.js') }}"></script>
 </body>
 
 </html>

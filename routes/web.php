@@ -13,8 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix' => 'admin'], function () {
-    Route::get('/', 'AdminController@index');
+Route::name('admin.')->prefix('admin')->group(function () {
+    Route::get('/', 'AdminController@index')->name('index');
+
+    Route::resource('type-shop', 'TypeShopController');
 });
 
 Route::get('/', 'HomeController@index')->name('index');
@@ -25,13 +27,23 @@ Route::group(['middleware' => 'auth:web'], function () {
         Route::get('/', 'UserController@profile')->name('user.profile');
         Route::get('my-favorites', 'UserController@favorites')->name('user.favorites');
         Route::get('change-password', 'UserController@updatePassword')->name('user.update.password');
-    });
+    });  
+});
+
+Route::name('shop.')->prefix('my-shop')->middleware(['auth:web'])->group(function () {
+    Route::get('/', 'ShopController@show')->name('show');
+    Route::get('create', 'ShopController@create')->name('create');
+    Route::post('store', 'ShopController@store')->name('store');
+    Route::get('edit', 'ShopController@edit')->name('edit');
+    Route::put('update', 'ShopController@update')->name('update');
+
+    # Routes of Products for vendor
+    Route::resource('product', 'Shop\ProductController');
     
-    Route::get('create-my-shop', 'ShopController@create')->name('shop.create');
-    Route::post('store-my-shop', 'ShopController@store')->name('shop.store');
-    Route::group(['prefix' => 'my-shop'], function () {
-        Route::get('/', 'ShopController@show')->name('shop.show');
-    });
+    # Routes of Blogs for vendor
+    Route::resource('blog', 'Shop\BlogController');
+
+    Route::get('subscription', 'Shop\SubscriptionController@index')->name('subscription.index');
 });
 
 

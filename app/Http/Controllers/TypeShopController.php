@@ -8,30 +8,35 @@ use App\Models\TypeShop;
 
 class TypeShopController extends Controller
 {
-        public function create(Request $request){
+    public function create() {
+        return view('admin.type-shop.create');
+    }
 
-      $collection = new TypeShop();
-      $collection->name = $request->input('name');
-      $collection->description = $request->input('description');
+    public function store(Request $request){
 
-      $collection->save();
-        
-        return redirect('/indextypeshop');
+        $collection = new TypeShop();
+        $collection->name = $request->input('name');
+        $collection->description = $request->input('description');
+
+        $collection->save();
+            
+        return back();
 
     }
 
     public function index(){
 
-        $recup_collection = DB::table('type_shops')->select('type_shops.*')->get();
+        // $recup_collection = DB::table('type_shops')->select('type_shops.*')->get();
+        $recup_collection = TypeShop::all();
 
-        return view('type_shop/index',compact('recup_collection'))->with('i');
+        return view('admin.type-shop.index', compact('recup_collection'))->with('i');
     }
 
     public function edit($id){
         $recup=DB::table('type_shops')->select('type_shops.*')->where('id','=',$id)->get();
           
         
-        return view('type_shop/edit',compact('recup'));
+        return view('admin.type-shop.edit',compact('recup'));
     }
     
     public function update(Request $request, $id){
