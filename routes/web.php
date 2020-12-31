@@ -55,3 +55,37 @@ Route::post('/editoffert/{id}','OfferController@update');
 Route::DELETE('/deleteoffert/{id}','OfferController@destroy');
 ////////////////////////////////////////////////////////////
 
+
+
+//////////// route theme///////////////////////////
+Route::get('/create_theme',function(){
+    return view ('themes/create');
+});
+Route::post('/create_theme','ThemeController@create');
+Route::get('/indextheme','ThemeController@index');
+Route::get('/edit_theme/{id}','ThemeController@edit');
+Route::post('/edittheme/{id}','ThemeController@update');
+Route::DELETE('/deletetheme/{id}','ThemeController@destroy');
+////////////////////////////////////////////////////////////
+
+//////////// route type shops///////////////////////////
+Route::get('/create_typeshop',function(){
+    return view ('type_shop/create');
+});
+Route::post('/create_typeshop','TypeShopController@create');
+Route::get('/indextypeshop','TypeShopController@index');
+Route::get('/edit_typeshop/{id}','TypeShopController@edit');
+Route::post('/edittypeshop/{id}','TypeShopController@update');
+Route::DELETE('/deletetypeshop/{id}','TypeShopController@destroy');
+////////////////////////////////////////////////////////////
+
+
+//////////// route super category///////////////////////////
+Route::get('/create_supercat','SuperCategoryController@index1');
+Route::post('/create_supercat','SuperCategoryController@create');
+Route::get('/indexsupercat','SuperCategoryController@index');
+Route::get('/edit_supercat/{id}','SuperCategoryController@edit');
+Route::post('/editsupercat/{id}','SuperCategoryController@update');
+Route::DELETE('/deletesupercat/{id}','SuperCategoryController@destroy');
+////////////////////////////////////////////////////////////
+
