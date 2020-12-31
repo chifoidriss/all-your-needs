@@ -19,6 +19,7 @@ class CreateOffersTable extends Migration
             $table->string('description')->nullable();
             $table->unsignedDecimal('price');
             $table->unsignedSmallInteger('period');
+            $table->Integer('etat');
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

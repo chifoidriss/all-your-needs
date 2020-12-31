@@ -17,6 +17,7 @@ class CreateCollectionsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('description')->nullable();
+              $table->integer('etat');
             $table->timestamps();
         });
     }
