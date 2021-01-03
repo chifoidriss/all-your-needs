@@ -39,11 +39,13 @@ Route::name('shop.')->prefix('my-shop')->middleware(['auth:web'])->group(functio
 
     # Routes of Products for vendor
     Route::resource('product', 'Shop\ProductController');
+    Route::get('collections/{id}', 'Shop\ProductController@collection');
+    Route::get('categories/{id}', 'Shop\ProductController@category');
     
     # Routes of Blogs for vendor
     Route::resource('blog', 'Shop\BlogController');
 
-    Route::get('subscription', 'Shop\SubscriptionController@index')->name('subscription.index');
+    Route::resource('subscription', 'Shop\SubscriptionController');
 });
 
 
