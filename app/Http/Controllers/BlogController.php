@@ -47,9 +47,9 @@ class BlogController extends Controller
             // $image->move(public_path().'/images/', $name); 
       
         
-        $collection->image = $image;
-        $collection->user_id = 1;
-        dd($image);
+        //$collection->image = $image;
+        //$collection->user_id = 1;
+        //dd($image);
         $collection->save();
             
         return redirect('admin/blogs');
