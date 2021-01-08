@@ -13,13 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::name('admin.')->prefix('admin')->group(function () {
+Route::name('admin.')->prefix('admin')->middleware(['auth:web'])->group(function () {
     Route::get('/', 'AdminController@index')->name('index');
 
     Route::resource('type-shop', 'TypeShopController');
 });
 
 Route::get('/', 'HomeController@index')->name('index');
+Route::get('locale/{locale}', 'HomeController@setLocale')->name('locale');
+Route::get('devise/{devise}', 'HomeController@setDevise')->name('devise');
 Route::get('contact', 'HomeController@contact')->name('contact');
 
 Route::group(['middleware' => 'auth:web'], function () {
@@ -48,10 +50,10 @@ Route::name('shop.')->prefix('my-shop')->middleware(['auth:web'])->group(functio
     Route::resource('subscription', 'Shop\SubscriptionController');
 });
 
+Route::get('products', 'ProductController@index')->name('product.index');
+Route::get('product/{id}', 'ProductController@show')->name('product.show');
 
-Route::get("/dash",function(){
-    return view('');
-});
+
 
 // route view index categorie
 

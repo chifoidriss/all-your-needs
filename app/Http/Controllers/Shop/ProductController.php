@@ -74,6 +74,7 @@ class ProductController extends Controller
             'old_price',
             'qty'
         ]));
+        $product->name =$request->input('name');
         $product->shop_id = $shop->id;
         
         if ($request->hasFile('image')) {

@@ -41,7 +41,7 @@
                         <td>{{ getPrice($product->price) }}</td>
                         <td>{{ getPrice($product->old_price) }}</td>
                         <td>{{ $product->qty }}</td>
-                        <td>{{ implode(',', $product->categories->pluck('name')->toArray()) }}</td>
+                        <td>{{ implode(', ', $product->categories->pluck('name')->toArray()) }}</td>
                         <td>
                             <a class="btn btn-sm btn-outline-warning" href="{{ route('shop.product.edit', $product->id) }}">
                                 <i class="fas fa-edit"></i>

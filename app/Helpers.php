@@ -1,7 +1,9 @@
 <?php
 
 use App\Actions\AWT\AWTClass;
+use App\Models\Devise;
 use App\Models\Setting;
+use Illuminate\Support\Facades\Cookie;
 
 function formatDate($date, $forHumans = 1, $onlyDate = 0) {
     if ($forHumans == 1) {
@@ -15,8 +17,23 @@ function formatDate($date, $forHumans = 1, $onlyDate = 0) {
 }
 
 
-function getPrice($priceInDecimals, $devise = '€') {
-    return number_format($priceInDecimals, 2, ',', ' ') . " $devise";
+function getPrice($priceInEuro) {
+    $price = floatval($priceInEuro);
+
+    $devise = Cookie::get('devise', 'eur');
+
+    $exist = Devise::whereName($devise)->first();
+
+    if (!$exist || $exist->name == 'eur') {
+        return number_format($price, 2, ',', ' ').' €';
+    }
+
+    $price = $price * $exist->factor;
+    if ($exist->precision == 0) {
+        $price = ceil($price);
+    }
+
+    return number_format($price, $exist->precision, ',', ' ').' '.strtoupper($exist->symbol);
 }
 
 function phone($number, $code) {

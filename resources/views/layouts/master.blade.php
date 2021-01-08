@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>@yield('title') - AYN</title>
+    <title>@yield('title') - All Your Needs</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Colo Shop Template">
@@ -47,28 +47,40 @@
 
                                     <li class="currency">
                                         <a href="#">
-                                            usd
+                                            {{ Cookie::get('devise', 'eur') }}
                                             <i class="fa fa-angle-down"></i>
                                         </a>
                                         <ul class="currency_selection">
-                                            <li><a href="#">cad</a></li>
-                                            <li><a href="#">aud</a></li>
-                                            <li><a href="#">eur</a></li>
-                                            <li><a href="#">gbp</a></li>
+                                            @foreach (App\Models\Devise::all() as $item)
+                                                @if ($item->name != Cookie::get('devise', 'eur'))
+                                                <li>
+                                                    <a href="{{ route('devise', $item->name) }}">
+                                                        {{ $item->name }}
+                                                    </a>
+                                                </li>
+                                                @endif
+                                            @endforeach
                                         </ul>
                                     </li>
+
                                     <li class="language">
                                         <a href="#">
-                                            English
+                                            {{ collect(config('app.locales'))->get(config('app.locale')) }}
                                             <i class="fa fa-angle-down"></i>
                                         </a>
                                         <ul class="language_selection">
-                                            <li><a href="#">French</a></li>
-                                            <li><a href="#">Italian</a></li>
-                                            <li><a href="#">German</a></li>
-                                            <li><a href="#">Spanish</a></li>
+                                            @foreach (config('app.locales') as $key => $value)
+                                                @if (config('app.locale') != $key)
+                                                <li>
+                                                    <a href="{{ route('locale', $key) }}">
+                                                        {{ $value }}
+                                                    </a>
+                                                </li>
+                                                @endif
+                                            @endforeach
                                         </ul>
                                     </li>
+
                                     <li class="account">
                                         <a href="#">
                                             My Account
@@ -118,21 +130,36 @@
                     <div class="row">
                         <div class="col-lg-12 text-right">
                             <div class="logo_container">
-                                <a href="#">
+                                <a href="{{ route('index') }}">
                                     All<span>Your</span><Span class="text-primary">Needs</Span>
                                 </a>
                             </div>
                             <nav class="navbar">
                                 <ul class="navbar_menu">
-                                    <li><a href="#">home</a></li>
-                                    <li><a href="{{ route('shop.create') }}">shop</a></li>
-                                    <li><a href="#">promotion</a></li>
+                                    <li>
+                                        <a href="{{ route('index') }}">
+                                            home
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('product.index') }}">
+                                            Products
+                                        </a>
+                                    </li>
                                     <li><a href="#">blog</a></li>
-                                    <li><a href="{{ route('contact') }}">contact</a></li>
+                                    <li>
+                                        <a href="{{ route('contact') }}">
+                                            contact
+                                        </a>
+                                    </li>
                                 </ul>
                                 <ul class="navbar_user">
                                     <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                                    <li>
+                                        <a href="{{ route('user.profile') }}">
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
                                     <li class="checkout">
                                         <a href="#">
                                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
@@ -152,6 +179,7 @@
         </header>
 
         <div class="fs_menu_overlay"></div>
+        
         <div class="hamburger_menu">
             <div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
             <div class="hamburger_menu_content text-right">

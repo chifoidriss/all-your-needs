@@ -2,6 +2,11 @@
 /public/hot
 /public/storage
 /storage/*.key
+/resources/lang/awt.php
+/resources/lang/fr/awt.php
+/resources/lang/en/awt.php
+/resources/lang/es/awt.php
+/resources/lang/de/awt.php
 /vendor
 .env
 .env.backup

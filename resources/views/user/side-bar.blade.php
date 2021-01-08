@@ -34,6 +34,11 @@
                 Gérer ma boutique
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
             </a>
+            @else
+            <a class="side-item creation" href="{{ route('shop.create') }}">
+                Créer ma boutique
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </a>
             @endif
             <a class="side-item @if(Route::is('user.update.password')) active @endif" href="{{ route('user.update.password') }}">
                 Mot de passe
