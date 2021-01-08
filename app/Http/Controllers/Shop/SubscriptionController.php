@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
+use App\Models\Offer;
+use App\Models\Shop;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SubscriptionController extends Controller
 {
@@ -14,7 +18,11 @@ class SubscriptionController extends Controller
      */
     public function index()
     {
-        //
+        $shop = Shop::whereUserId(Auth::id())->firstOrFail();
+        $subscriptions = Subscription::whereShopId($shop->id)->get();
+        return view('vendor.subscriptions.index', compact([
+            'subscriptions'
+        ]));
     }
 
     /**
@@ -24,7 +32,10 @@ class SubscriptionController extends Controller
      */
     public function create()
     {
-        //
+        $offers = Offer::all();
+        return view('vendor.subscriptions.create', compact([
+            'offers'
+        ]));
     }
 
     /**

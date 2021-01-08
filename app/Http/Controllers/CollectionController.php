@@ -7,52 +7,58 @@ use DB;
 use App\Models\Collection;
 
 class CollectionController extends Controller
-{
-     public function create(Request $request){
 
-      $collection = new collection();
-      $collection->name = $request->input('name');
-      $collection->description = $request->input('description');
-      $collection->etat = 1;
-      $collection->save();
+{
+
+     public function create(){
+         return view ('admin.collections.create');
+     }
+     public function store(Request $request){
+      $validateDate=$request->validate([
+          'name'=>'required',
+          'description'=>'required',
+      ]);
+
+      $collection = Collection::create($validateDate);
         
-        return redirect('/indexcollec');
+        return redirect('admin/collections');
 
     }
 
     public function index(){
 
-        $recup_collection = DB::table('collections')->select('collections.*')->Where('etat','=',"1")->get();
+        $recup_collection = Collection::all();
 
-        return view('collections/index',compact('recup_collection'))->with('i');
+        return view('admin/collections/index',compact('recup_collection'))->with('i');
     }
 
     public function edit($id){
-        $recup=DB::table('collections')->select('collections.*')->where('id','=',$id)->get();
+        $recup=Collection::findOrFail($id);
           
         
-        return view('collections/edit',compact('recup'));
+        return view('admin.collections.edit',compact('recup'));
     }
     
     public function update(Request $request, $id){
+   
+        $validateDate=$request->validate([
+          'name'=>'required',
+          'description'=>'required',
+      ]);
 
-        $nom_collection = $request->input('name');
-        $sigle = $request->input('description');
-        $etat = 1;
-
-        $data = array('name'=>$nom_collection,'description'=>$sigle,'etat'=>$etat);
-         DB::table('collections')->where('id','=',$id)->update($data);
-         
-        return redirect('/indexcollec');
+      $collection = Collection::findOrFail($id);
+      $collection = Collection::where($id)->update($validateDate);
+        
+     return redirect('admin/collections');
 
 
     }
 
     public function destroy($id){
 
-        $etat="0";
-        DB::table('collections')->where("id","=",$id)->update(['etat'=>$etat]);
-        return redirect ("/indexcollec");
+        $delete=Collection::findOrFail($id);
+        $delete->delete();
+        return redirect ("admin/collections");
     }
 
     public function show($id){

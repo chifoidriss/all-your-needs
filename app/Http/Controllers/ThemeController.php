@@ -10,47 +10,64 @@ class ThemeController extends Controller
 {
      public function create(Request $request){
 
-      $collection = new Theme();
-      $collection->name = $request->input('name');
-      $collection->description = $request->input('description');
+      return view ('admin.themes.create');
 
+    }
+
+    public function store (Request $request){
+     $request->validate([
+         'name',
+         'description',
+     ]);
+      $collection = new Theme();
+      $collection->fill($request->only([
+          'name',
+          'description',
+      ]));
       $collection->save();
         
-        return redirect('/indextheme');
-
+        return back();
     }
 
     public function index(){
 
-        $recup_collection = DB::table('themes')->select('themes.*')->get();
+        $recup_collection = Theme::all();
 
-        return view('themes/index',compact('recup_collection'))->with('i');
+        return view('admin.themes.index',compact('recup_collection'))->with('i');
     }
 
     public function edit($id){
         $recup=DB::table('themes')->select('themes.*')->where('id','=',$id)->get();
-          
-        
-        return view('themes/edit',compact('recup'));
+         //$recup=Theme::findOrFail($id);
+         
+        return view('admin.themes.edit',compact('recup'));
     }
     
     public function update(Request $request, $id){
 
-        $nom_collection = $request->input('name');
-        $sigle = $request->input('description');
-        $data = array('name'=>$nom_collection,'description'=>$sigle);
-         DB::table('themes')->where('id','=',$id)->update($data);
+        $request->validate([
+         'name',
+         'description',
+     ]);
+      $collection = Theme::findOrFail($id);
+      $collection->fill($request->only([
+          'name',
+          'description',
+      ]));
+      $collection->save();
+        
          
-        return redirect('/indextheme');
+        return redirect('admin/themes');
 
 
     }
 
     public function destroy($id){
 
-        //$etat="0";
-        DB::table('themes')->where("id","=",$id)->delete();
-        return redirect ("/indextheme");
+        $delete=Theme::findOrFail($id);
+        $delete->delete();
+      
+        return redirect ("admin/themes");
     }
 
     public function show($id){

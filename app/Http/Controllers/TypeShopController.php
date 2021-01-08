@@ -13,14 +13,18 @@ class TypeShopController extends Controller
     }
 
     public function store(Request $request){
-
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+        ]);
         $collection = new TypeShop();
-        $collection->name = $request->input('name');
-        $collection->description = $request->input('description');
+        $collection->fill($request->only([
+            'name',
+            'description']));
 
         $collection->save();
             
-        return back();
+        return redirect('admin/type-shop');
 
     }
 
@@ -40,13 +44,17 @@ class TypeShopController extends Controller
     }
     
     public function update(Request $request, $id){
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+        ]);
+        $collection = TypeShop::findOrFail($id);
+        $collection->fill($request->only([
+            'name',
+            'description']));
 
-        $nom_collection = $request->input('name');
-        $sigle = $request->input('description');
-        $data = array('name'=>$nom_collection,'description'=>$sigle);
-         DB::table('type_shops')->where('id','=',$id)->update($data);
-         
-        return redirect('/indextypeshop');
+        $collection->save();
+        return redirect('admin/type-shop');
 
 
     }
@@ -54,8 +62,9 @@ class TypeShopController extends Controller
     public function destroy($id){
 
         //$etat="0";
-        DB::table('type_shops')->where("id","=",$id)->delete();
-        return redirect ("/indextypeshop");
+     $delete= TypeShop::findOrFail($id);
+      $delete->delete();
+        return redirect ("admin/type-shop");
     }
 
     public function show($id){

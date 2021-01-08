@@ -27,7 +27,7 @@ class CreateProductsTable extends Migration
             $table->boolean('approved')->default(true);
             $table->boolean('status')->default(true);
             $table->timestamps();
-            $table->softDeletes()
+            $table->softDeletes();
         });
     }
 

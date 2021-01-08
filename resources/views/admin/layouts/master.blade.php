@@ -54,11 +54,51 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link " href="{{ route('admin.blogs.index') }}">
+                                <i class="material-icons">shop_two</i>
+                                <span>Blogs</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="{{ route('admin.categorie.index') }}">
+                                <i class="material-icons">shop_two</i>
+                                <span>Category</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="{{ route('admin.collections.index') }}">
+                                <i class="material-icons">shop_two</i>
+                                <span>Collection</span>
+                            </a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link " href="{{ route('admin.offre.index') }}">
+                                <i class="material-icons">shop_two</i>
+                                <span>Offers</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link " href="{{ route('admin.themes.index') }}">
+                                <i class="material-icons">shop_two</i>
+                                <span>Theme</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link " href="{{ route('admin.type-shop.index') }}">
                                 <i class="material-icons">shop_two</i>
                                 <span>Type of Shop</span>
                             </a>
                         </li>
+
+                          <li class="nav-item">
+                            <a class="nav-link " href="{{ route('admin.super_cat.index') }}">
+                                <i class="material-icons">shop_two</i>
+                                <span>Super Category</span>
+                            </a>
+                        </li>
+
+                       
                     </ul>
                 </div>
             </aside>
@@ -174,9 +214,9 @@
                         </li>
                     </ul>
                     <span class="copyright ml-auto my-auto mr-2">
-                        Copyright © 2018
-                        <a href="https://designrevision.com/" rel="nofollow">
-                            DesignRevision
+                        Copyright © 2021 By Chifo And Rvj
+                        
+                           
                         </a>
                     </span>
                 </footer>

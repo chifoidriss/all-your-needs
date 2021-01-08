@@ -35,16 +35,15 @@
               <td>{{$collec->name}}</td>
               <td>{{$collec->description}}</td>
               <td>
-                <form  action="{{route('admin.type-shop.destroy',$collec->id)}}" method="post">
+                <form  action="{{url('deletecollec',$collec->id)}}" method="post">
                        @csrf
-                       @method('DELETE')
-                        <a href="{{route('admin.type-shop.edit',$collec->id)}}"><button type="button"  class="btn btn-sm btn-outline-primary">Edit</button></a>
+                        @method('DELETE')
+                        <a   href="{{url('edit_collec',$collec->id)}}"><button class="btn btn-sm btn-outline-primary" type="button" >Edit</button></a>
 
-                        <button type="submit"  class="btn btn-sm btn-outline-warning">Show</button>
-                        <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                         <button   class="btn btn-sm btn-outline-warning" type="submit" class="mb-2 btn btn-primary mr-2">Show</button>
+                          <button  class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
 
                 </form>
-               
               </td> 
             </tr>
             @endforeach

@@ -15,8 +15,8 @@ function formatDate($date, $forHumans = 1, $onlyDate = 0) {
 }
 
 
-function getPrice($priceInDecimals, $devise = 'XAF') {
-    return number_format($priceInDecimals, 0, ',', ' ') . " $devise";
+function getPrice($priceInDecimals, $devise = '€') {
+    return number_format($priceInDecimals, 2, ',', ' ') . " $devise";
 }
 
 function phone($number, $code) {

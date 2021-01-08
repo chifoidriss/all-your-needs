@@ -5,10 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Theme extends Model
+class Gallery extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
-    protected $table='themes';
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
