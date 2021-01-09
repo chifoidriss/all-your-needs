@@ -11,39 +11,50 @@
                       @csrf          
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" placeholder="Name" name="name"> 
-                        
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" id='name' placeholder="Name" name="name"> 
+                        @error('name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                       @enderror  
                     </div>
 
 
                     <div class="form-group">
                         <label for="Description">Description</label>
-                        <textarea type="text" class="form-control" name="description" > 
+                        <textarea type="text"id='description' class="form-control @error('description') is-invalid @enderror" name="description" > 
 
                         </textarea>
-                        
+                         @error('description')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                       @enderror 
                     </div>
 
                      <div class="form-group">
                         <label for="price">Price</label>
-                        <input type="text" class="form-control" placeholder="Price" name="price"> 
-                        
+                        <input type="text" id ='price' class="form-control @error('price') is-invalid @enderror" placeholder="Price" name="price"> 
+                        @error('price')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                       @enderror  
                     </div>
 
                      <div class="form-group">
                         <label for="Period">Period</label>
-                        <input type="number" class="form-control" placeholder="Period" name="period"> 
-                        
+                        <input type="number" id='period' class="form-control @error('period') is-invalid @enderror" placeholder="Period" name="period"> 
+                        @error('period')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                       @enderror  
                     </div>
 
                      <div class="form-group">
                        <label for="status">Status</label>
-                        <select name='status'  class="form-control"> 
+                        <select name='status' id='status' class="form-control @error('status') is-invalid @enderror"> 
                             <option > Choisir le statut </option > 
                              <option  class="form-control">  
                                1
                              </option> 
                         <select > 
+                         @error('status')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                       @enderror 
                     </div>
                             
                     <div class="col mb-6">

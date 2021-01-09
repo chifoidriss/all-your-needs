@@ -13,20 +13,24 @@
                 <form action="{{route('admin.super_cat.store')}}" method="post">
                       @csrf          
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Name" name="name"> 
-                        
+                        <input type="text" class="form-control @error('name') is-invalid @enderror"id='name' placeholder="Name" name="name"> 
+                       @error('name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                       @enderror   
                     </div>
 
 
                     <div class="form-group">
-                        <textarea type="text" class="form-control" name="description" > 
+                        <textarea type="text" id ='description' class="form-control @error('description') is-invalid @enderror" name="description" > 
 
                         </textarea>
-                        
+                        @error('description')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                       @enderror  
                     </div>
 
                      <div class="form-group">
-                        <select class="form-control" name="collection_id" > 
+                        <select class="form-control @error('collection_id') is-invalid @enderror" name="collection_id" id='collection_id'> 
                              <option>
                                 Choisir une collection
                               </option>
@@ -36,7 +40,9 @@
                                 </option>
                                 @endforeach
                         </select>
-                        
+                         @error('collection_id')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                       @enderror 
                     </div>
 
 

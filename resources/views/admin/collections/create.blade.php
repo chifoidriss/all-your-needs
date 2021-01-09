@@ -14,16 +14,20 @@
                 <form action="{{route('admin.collections.store')}}" method="post">
                       @csrf          
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Name" name="name"> 
-                        
+                        <input type="text" id='name' class="form-control @error('name') is-invalid @enderror" placeholder="Name" name="name"> 
+                       @error('name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                       @enderror    
                     </div>
 
 
                     <div class="form-group">
-                        <textarea type="text" class="form-control" name="description" > 
+                        <textarea type="text" id='description' class="form-control @error('description') is-invalid @enderror" name="description" > 
 
                         </textarea>
-                        
+                         @error('description')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                       @enderror  
                     </div>
                             
                     <div class="col mb-6">

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class SubscriptionController extends Controller
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     
     public function index(){
 
@@ -41,12 +42,17 @@ class SubscriptionController extends Controller
     public function edit($id){
 
 =======
+=======
+>>>>>>> c479e5a6f965e698ade4ef0ee7deb66edd51dadd
     public function index()
     {
         $subscriptions = Subscription::all();
         return view('vendor.subscriptions.index', compact([
             'subscriptions'
         ]));
+<<<<<<< HEAD
+>>>>>>> c479e5a6f965e698ade4ef0ee7deb66edd51dadd
+=======
 >>>>>>> c479e5a6f965e698ade4ef0ee7deb66edd51dadd
     }
 }

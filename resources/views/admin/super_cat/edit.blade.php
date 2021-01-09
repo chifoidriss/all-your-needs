@@ -15,20 +15,24 @@
                      @csrf   
                      @method('PUT')        
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Name" name="name" value="{{$rep->name}}"> 
-                        
+                        <input type="text" id='name' class="form-control @error('name') is-invalid @enderror" placeholder="Name" name="name" value="{{$rep->name}}"> 
+                      @error('name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                       @enderror    
                     </div>
 
 
                     <div class="form-group">
-                        <textarea type="text" class="form-control" name="description"  value="{{$rep->description}}" > 
+                        <textarea type="text" class="form-control @error('description') is-invalid @enderror" id="description" name="description"  value="{{$rep->description}}" > 
 
                         </textarea>
-                        
+                         @error('collection_id')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                       @enderror 
                     </div>
 
                     <div class="form-group">
-                        <select class="form-control" name="collection_id" > 
+                        <select class="form-control @error('collection_id') is-invalid @enderror" id='collection_id' name="collection_id" > 
                              <option>
                                 Choisir une collection
                               </option>
@@ -38,7 +42,9 @@
                                 </option>
                                 @endforeach
                         </select>
-                        
+                         @error('collection_id')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                       @enderror 
                     </div>
 
                    

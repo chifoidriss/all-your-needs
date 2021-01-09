@@ -15,35 +15,46 @@
                      @csrf     
                      @method('PUT')     
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Name" name="name" value="{{$recup->name}}"> 
-                        
+                        <input type="text" id='name' class="form-control @error('name') is-invalid @enderror" placeholder="Name" name="name" value="{{$recup->name}}"> 
+                       @error('name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                       @enderror   
                     </div>
 
 
                     <div class="form-group">
-                        <textarea type="text" class="form-control" name="description"  value="{{$recup->description}}" > 
+                        <textarea type="text" id='description' class="form-control @error('description') is-invalid @enderror" name="description"  value="{{$recup->description}}" > 
 
                         </textarea>
-                        
+                        @error('description')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                       @enderror  
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Price" name="price" value="{{$recup->price}}"> 
-                        
+                        <input type="text" id='price' class="form-control @error('price') is-invalid @enderror" placeholder="Price" name="price" value="{{$recup->price}}"> 
+                        @error('price')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                       @enderror  
                     </div>
 
                      <div class="form-group">
-                        <input type="number" class="form-control" placeholder="Period" name="period" value="{{$recup->period}}"> 
-                        
+                        <input type="number" id='period'class="form-control @error('period') is-invalid @enderror" placeholder="Period" name="period" value="{{$recup->period}}"> 
+                        @error('period')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                       @enderror  
                     </div>
 
                      <div class="form-group">
-                        <select name='status'  class="form-control" > 
+                        <select name='status'  id='status' class="form-control @error('status') is-invalid @enderror" > 
                             <option > Choisir le statut </option value="{{$recup->status}}"> 
                              <option  class="form-control"  >  
                                1
                              </option> 
-                        <select > 
+                        <select >
+                         @error('status')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                       @enderror  
                     </div>
                             
                     <div class="col mb-6">

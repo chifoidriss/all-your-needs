@@ -16,21 +16,25 @@
                      @csrf     
                      @method('PUT')      
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Name" name="name" value="{{$rep->name}}"> 
-                        
+                        <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Name" name="name" value="{{$rep->name}}"> 
+                        @error('description')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                       @enderror  
                     </div>
 
 
                     <div class="form-group">
-                        <textarea type="text" class="form-control" name="description"  value="{{$rep->description}}" > 
+                        <textarea type="text" id='description' class="form-control @error('description') is-invalid @enderror" name="description"  value="{{$rep->description}}" > 
 
                         </textarea>
-                        
+                        @error('description')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                       @enderror  
                     </div>
                             
                     <div class="col mb-6">
                         <button type="submit" class="mb-2 btn btn-primary mr-2">Edit</button>
-                        <button type="reset" class="mb-2 btn btn-danger mr-2">Cancelt</button>
+                        <button type="reset" class="mb-2 btn btn-danger mr-2">Cancel</button>
                     </div>           
                 </form>
            
