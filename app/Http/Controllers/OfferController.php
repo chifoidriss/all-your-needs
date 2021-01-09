@@ -8,56 +8,60 @@ use DB;
 
 class OfferController extends Controller
 {
-      public function create(Request $request){
 
-      $collection = new Offer();
-      $collection->name = $request->input('name');
-      $collection->description = $request->input('description');
-      $collection->name = $request->input('price');
-      $collection->name = $request->input('period');
-      $collection->name = $request->input('status');
-      $collection->etat = 1;
-      $collection->save();
-        
-        return redirect('/indexoffert');
+      public function create(){
+          return view('admin/offre.create');
+      }
+      public function store(Request $request){
+            $validate=$request->validate([
+                'name'  => 'required',
+                'description'  => 'required',
+                'price'  => 'required',
+                'period'  => 'required',
+                'status'  => 'required',
+            ]);
+            $collection=Offer::create($validate);
+                
+             return redirect('admin/offre');
 
     }
 
     public function index(){
 
-        $recup_collection = DB::table('offers')->select('offers.*')->where('id','=',"1")->get();
+            $recup_collection = Offer::all();
 
-        return view('offre/index',compact('recup_collection'))->with('i');
+            return view('admin.offre.index',compact('recup_collection'))->with('i');
     }
 
     public function edit($id){
-        $recup=DB::table('offers')->select('offers.*')->where('id','=',$id)->get();
-          
+        //$recup=DB::table('offers')->select('offers.*')->where('id','=',$id)->get();
+             $recup=Offer::findOrfail($id);
         
-        return view('offre/edit',compact('recup'));
+        return view('admin.offre.edit',compact('recup'));
     }
     
     public function update(Request $request, $id){
 
-        $nom_collection = $request->input('name');
-        $sigle = $request->input('description');
-        $price = $request->input('price');
-        $period = $request->input('period');
-        $status= $request->input('status');
-        $etat= 1;
-        $data = array('name'=>$nom_collection,'description'=>$sigle,'price'=>$price,'period'=>$period,'status'=>$status,'etat'=>$etat);
-         DB::table('offers')->where('id','=',$id)->update($data);
+         $validate=$request->validate([
+                'name'  => 'required',
+                'description'  => 'required',
+                'price'  => 'required',
+                'period'  => 'required',
+                'status'  => 'required',
+            ]);
+           
+            Offer::whereId($id)->update($validate);
          
-        return redirect('/indexoffert');
+        return redirect('admin/offre');
 
 
     }
 
     public function destroy($id){
 
-        $etat="0";
-        DB::table('offers')->where("id","=",$id)->update(['etat'=>$etat]);
-        return redirect ("/indexoffert");
+       $delete=Offer::findOrFail($id);
+       $delete->delete();
+        return redirect ("admin/offre");
     }
 
     public function show($id){

@@ -21,6 +21,13 @@ Route::name('admin.')->prefix('admin')->middleware(['auth:web'])->group(function
     Route::post('translation/{target}', 'LanguageController@updateTranslationFile')->name('translation.update');
 
     Route::resource('type-shop', 'TypeShopController');
+    Route::resource('blogs-theme', 'Blog_themeController');
+    Route::resource('themes', 'ThemeController');
+    Route::resource('offre', 'OfferController');
+    Route::resource('blogs', 'BlogController');
+    Route::resource('collections', 'CollectionController');
+    Route::resource('super_cat', 'SuperCategoryController');
+    Route::resource('categorie', 'CategoryController');
 });
 
 Route::get('/', 'HomeController@index')->name('index');
@@ -73,7 +80,7 @@ Route::get('/form',function(){
 
 //////////// route Collection///////////////////////////
 Route::get('/create_collec',function(){
-    return view ('collections/create');
+    return view ('admin/collections/create');
 });
 Route::post('/create_collec','CollectionController@create');
 Route::get('/indexcollec','CollectionController@index');
