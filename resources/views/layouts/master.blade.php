@@ -65,7 +65,7 @@
 
                                     <li class="language">
                                         <a href="#">
-                                            {{ collect(config('app.locales'))->get(config('app.locale')) }}
+                                            {{ collect(config('app.locales'))->get(app()->getLocale()) }}
                                             <i class="fa fa-angle-down"></i>
                                         </a>
                                         <ul class="language_selection">
@@ -83,7 +83,7 @@
 
                                     <li class="account">
                                         <a href="#">
-                                            My Account
+                                            @awt('My Account')
                                             <i class="fa fa-angle-down"></i>
                                         </a>
                                         <ul class="account_selection">
@@ -153,6 +153,7 @@
                                         </a>
                                     </li>
                                 </ul>
+
                                 <ul class="navbar_user">
                                     <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                                     <li>
@@ -167,6 +168,7 @@
                                         </a>
                                     </li>
                                 </ul>
+                                
                                 <div class="hamburger_container">
                                     <i class="fa fa-bars" aria-hidden="true"></i>
                                 </div>
@@ -181,49 +183,100 @@
         <div class="fs_menu_overlay"></div>
         
         <div class="hamburger_menu">
-            <div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
+            <div class="hamburger_close">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            
             <div class="hamburger_menu_content text-right">
                 <ul class="menu_top_nav">
                     <li class="menu_item has-children">
                         <a href="#">
-                            usd
+                            {{ Cookie::get('devise', 'eur') }}
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="menu_selection">
-                            <li><a href="#">cad</a></li>
-                            <li><a href="#">aud</a></li>
-                            <li><a href="#">eur</a></li>
-                            <li><a href="#">gbp</a></li>
+                            @foreach (App\Models\Devise::all() as $item)
+                                @if ($item->name != Cookie::get('devise', 'eur'))
+                                <li>
+                                    <a href="{{ route('devise', $item->name) }}">
+                                        {{ $item->name }}
+                                    </a>
+                                </li>
+                                @endif
+                            @endforeach
                         </ul>
                     </li>
+
                     <li class="menu_item has-children">
                         <a href="#">
-                            English
+                            {{ collect(config('app.locales'))->get(app()->getLocale()) }}
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="menu_selection">
-                            <li><a href="#">French</a></li>
-                            <li><a href="#">Italian</a></li>
-                            <li><a href="#">German</a></li>
-                            <li><a href="#">Spanish</a></li>
+                            @foreach (config('app.locales') as $key => $value)
+                                @if (config('app.locale') != $key)
+                                <li>
+                                    <a href="{{ route('locale', $key) }}">
+                                        {{ $value }}
+                                    </a>
+                                </li>
+                                @endif
+                            @endforeach
                         </ul>
                     </li>
+
                     <li class="menu_item has-children">
                         <a href="#">
                             My Account
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="menu_selection">
-                            <li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
-                            <li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
+                            @auth
+                            <li>
+                                <a href="{{ route('user.profile') }}">
+                                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                    Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('logout') }}">
+                                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                    Logout
+                                </a>
+                            </li>
+                            @else
+                            <li>
+                                <a href="{{ route('login') }}">
+                                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                    Sign In
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('register') }}">
+                                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                    Register
+                                </a>
+                            </li>
+                            @endauth
                         </ul>
                     </li>
-                    <li class="menu_item"><a href="#">home</a></li>
-                    <li class="menu_item"><a href="#">shop</a></li>
-                    <li class="menu_item"><a href="#">promotion</a></li>
-                    <li class="menu_item"><a href="#">pages</a></li>
+                    
+                    <li class="menu_item">
+                        <a href="{{ route('index') }}">
+                            home
+                        </a>
+                    </li>
+                    <li class="menu_item">
+                        <a href="{{ route('product.index') }}">
+                            Products
+                        </a>
+                    </li>
                     <li class="menu_item"><a href="#">blog</a></li>
-                    <li class="menu_item"><a href="#">contact</a></li>
+                    <li class="menu_item">
+                        <a href="{{ route('contact') }}">
+                            contact
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

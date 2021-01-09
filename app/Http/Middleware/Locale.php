@@ -19,9 +19,9 @@ class Locale
     public function handle(Request $request, Closure $next)
     {
         $locale = Cookie::get('locale');
-        $locales = config('app.locales');
+        $locales = collect(config('app.locales'));
 
-        if (!in_array($locale, $locales)) {
+        if (!$locales->has($locale)) {
             $locale = config('app.locale');
         }
 

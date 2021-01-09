@@ -38,7 +38,7 @@
                         <td>{{ formatDate($subscription->start, 0, 1) }}</td>
                         <td>{{ formatDate($subscription->end, 0, 1) }}</td>
                         {{-- <td>{{ $subscription->isActive() }}</td> --}}
-                        <td>{{ $subscription->isActive() ? 'Active' : 'Expired' }}</td>
+                        <td>{{ $subscription->is_active ? 'Active' : 'Expired' }}</td>
                         <td>
                             <a href="#" class="btn btn-danger">
                                 <i class="fas fa-undo"></i>

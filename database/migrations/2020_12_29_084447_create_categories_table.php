@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->foreignId('super_category_id')->constrained()->onDelete('restrict');
             $table->string('name');
+            $table->string('slug')->unique()->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
         });

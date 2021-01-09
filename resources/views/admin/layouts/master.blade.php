@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/shards-dashboards.1.1.0.min.css') }}" id="main-stylesheet" data-version="1.1.0">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/extras.1.1.0.min.css') }}">
+
+    @yield('css')
 </head>
 
 <body class="h-100">
@@ -51,6 +53,12 @@
                             <a class="nav-link active" href="{{ route('admin.index') }}">
                                 <i class="material-icons">dashboard</i>
                                 <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.languages') }}">
+                                <i class="material-icons">language</i>
+                                <span>Language</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -201,6 +209,8 @@
             $(this).next('form').trigger('submit');
         });
     </script>
+
+    @yield('js')
 </body>
 
 </html>

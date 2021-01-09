@@ -18,11 +18,10 @@ class Subscription extends Model
         return $this->belongsTo(Offer::class);
     }
     
-    public function isActive()
+    public function getIsActiveAttribute()
     {
         $end = Carbon::createFromFormat('Y-m-d', $this->end);
         $today = Carbon::now();
-        // return $today->diffInDays(Carbon::createFromFormat('Y-m-d', '2021-01-04'));
         if ($today->diffInDays($end, false) >= 0) {
             return true;
         }

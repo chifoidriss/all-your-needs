@@ -15,14 +15,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::name('admin.')->prefix('admin')->middleware(['auth:web'])->group(function () {
     Route::get('/', 'AdminController@index')->name('index');
+    
+    Route::get('languages', 'LanguageController@index')->name('languages');
+    Route::get('translation/{target}', 'LanguageController@translationFile')->name('translation');
+    Route::post('translation/{target}', 'LanguageController@updateTranslationFile')->name('translation.update');
 
     Route::resource('type-shop', 'TypeShopController');
 });
 
 Route::get('/', 'HomeController@index')->name('index');
-Route::get('locale/{locale}', 'HomeController@setLocale')->name('locale');
-Route::get('devise/{devise}', 'HomeController@setDevise')->name('devise');
 Route::get('contact', 'HomeController@contact')->name('contact');
+
+Route::get('locale/{locale}', 'LanguageController@setLocale')->name('locale');
+Route::get('devise/{devise}', 'HomeController@setDevise')->name('devise');
 
 Route::group(['middleware' => 'auth:web'], function () {
     Route::group(['prefix' => 'my-account'], function () {
