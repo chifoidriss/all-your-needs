@@ -27,4 +27,14 @@ class Product extends Model
     {
         return $this->hasMany(Gallery::class);
     }
+
+
+    public function getRateAttribute()
+    {
+        if ($this->old_price > 0) {
+            $rate = ceil(100 - ($this->price/$this->old_price)*100);
+            return '- '.$rate.'%';
+        }
+        return null;
+    }
 }

@@ -1,5 +1,13 @@
 @extends('layouts.master')
 
+@section('title', awt('Products'))
+
+@section('css')
+<link rel="stylesheet" href="{{ asset('assets/plugins/jquery-ui-1.12.1.custom/jquery-ui.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/styles/categories_styles.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/styles/categories_responsive.css') }}">
+@endsection
+
 @section('content')
 
 <div class="container product_section_container">
@@ -375,4 +383,9 @@
     </div>
 </div>
 
+@endsection
+
+@section('js')
+<script src="{{ asset('assets/plugins/jquery-ui-1.12.1.custom/jquery-ui.js') }}"></script>
+<script src="{{ asset('assets/js/categories_custom.js') }}"></script>
 @endsection
