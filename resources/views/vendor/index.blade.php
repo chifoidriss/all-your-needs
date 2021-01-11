@@ -1,7 +1,7 @@
 @extends('vendor.layouts.master')
 
 @section('title', Auth::user()->shop->name)
-@section('page-header', 'Shop Overview')
+@section('page-header', awt('Shop Overview'))
 
 @section('content')
 

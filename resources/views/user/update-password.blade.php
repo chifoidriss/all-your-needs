@@ -1,6 +1,11 @@
 @extends('layouts.master')
 @section('title') Changement du mot de passe @endsection
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('assets/styles/main_styles.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/styles/responsive.css') }}">
+@endsection
+
 @section('content')
     <div class="container content">
         <div class="row">
@@ -38,7 +43,7 @@
             <div class="col-md-8">
                 <div class="box-shadow radius-lg">
                     <div class="border-bottom px-4 py-3">
-                        <b>Changement du mot de passe</b>
+                        <b>@awt('Change my password')</b>
                     </div>
                     
                     <div class="px-4 py-3">
@@ -46,8 +51,8 @@
                             @csrf
                             @method('PUT')        
                             <div class="form-group">
-                                <label for="current_password">Ancien mot de passe</label>
-                                <input name="current_password" placeholder="Ancien mot de passe" class="form-control @error('current_password') is-invalid @enderror" id="current_password" type="password" required>
+                                <label for="current_password">@awt('Old password')</label>
+                                <input name="current_password" placeholder="@awt('Old password')" class="form-control @error('current_password') is-invalid @enderror" id="current_password" type="password" required>
                                 @error ('current_password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -56,8 +61,8 @@
                             </div>
                             
                             <div class="form-group">
-                                <label for="password">Nouveau mot de passe</label>
-                                <input name="password" placeholder="Nouveau mot de passe" class="form-control @error('password') is-invalid @enderror" id="password" type="password" required>
+                                <label for="password">@awt('New password')</label>
+                                <input name="password" placeholder="@awt('New password')" class="form-control @error('password') is-invalid @enderror" id="password" type="password" required>
                                 @error ('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -66,8 +71,8 @@
                             </div>
                     
                             <div class="form-group">
-                                <label for="password_confirmation">Confirmation nouveau mot de passe</label>
-                                <input name="password_confirmation" placeholder="Confirmation nouveau mot de passe" class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation" type="password" required>
+                                <label for="password_confirmation">@awt('Confirm new password')</label>
+                                <input name="password_confirmation" placeholder="@awt('Confirm new password')" class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation" type="password" required>
                                 @error ('password_confirmation')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -77,14 +82,14 @@
     
                             <div class="form-group text-right">
                                 <a class="text-danger" href="{{ route('password.request') }}">
-                                    Mot de passe oublié ?
+                                    @awt('Forgot your password ?')
                                 </a>
                             </div>
                             <hr>
     
                             <div class="form-group">
                                 <div class="text-right">
-                                    <button class="btn btn-lg btn-success" type="submit">Enregistrer</button>
+                                    <button class="btn btn-success" type="submit">@awt('Save')</button>
                                 </div>
                             </div>
                         </form>

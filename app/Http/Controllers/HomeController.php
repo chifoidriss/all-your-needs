@@ -13,7 +13,8 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::whereHas('products')->get();
-        $products = Product::where([
+        $query = Product::with(['categories', 'shop'])
+        ->where([
             'approved' => true,
             'status' => true,
         ])->whereHas('shop', function($query) {
@@ -22,6 +23,12 @@ class HomeController extends Controller
             ])->whereHas('subscriptions', function($query) {
                 $query->where('end', '>=', date('Y-m-d'));
             });
+        });
+
+        $products = $query->orderBy('created_at', 'DESC')->limit(10)->get();
+
+        $bestSellers = $query->whereHas('shop', function ($query) {
+            $query->orderBy('boost', 'DESC');
         })->orderBy('created_at', 'DESC')->limit(10)->get();
 
         // dd($products);

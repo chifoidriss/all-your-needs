@@ -1,7 +1,7 @@
 @extends('vendor.layouts.master')
 
 @section('title', 'Products')
-@section('page-header', 'My Products')
+@section('page-header', awt('My Products'))
 
 @section('content')
 
@@ -9,10 +9,10 @@
     <div class="card card-small mb-4">
         <div class="card-header border-bottom">
             <div class="d-flex justify-content-between align-items-start flex-wrap">
-                <h6>All Products</h6>
+                <h6>@awt('All Products')</h6>
                 <a href="{{ route('shop.product.create') }}" class="btn btn-primary">
                     <i class="fas fa-plus"></i>
-                    Add product
+                    @awt('Add product')
                 </a>
             </div>
         </div>
@@ -21,12 +21,12 @@
                 <thead class="bg-light">
                     <tr>
                         <th scope="col" class="border-0">#</th>
-                        <th scope="col" class="border-0">Image</th>
-                        <th scope="col" class="border-0">Name</th>
-                        <th scope="col" class="border-0">Price</th>
-                        <th scope="col" class="border-0">Old Price</th>
-                        <th scope="col" class="border-0">Quantity</th>
-                        <th scope="col" class="border-0">Category</th>
+                        <th scope="col" class="border-0">@awt('Image')</th>
+                        <th scope="col" class="border-0">@awt('Name')</th>
+                        <th scope="col" class="border-0">@awt('Price')</th>
+                        <th scope="col" class="border-0">@awt('Old Price')</th>
+                        <th scope="col" class="border-0">@awt('Quantity')</th>
+                        <th scope="col" class="border-0">@awt('Categories')</th>
                         <th scope="col" class="border-0"></th>
                     </tr>
                 </thead>
@@ -41,7 +41,7 @@
                         <td>{{ getPrice($product->price) }}</td>
                         <td>{{ getPrice($product->old_price) }}</td>
                         <td>{{ $product->qty }}</td>
-                        <td>{{ implode(', ', $product->categories->pluck('name')->toArray()) }}</td>
+                        <td>{{ $product->categories->implode('name', ', ') }}</td>
                         <td>
                             <a class="btn btn-sm btn-outline-warning" href="{{ route('shop.product.edit', $product->id) }}">
                                 <i class="fas fa-edit"></i>

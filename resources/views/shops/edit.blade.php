@@ -1,7 +1,7 @@
 @extends('vendor.layouts.master')
 
 @section('title', Auth::user()->shop->name)
-@section('page-header', 'Shop update informations')
+@section('page-header', awt('Shop update informations'))
 
 @section('content')
 <!-- Small Stats Blocks -->
@@ -9,7 +9,7 @@
 
     <div class="card card-small mb-4">
         <div class="card-header border-bottom">
-            <h6 class="m-0">Shop Details</h6>
+            <h6 class="m-0">@awt('Shop Details')</h6>
         </div>
         <div class="card-body">
             <form action="{{ route('shop.update') }}" method="POST">
@@ -18,16 +18,16 @@
                 
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="name">Shop Name</label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Shop Name" value="{{ old('name', $shop->name) }}">
+                        <label for="name">@awt('Shop Name')</label>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="@awt('Shop Name')" value="{{ old('name', $shop->name) }}">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="type_shop_id">Shop Type</label>
+                        <label for="type_shop_id">@awt('Shop Type')</label>
                         <select id="type_shop_id" name="type_shop_id" class="custom-select">
-                            <option selected>Choose...</option>
+                            <option selected>@awt('Select one')</option>
                             @foreach ($shopTypes as $item)
                             <option value="{{ $item->id }}" @if(old('type_shop_id', $shop->type_shop_id) == $item->id) selected @endif>
-                                {{ $item->name }}
+                                {{ awt($item->name) }}
                             </option>
                             @endforeach
                         </select>

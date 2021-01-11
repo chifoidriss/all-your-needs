@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Create my shop')
+@section('title', awt('Create my shop'))
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/contact_styles.css') }}">
@@ -51,30 +51,26 @@
 
 		<div class="col-lg-6 get_in_touch_col box-shadow p-4">
 			<div class="get_in_touch_contents">
-				<h1>Shop Informations!</h1>
+				<h1>@awt('Shop Informations!')</h1>
 				<p>Fill out the form below to recieve a free and confidential.</p>
                 <form action="{{ route('shop.store') }}" method="POST">
                     @csrf
                     
                     <div class="form-group">
-                        <label for="name" role="button">Name</label>
-                        <input type="text" name="name" id="name" class="form-control" placeholder="Name of your shop" required>
+                        <label for="name" role="button">@awt('Name of your shop')</label>
+                        <input type="text" name="name" id="name" class="form-control" placeholder="@awt('Name of your shop')" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="type_shop_id">Type of shop</label>
+                        <label for="type_shop_id">@awt('Type of shop')</label>
                         <select class="custom-select" name="type_shop_id" id="type_shop_id">
-                            <option selected>Select one</option>
+                            <option selected>@awt('Select one')</option>
                             @foreach ($shopTypes as $item)
-                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                            <option value="{{ $item->id }}">{{ awt($item->name) }}</option>
                             @endforeach
                         </select>
                     </div>
 
-                    {{-- <div class="form-group">
-                        <label for="name" role="button">Name</label>
-                        <input type="text" name="name" id="name" class="form-control" placeholder="" required>
-                    </div> --}}
 					<div>
 						<button id="review_submit" type="submit" class="red_button message_submit_btn trans_300">
                             @awt('create now')

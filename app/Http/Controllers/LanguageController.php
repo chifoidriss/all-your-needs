@@ -8,7 +8,7 @@ class LanguageController extends Controller
 {
     public function index()
     {
-        $locales = config('app.locales');
+        $locales = collect(config('app.locales'));
         return view('admin.languages.index', compact(['locales']));
     }
 
@@ -27,6 +27,11 @@ class LanguageController extends Controller
     public function translationFile($target)
     {
         $AwtFile = resource_path("lang/$target/awt.php");
+
+        if (!file_exists($AwtFile)) {
+            $AwtFile = copy(resource_path('lang/awt.stub'), $AwtFile);
+        }
+
         $lines = [];
         $file = file($AwtFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
         foreach ($file as $line) {

@@ -68,18 +68,8 @@ function add_query_params(array $params = []) {
     return url()->current() . '?' . http_build_query($query);
 }
 
-function notifyIcon(string $type) {
-    if ($type == 'success') {
-        return 'check';
-    } elseif($type == 'warning') {
-        return 'exclamation-triangle';
-    } elseif($type == 'info') {
-        return 'info';
-    } elseif($type == 'error') {
-        return 'times';
-    }
-}
 
 function awt($word, $locale = null) {
+    return $word;
     return (new AWTClass())->awtTrans($word, $locale);
 }

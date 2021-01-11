@@ -11,9 +11,9 @@
             <div class="text">
                 <h4>
                     @if (date('a')  == 'am')
-                    Bonjour
+                    @awt('Bonjour')
                 @else
-                    Bonsoir
+                    @awt('Bonsoir')
                 @endif
                 {{ strtok(Auth::user()->surname, '') }}
                 </h4>
@@ -22,30 +22,30 @@
     
         <div class="d-flex flex-column">
             <a class="side-item @if(Route::is('user.profile')) active @endif" href="{{ route('user.profile') }}">
-                Mes informations
+                @awt('My informations')
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
             </a>
             <a class="side-item @if(Route::is('user.favorites')) active @endif" href="{{ route('user.favorites') }}">
-                Mes favoris
+                @awt('My favorites')
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
             </a>
             @if (Auth::user()->shop)
             <a class="side-item creation" href="{{ route('shop.show') }}">
-                Gérer ma boutique
+                @awt('Manage my shop')
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
             </a>
             @else
             <a class="side-item creation" href="{{ route('shop.create') }}">
-                Créer ma boutique
+                @awt('Create my shop')
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
             </a>
             @endif
             <a class="side-item @if(Route::is('user.update.password')) active @endif" href="{{ route('user.update.password') }}">
-                Mot de passe
+                @awt('Password')
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
             </a>
             <span class="side-item" id="logout-btn" role="button">
-                Se déconnecter
+                @awt('Logout')
                 <i class="fa fa-sign-out" aria-hidden="true"></i>
             </span>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;" hidden>

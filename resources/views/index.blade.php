@@ -2,6 +2,11 @@
 
 @section('title', 'Bienvenue')
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('assets/styles/main_styles.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/styles/responsive.css') }}">
+@endsection
+
 @section('content')
 
 	<!-- Slider -->
@@ -12,8 +17,12 @@
 				<div class="col">
 					<div class="main_slider_content">
 						<h6>Spring / Summer Collection 2017</h6>
-						<h1>Get up to 30% Off New Arrivals</h1>
-						<div class="red_button shop_now_button"><a href="#">shop now</a></div>
+						<h1>@awt('Get up to 30% Off New Arrivals')</h1>
+						<div class="red_button shop_now_button">
+							<a href="{{ route('product.index') }}">
+								@awt('shop now')
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -57,7 +66,7 @@
 			<div class="row">
 				<div class="col text-center">
 					<div class="section_title new_arrivals_title">
-						<h2>New Arrivals</h2>
+						<h2>@awt('New Arrivals')</h2>
 					</div>
 				</div>
 			</div>
@@ -68,7 +77,7 @@
 							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked" data-filter="*">all</li>
 							@foreach ($categories as $item)
 							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".{{ $item->slug }}">
-								{{ $item->name }}
+								{{ awt($item->name) }}
 							</li>
 							@endforeach
 						</ul>
@@ -80,33 +89,7 @@
 					<div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
 
 						@foreach ($products as $product)
-						<div class="product-item {{ implode(' ', $product->categories->pluck('slug')->toArray()) }}">
-							<div class="product discount product_filter">
-								<div class="product_image">
-									<img src="{{ asset('storage/'.$product->image) }}" alt="">
-								</div>
-								<div class="favorite favorite_left"></div>
-								<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
-									<span>{{ $product->rate }}</span>
-								</div>
-								<div class="product_info">
-									<h6 class="product_name">
-										<a href="{{ route('product.show', $product->id) }}">
-											{{ $product->name }}
-										</a>
-									</h6>
-									<div class="product_price">
-										{{ getPrice($product->price) }}
-										<span>{{ getPrice($product->old_price) }}</span>
-									</div>
-								</div>
-							</div>
-							<div class="red_button add_to_cart_button">
-								<a href="#">
-									add to cart
-								</a>
-							</div>
-						</div>
+							@include('includes.product')
 						@endforeach
 
 					</div>
@@ -128,27 +111,31 @@
 				<div class="col-lg-6 text-right deal_ofthe_week_col">
 					<div class="deal_ofthe_week_content d-flex flex-column align-items-center float-right">
 						<div class="section_title">
-							<h2>Deal Of The Week</h2>
+							<h2>@awt('Deal Of The Week')</h2>
 						</div>
 						<ul class="timer">
 							<li class="d-inline-flex flex-column justify-content-center align-items-center">
 								<div id="day" class="timer_num">03</div>
-								<div class="timer_unit">Day</div>
+								<div class="timer_unit">@awt('Day')</div>
 							</li>
 							<li class="d-inline-flex flex-column justify-content-center align-items-center">
 								<div id="hour" class="timer_num">15</div>
-								<div class="timer_unit">Hours</div>
+								<div class="timer_unit">@awt('Hours')</div>
 							</li>
 							<li class="d-inline-flex flex-column justify-content-center align-items-center">
 								<div id="minute" class="timer_num">45</div>
-								<div class="timer_unit">Mins</div>
+								<div class="timer_unit">@awt('Minutes')</div>
 							</li>
 							<li class="d-inline-flex flex-column justify-content-center align-items-center">
 								<div id="second" class="timer_num">23</div>
-								<div class="timer_unit">Sec</div>
+								<div class="timer_unit">@awt('Secondes')</div>
 							</li>
 						</ul>
-						<div class="red_button deal_ofthe_week_button"><a href="#">shop now</a></div>
+						<div class="red_button deal_ofthe_week_button">
+							<a href="{{ route('product.index') }}">
+								@awt('shop now')
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -162,10 +149,11 @@
 			<div class="row">
 				<div class="col text-center">
 					<div class="section_title new_arrivals_title">
-						<h2>Best Sellers</h2>
+						<h2>@awt('Best Sellers')</h2>
 					</div>
 				</div>
 			</div>
+			
 			<div class="row">
 				<div class="col">
 					<div class="product_slider_container">
@@ -368,7 +356,7 @@
 			<div class="row">
 				<div class="col text-center">
 					<div class="section_title">
-						<h2>Latest Blogs</h2>
+						<h2>@awt('Latest Blogs')</h2>
 					</div>
 				</div>
 			</div>
@@ -383,6 +371,7 @@
 						</div>
 					</div>
 				</div>
+				
 				<div class="col-lg-4 blog_item_col">
 					<div class="blog_item">
 						<div class="blog_background" style="background-image:url(/assets/images/blog_2.jpg)"></div>
@@ -393,6 +382,7 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="col-lg-4 blog_item_col">
 					<div class="blog_item">
 						<div class="blog_background" style="background-image:url(/assets/images/blog_3.jpg)"></div>
@@ -407,4 +397,8 @@
 		</div>
 	</div>
 
+@endsection
+
+@section('js')
+<script src="{{ asset('assets/js/custom.js') }}"></script>
 @endsection

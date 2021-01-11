@@ -17,8 +17,8 @@ Route::name('admin.')->prefix('admin')->middleware(['auth:web'])->group(function
     Route::get('/', 'AdminController@index')->name('index');
     
     Route::get('languages', 'LanguageController@index')->name('languages');
-    Route::get('translation/{target}', 'LanguageController@translationFile')->name('translation');
-    Route::post('translation/{target}', 'LanguageController@updateTranslationFile')->name('translation.update');
+    Route::get('translation/{target}', 'LanguageController@translationFile')->name('languages.translation');
+    Route::post('translation/{target}', 'LanguageController@updateTranslationFile')->name('languages.translation.update');
 
     Route::resource('type-shop', 'TypeShopController');
     Route::resource('blogs-theme', 'Blog_themeController');

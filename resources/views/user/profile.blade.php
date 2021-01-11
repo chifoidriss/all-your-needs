@@ -1,6 +1,11 @@
 @extends('layouts.master')
 @section('title', awt('My account'))
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('assets/styles/main_styles.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/styles/responsive.css') }}">
+@endsection
+
 @section('content')
     <div class="container content">
         <div class="row">
@@ -34,7 +39,7 @@
                 <div class="box-shadow radius-lg">
                     <div class="border-bottom px-4 py-3">
                         {{-- <h3 class="text-center">Mes informations</h3> --}}
-                        <b>Mes informations</b>
+                        <b>@awt('My informations')</b>
                     </div>
                 
                     <div class="px-4 py-3">
@@ -87,9 +92,9 @@
 
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="name">Nom <small class="text-danger">*</small></label>
+                                        <label for="name">@awt('Name') <small class="text-danger">*</small></label>
                                         <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror"
-                                        placeholder="Nom" value="{{ old('name', Auth::user()->name) }}">
+                                        placeholder="@awt('Name')" value="{{ old('name', Auth::user()->name) }}">
                                         @error ('name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -98,9 +103,9 @@
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label for="surname">Prénom <small class="text-danger">*</small></label>
+                                        <label for="surname">@awt('Surname') <small class="text-danger">*</small></label>
                                         <input type="text" name="surname" id="surname" class="form-control @error('surname') is-invalid @enderror"
-                                        placeholder="Prénom" value="{{ old('surname', Auth::user()->surname) }}">
+                                        placeholder="@awt('Surname')" value="{{ old('surname', Auth::user()->surname) }}">
                                         @error ('surname')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -109,16 +114,16 @@
                                     </div>
     
                                     <div class="form-group">
-                                        <label for="nationality">Nationalité <small class="text-danger">*</small></label>
+                                        <label for="nationality">@awt('Nationality') <small class="text-danger">*</small></label>
                                         <select class="custom-select" name="nationality" id="nationality"></select>
                                     </div>
                                 </div>
     
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="email">Email <small class="text-danger">*</small></label>
+                                        <label for="email">@awt('Email') <small class="text-danger">*</small></label>
                                         <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror"
-                                        placeholder="Email" value="{{ old('email', Auth::user()->email) }}">
+                                        placeholder="@awt('Email')" value="{{ old('email', Auth::user()->email) }}">
                                         @error ('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -127,9 +132,9 @@
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label for="phone">Numéro <small class="text-danger">*</small></label>
+                                        <label for="phone">@awt('Phone Number') <small class="text-danger">*</small></label>
                                         <input type="tel" name="phone" id="phone" class="form-control @error('phone') is-invalid @enderror"
-                                        placeholder="Numéro" value="{{ old('phone', Auth::user()->phone) }}">
+                                        placeholder="@awt('Phone Number')" value="{{ old('phone', Auth::user()->phone) }}">
                                         @error ('phone')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -138,9 +143,9 @@
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label for="birth_day">Date de naissance <small class="text-danger">*</small></label>
+                                        <label for="birth_day">@awt('Birth day') <small class="text-danger">*</small></label>
                                         <input type="date" name="birth_day" id="birth_day" class="form-control @error('birth_day') is-invalid @enderror"
-                                        placeholder="Date de naissance"  value="{{ old('birth_day', Auth::user()->birth_day) }}">
+                                        placeholder="@awt('Birth day')"  value="{{ old('birth_day', Auth::user()->birth_day) }}">
                                         @error ('birth_day')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -156,7 +161,7 @@
                                 <div class="col-12">
                                     <div class="text-right-">
                                         <button class="btn btn-primary" type="submit">
-                                            Enregistrer
+                                            @awt('Save')
                                         </button>
                                     </div>
                                 </div>

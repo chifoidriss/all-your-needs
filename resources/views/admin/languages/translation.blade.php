@@ -23,7 +23,7 @@
                 @awt('Update Translation Text')
             </h2>
 
-            <form class="form-contact" action="{{ route('admin.translation.update', $target) }}" method="POST">
+            <form class="form-contact" action="{{ route('admin.languages.translation.update', $target) }}" method="POST">
                 @csrf
 
                 <div class="table-responsive">

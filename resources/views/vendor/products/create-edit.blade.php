@@ -35,6 +35,7 @@
                 </a>
             </div>
         </div> --}}
+
         <div class="card-body">
             <form method="POST" enctype="multipart/form-data"
                 @if ($isEdit)
@@ -49,8 +50,8 @@
                 @endif
 
                 <div class="form-group">
-                    <label for="name">Product Name</label>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Product Name" value="{{ old('name', $product->name) }}" required>
+                    <label for="name">@awt('Product Name')</label>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="@awt('Product Name')" value="{{ old('name', $product->name) }}" required>
                     @error('name')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -58,32 +59,32 @@
     
                 <div class="form-row">
                     <div class="form-group col-md-4">
-                        <label for="collection">Collection</label>
+                        <label for="collection">@awt('Collection')</label>
                         <select id="collection" class="custom-select" @if(!$isEdit) required @endif>
-                            <option value="" selected>Choose...</option>
+                            <option value="" selected>@awt('Select one')</option>
                             @foreach ($collections as $item)
                             <option value="{{ $item->id }}" @if(old('collection') == $item->id) selected @endif>
-                                {{ $item->name }}
+                                {{ awt($item->name) }}
                             </option>
                             @endforeach
                         </select>
                     </div>
 
                     <div class="form-group col-md-4">
-                        <label for="super_category">Super Category</label>
+                        <label for="super_category">@awt('Super Category')</label>
                         <select id="super_category" class="custom-select" disabled @if(!$isEdit) required @endif>
-                            <option value="" selected>Choose collection...</option>
+                            <option value="" selected>@awt('Choose collection')...</option>
                         </select>
                     </div>
                     
                     <div class="form-group col-md-4">
-                        <label for="category">Category</label>
+                        <label for="category">@awt('Category')</label>
                         <select id="category" name="category[]" class="custom-select @error('category') is-invalid @enderror"
                         disabled @if(!$isEdit) required @endif>
-                            <option value="" selected>Choose super category...</option>
+                            <option value="" selected>@awt('Choose super category')...</option>
                             @foreach ($product->categories as $item)
                             <option value="{{ $item->id }}" @if(old('category') == $item->id) selected @endif>
-                                {{ $item->name }}
+                                {{ awt($item->name) }}
                             </option>
                             @endforeach
                         </select>
@@ -95,23 +96,23 @@
     
                 <div class="form-row">
                     <div class="form-group col-md-4">
-                        <label for="price">Price</label>
-                        <input type="number" class="form-control @error('price') is-invalid @enderror" name="price" id="price" placeholder="Price" value="{{ old('price', $product->price) }}" required>
+                        <label for="price">@awt('Price')</label>
+                        <input type="number" class="form-control @error('price') is-invalid @enderror" name="price" id="price" placeholder="@awt('Price')" value="{{ old('price', $product->price) }}" required>
                         @error('price')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="old_price">Old Price</label>
-                        <input type="number" class="form-control @error('old_price') is-invalid @enderror" name="old_price" id="old_price" placeholder="Old Price" value="{{ old('old_price', $product->old_price) }}">
+                        <label for="old_price">@awt('Old Price')</label>
+                        <input type="number" class="form-control @error('old_price') is-invalid @enderror" name="old_price" id="old_price" placeholder="@awt('Old Price')" value="{{ old('old_price', $product->old_price) }}">
                         @error('old_price')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                     
                     <div class="form-group col-md-4">
-                        <label for="qty">Quantity</label>
-                        <input type="number" class="form-control @error('qty') is-invalid @enderror" name="qty" id="qty" placeholder="Quantity" value="{{ old('qty', $product->qty) }}" required>
+                        <label for="qty">@awt('Quantity')</label>
+                        <input type="number" class="form-control @error('qty') is-invalid @enderror" name="qty" id="qty" placeholder="@awt('Quantity')" value="{{ old('qty', $product->qty) }}" required>
                         @error('qty')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -119,7 +120,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="description">Description</label>
+                    <label for="description">@awt('Description')</label>
                     <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="5" required>{{ old('description', $product->description) }}</textarea>
                     @error('description')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -127,11 +128,11 @@
                 </div>
     
                 <div class="form-group">
-                    <label for="image">Product Image</label>
+                    <label for="image">@awt('Product Image')</label>
                     <div class="custom-file">
                         <input id="image" name="image" class="custom-file-input @error('image') is-invalid @enderror"
                         type="file" accept="image/*" onchange="preview_image(event)" @if(!$isEdit) required @endif>
-                        <label for="image" class="custom-file-label">Select Image</label>
+                        <label for="image" class="custom-file-label">@awt('Select Image')</label>
                         @error('image')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -142,11 +143,11 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="images">Images</label>
+                    <label for="images">@awt('Images')</label>
                     <div class="custom-file">
                         <input id="images" name="images[]" class="custom-file-input @error('images') is-invalid @enderror"
                         type="file" accept="image/*" onchange="preview_images();" multiple>
-                        <label for="images" class="custom-file-label">Select multiples Images</label>
+                        <label for="images" class="custom-file-label">@awt('Select multiples Images')</label>
                         @error('images')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -157,15 +158,15 @@
                 <div class="form-group d-flex justify-content-between flex-wrap">
                     <button type="submit" class="btn btn-accent">
                         @if ($isEdit)
-                            Update
+                            @awt('Update')
                         @else
-                            Save
+                            @awt('Save')
                         @endif
                     </button>
     
                     <a href="{{ route('shop.product.index') }}" class="btn btn-outline-danger">
                         <i class="fas fa-arrow-left"></i>
-                        Back to products
+                        @awt('Back to products')
                     </a>
                 </div>
             </form>
