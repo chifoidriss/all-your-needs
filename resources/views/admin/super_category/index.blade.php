@@ -17,7 +17,7 @@
                   <div class="card-header border-bottom">
                     <h6 class="m-0">Active Super Category</h6>
                   </div>
-                  <div class="card-body p-0 pb-3 text-center">
+                  <div class="card-body p-0 pb-3">
                     <table class="table mb-0">
                       <thead class="bg-light">
                         <tr>
@@ -29,19 +29,20 @@
                          
                       </thead>
                       <tbody>
-                       @foreach($recup_collection as $collec)
+                       @foreach($superCategories as $item)
                         <tr>
-                          <td>{{ ++$i }}</td>
-                          <td>{{$collec->name}}</td>
-                          <td>{{$collec->description}}</td>
-                          <td>{{$collec->namec}}</td>
+                          <td>{{ $loop->iteration }}</td>
+                          <td>{{$item->name}}</td>
+                          <td>{{$item->description}}</td>
+                          <td>{{$item->collection->name}}</td>
                           <td>
-                            <form  action="{{route('admin.super_cat.destroy',$collec->id)}}" method="post">
+                            <form  action="{{route('admin.super_cat.destroy',$item->id)}}" method="post">
                                @csrf
                                 @method('DELETE')
-                              <a href="{{route('admin.super_cat.edit',$collec->id)}}"><button type="button"  class="btn btn-sm btn-outline-primary">Edit</button></a>
+                              <a href="{{route('admin.super_cat.edit',$item->id)}}">
+                                <button type="button"  class="btn btn-sm btn-outline-primary">Edit</button>
+                              </a>
 
-                             <button  class="btn btn-sm btn-outline-warning" type="submit">Show</button>
                              <button  class="btn btn-sm btn-outline-danger" type="submit" >Delete</button>
 
                             </form>

@@ -198,8 +198,6 @@ class ProductController extends Controller
         }
 
         return redirect()->route('shop.product.index');
-
-        return back();
     }
 
     /**

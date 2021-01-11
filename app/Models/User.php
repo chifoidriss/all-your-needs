@@ -42,4 +42,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Shop::class);
     }
+    
+    
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
 }

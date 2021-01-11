@@ -10,19 +10,20 @@ class CollectionController extends Controller
 
 {
 
-     public function create(){
-         return view ('admin.collections.create');
-     }
-     public function store(Request $request){
-      $validateDate=$request->validate([
-          'name'=>'required',
-          'description'=>'required',
-      ]);
+    public function create(){
+        return view ('admin.collections.create');
+    }
 
-      $collection = Collection::create($validateDate);
-        
+
+    public function store(Request $request){
+        $validateDate=$request->validate([
+            'name'=>'required',
+            'description'=>'required',
+        ]);
+
+        $collection = Collection::create($validateDate);
+            
         return redirect('admin/collections');
-
     }
 
     public function index(){
@@ -42,16 +43,14 @@ class CollectionController extends Controller
     public function update(Request $request, $id){
    
         $validateDate=$request->validate([
-          'name'=>'required',
-          'description'=>'required',
-      ]);
+            'name'=>'required',
+            'description'=>'required',
+        ]);
 
-      $collection = Collection::findOrFail($id);
-      $collection = Collection::where($id)->update($validateDate);
-        
-     return redirect('admin/collections');
-
-
+        $collection = Collection::findOrFail($id);
+        $collection->update($validateDate);
+            
+        return redirect('admin/collections');
     }
 
     public function destroy($id){

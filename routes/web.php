@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::name('admin.')->prefix('admin')->middleware(['auth:web'])->group(function () {
+Route::name('admin.')->prefix('admin')->middleware(['auth:web','admin'])->group(function () {
     Route::get('/', 'AdminController@index')->name('index');
     
     Route::get('languages', 'LanguageController@index')->name('languages');

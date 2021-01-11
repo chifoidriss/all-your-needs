@@ -13,7 +13,7 @@ class CategoryController extends Controller
    
     public function create(){
         $collection=SuperCategory::all();
-         return view ('admin.collections.create',compact('collection'));
+        return view ('admin.categorie.create',compact('collection'));
     }
     
     public function store(Request $request){
@@ -30,7 +30,8 @@ class CategoryController extends Controller
 
     public function index(){
 
-        $recup_collection =   $recup_collection = DB::table('categories')->join('super_categories','super_categories.id','=','categories.super_category_id')->select('categories.*','super_categories.name as namec')->get();
+        // $recup_collection =   $recup_collection = DB::table('categories')->join('super_categories','super_categories.id','=','categories.super_category_id')->select('categories.*','super_categories.name as namec')->get();
+        $recup_collection =   Category::with(['superCategory.collection'])->get();
 
         return view('admin/categorie/index',compact('recup_collection'))->with('i');
     }
