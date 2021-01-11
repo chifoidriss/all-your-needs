@@ -28,12 +28,13 @@ class HomeController extends Controller
         $products = $query->orderBy('created_at', 'DESC')->limit(10)->get();
 
         $bestSellers = $query->whereHas('shop', function ($query) {
-            $query->orderBy('boost', 'DESC');
+            $query->orderBy('boost', 'DESC')->orderBy('created_at', 'DESC');
         })->orderBy('created_at', 'DESC')->limit(10)->get();
 
         // dd($products);
         return view('index', compact([
             'products',
+            'bestSellers',
             'categories'
         ]));
     }
