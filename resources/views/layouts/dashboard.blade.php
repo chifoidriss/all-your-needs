@@ -29,7 +29,11 @@
                         <a class="navbar-brand w-100 mr-0" href="{{ route('index') }}" style="line-height: 25px;">
                             <div class="d-table m-auto">
                                 <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="/assets/admin/images/shards-dashboards-logo.svg">
-                                <span class="d-none d-md-inline ml-1">AllYourNeeds</span>
+                                <span class="d-none d-md-inline ml-1">
+                                    <span class="text-uppercase font-weight-bold">
+                                        <span class="text-secondary">All</span><span class="text-danger">Your</span><span class="text-primary">Needs</span>
+                                    </span>
+                                </span>
                             </div>
                         </a>
                         <a class="toggle-sidebar d-sm-inline d-md-none d-lg-none">
@@ -193,10 +197,12 @@
                     <span class="copyright ml-auto my-auto mr-2">
                         @awt('Copyright') © {{ date('Y') }}
                         <a href="{{ route('index') }}" rel="nofollow">
-                            AllYourNeeds
+                            <span class="text-uppercase font-weight-bold">
+                                <span class="text-secondary">All</span><span class="text-danger">Your</span><span class="text-primary">Needs</span>
+                            </span>
                         </a>
                         @awt('All rights reserved.')
-                        By Chif<a href="homedeve.com" target="blank">@Homedeve</a> and Rvj.
+                        {{-- By Chif<a href="homedeve.com" target="blank">@Homedeve</a> and Rvj. --}}
                     </span>
                 </footer>
             </main>
