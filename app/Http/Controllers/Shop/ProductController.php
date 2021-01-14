@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Shop;
 
-use App\Http\Controllers\Controller;
+use App\Models\Shop;
+use App\Models\Product;
 use App\Models\Category;
 use App\Models\Collection;
-use App\Models\Product;
-use App\Models\Shop;
-use App\Models\SuperCategory;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\SuperCategory;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -81,6 +82,8 @@ class ProductController extends Controller
             $image = $request->file('image')->store('products/image/'.date('F').date('Y'), 'public');
         }
         $product->image = $image;
+        $product->save();
+        $product->slug = $product->id.'-'.Str::slug($product->name);
         $product->save();
 
         $product->categories()->attach($request->category);
@@ -181,6 +184,8 @@ class ProductController extends Controller
             $image = $request->file('image')->store('products/image/'.date('F').date('Y'), 'public');
             $product->image = $image;
         }
+
+        $product->slug = $product->id.'-'.Str::slug($product->name);
         $product->save();
 
         if ($request->has('category')) {
@@ -188,6 +193,10 @@ class ProductController extends Controller
         }
 
         if ($request->hasFile('images')) {
+            foreach ($product->galleries as $value) {
+                Storage::disk('public')->delete($value->image);
+            }
+
             foreach ($request->file('images') as $file) {
                 $path = $file->store('products/images/'.date('F').date('Y'), 'public');
 

@@ -10,4 +10,9 @@ class Collection extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function superCategories()
+    {
+        return $this->hasMany(SuperCategory::class);
+    }
 }

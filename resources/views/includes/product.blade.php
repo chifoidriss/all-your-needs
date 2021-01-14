@@ -1,6 +1,8 @@
 
-{{-- <div class="product-item {{ implode(' ', $product->categories->pluck('slug')->toArray()) }}"> --}}
-<div class="product-item {{ $product->categories->implode('slug', ' ') }}">
+<div class="product-item 
+    @foreach ($product->categories as $item)
+    {{ $item->superCategory->collection->slug }}
+    @endforeach">
     <div class="product discount product_filter">
         <div class="product_image">
             <img src="{{ asset('storage/'.$product->image) }}">
@@ -14,7 +16,7 @@
         
         <div class="product_info">
             <h6 class="product_name">
-                <a href="{{ route('product.show', $product->id) }}">
+                <a href="{{ route('product.show', [Str::slug($product->name), $product->id]) }}">
                     {{ $product->name }}
                 </a>
             </h6>
@@ -26,8 +28,8 @@
     </div>
     
     <div class="red_button add_to_cart_button">
-        <a href="#">
-            @awt('add to cart')
+        <a href="{{ route('product.show', [Str::slug($product->name), $product->id]) }}">
+            @awt('show')
         </a>
     </div>
 </div>

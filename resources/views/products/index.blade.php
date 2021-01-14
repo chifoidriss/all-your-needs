@@ -23,12 +23,36 @@
                             @awt('Home')
                         </a>
                     </li>
-                    <li class="active">
+                    <li class="@if(!$collection && !$superCategory && !$category) active @endif">
                         <a href="{{ route('product.index') }}">
                             <i class="fa fa-angle-right" aria-hidden="true"></i>
                             @awt('Products')
                         </a>
                     </li>
+                    @if ($collection)
+                    <li class="@if(!$superCategory && !$category) active @endif">
+                        <a href="{{ route('product.index') }}">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            {{ awt($collection->name) }}
+                        </a>
+                    </li>
+                    @endif
+                    @if ($superCategory)
+                    <li class="@if(!$category) active @endif">
+                        <a href="{{ route('product.index') }}">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            {{ awt($superCategory->name) }}
+                        </a>
+                    </li>
+                    @endif
+                    @if ($category)
+                    <li class="active">
+                        <a href="{{ route('product.index') }}">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            {{ awt($category->name) }}
+                        </a>
+                    </li>
+                    @endif
                 </ul>
             </div>
 
