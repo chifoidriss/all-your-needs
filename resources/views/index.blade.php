@@ -3,8 +3,8 @@
 @section('title', 'Bienvenue')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('assets/styles/main_styles.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/styles/responsive.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/main_styles.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
 @endsection
 
 @section('content')

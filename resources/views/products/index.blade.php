@@ -4,8 +4,8 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-ui-1.12.1.custom/jquery-ui.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/styles/categories_styles.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/styles/categories_responsive.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/categories_styles.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/categories_responsive.css') }}">
 @endsection
 
 @section('content')
@@ -65,8 +65,8 @@
                     </div>
                     <ul class="sidebar_categories">
                         @foreach ($categories as $category)
-                        <li class="@if(request()->category == $category->id) active @endif">
-                            <a href="{{ add_query_params(['category' => $category->id]) }}">
+                        <li class="@if($category == $category->slug) active @endif">
+                            <a href="{{ route('product.index',[$category->superCategory->collection->slug, $category->superCategory->slug, $category->slug]) }}">
                                 <span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
                                 {{ awt($category->name) }}
                             </a>

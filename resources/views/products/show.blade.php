@@ -5,8 +5,8 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('assets/plugins/themify-icons/themify-icons.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-ui-1.12.1.custom/jquery-ui.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/styles/single_styles.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/styles/single_responsive.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/single_styles.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/single_responsive.css') }}">
 @endsection
 
 @section('content')

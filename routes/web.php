@@ -50,11 +50,13 @@ Route::name('shop.')->prefix('my-shop')->middleware(['auth:web'])->group(functio
     Route::post('store', 'ShopController@store')->name('store');
     Route::get('edit', 'ShopController@edit')->name('edit');
     Route::put('update', 'ShopController@update')->name('update');
+    Route::put('update/images', 'ShopController@images')->name('update.images');
 
     # Routes of Products for vendor
     Route::resource('product', 'Shop\ProductController');
     Route::get('collections/{id}', 'Shop\ProductController@collection');
     Route::get('categories/{id}', 'Shop\ProductController@category');
+    Route::get('galleries/{id}/{product}', 'Shop\ProductController@gallery')->name('product.gallery');
     
     # Routes of Blogs for vendor
     Route::resource('blog', 'Shop\BlogController');

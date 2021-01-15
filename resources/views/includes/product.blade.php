@@ -24,6 +24,9 @@
                 {{ getPrice($product->price) }}
                 <span>{{ getPrice($product->old_price) }}</span>
             </div>
+            <div class="product_price text-primary font-size-small">
+                <small>@awt('By') <b><em>{{ $product->shop->name }}</em></b></small>
+            </div>
         </div>
     </div>
     

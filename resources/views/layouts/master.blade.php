@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Colo Shop Template">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/bootstrap4/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap4/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
@@ -17,7 +17,7 @@
     
     @yield('css')
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/default.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/default.css') }}">
 </head>
 
 <body>
@@ -452,8 +452,8 @@
 
 
     <script src="{{ asset('assets/js/jquery-3.2.1.min.js') }}"></script>
-    <script src="{{ asset('assets/styles/bootstrap4/popper.js') }}"></script>
-    <script src="{{ asset('assets/styles/bootstrap4/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/css/bootstrap4/popper.js') }}"></script>
+    <script src="{{ asset('assets/css/bootstrap4/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/Isotope/isotope.pkgd.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/OwlCarousel2-2.2.1/owl.carousel.js') }}"></script>
     <script src="{{ asset('assets/plugins/easing/easing.js') }}"></script>

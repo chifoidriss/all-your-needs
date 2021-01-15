@@ -3,9 +3,63 @@
 @section('title', Auth::user()->shop->name)
 @section('page-header', awt('Shop update informations'))
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}">
+@endsection
+
 @section('content')
 <!-- Small Stats Blocks -->
 <div class="container-md">
+
+    <div class="card card-small mb-4">
+        <div class="card-header border-bottom">
+            <h6 class="m-0">@awt('Shop Logo and Cover')</h6>
+        </div>
+        <div class="card-body">
+            <form action="{{ route('shop.update.images') }}" enctype="multipart/form-data" method="POST">
+                @csrf
+                @method('PUT')
+
+                <div class="form-group">
+                    <label for="image">@awt('Logo to my Shop')</label>
+                    <div class="custom-file">
+                        <input id="image" name="image" class="custom-file-input @error('image') is-invalid @enderror"
+                            type="file" accept="image/*" onchange="preview_image(event, 'preview-logo')">
+                        <label for="image" class="custom-file-label">@awt('Select Image')</label>
+                        @error('image')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mt-2 py-2">
+                        <img src="{{ asset('storage/'.$shop->logo) }}"
+                            id="preview-logo" class="img" height="64px">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="image">@awt('Background cover')</label>
+                    <div class="custom-file">
+                        <input id="image" name="image" class="custom-file-input @error('image') is-invalid @enderror"
+                            type="file" accept="image/*" onchange="preview_image(event, 'preview-cover')">
+                        <label for="image" class="custom-file-label">@awt('Select Image')</label>
+                        @error('image')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mt-2 py-2">
+                        <img src="{{ asset('storage/'.$shop->logo) }}"
+                            id="preview-cover" class="img" height="196px">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-accent">
+                        @awt('Update')
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <div class="card card-small mb-4">
         <div class="card-header border-bottom">
@@ -79,10 +133,7 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="country">State</label>
-                        <select id="country" name="country" class="form-control">
-                            <option selected>Choose...</option>
-                            <option>...</option>
-                        </select>
+                        <select id="country" name="country" class="custom-select select2"></select>
                     </div>
                     <div class="form-group col-md-2">
                         <label for="zip">Zip</label>
@@ -93,7 +144,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label for="description">Description</label>
-                        <textarea class="form-control" id="description" name="description" rows="5">{{ old('description', $shop->description) }}</textarea>
+                        <textarea class="form-control" id="description" name="description" rows="20">{{ old('description', $shop->description) }}</textarea>
                     </div>
                 </div>
     
@@ -107,4 +158,42 @@
 <div class="row">
 
 </div>
+@endsection
+
+@section('js')
+    <script src="{{ asset('assets/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/tinymce/jquery.tinymce.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/tinymce/tinymce.min.js') }}"></script>
+    <script src="{{ asset('assets/js/countries.js') }}"></script>
+
+    <script>
+        $('.select2').select2();
+
+        populateCountriesWithDefault("country", "{{ old('country', $shop->country) }}");
+
+
+        function preview_image(event, outputSrc) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var output = document.getElementById(outputSrc);
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+
+
+        tinymce.init({
+            selector: 'textarea#description',
+            // menubar: false,
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+            ],
+            toolbar: 'undo redo | formatselect | ' +
+                'bold italic backcolor | alignleft aligncenter ' +
+                'alignright alignjustify | bullist numlist outdent indent | ' +
+                'image | removeformat | help'
+        });
+    </script>
 @endsection

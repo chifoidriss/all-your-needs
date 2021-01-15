@@ -3,8 +3,8 @@
 @section('title', 'Contacter Nous')
 
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/contact_styles.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/contact_responsive.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/contact_styles.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/contact_responsive.css') }}">
 @endsection
 
 @section('content')

@@ -12,8 +12,12 @@
             <div class="card-body p-0 d-flex">
                 <div class="d-flex flex-column m-auto">
                     <div class="stats-small__data text-center">
-                        <span class="stats-small__label text-uppercase">Posts</span>
-                        <h6 class="stats-small__value count my-3">2,390</h6>
+                        <span class="stats-small__label text-uppercase">
+                            @awt('Products')
+                        </span>
+                        <h6 class="stats-small__value count my-3">
+                            {{ $products }}
+                        </h6>
                     </div>
                     <div class="stats-small__data">
                         <span class="stats-small__percentage stats-small__percentage--increase">4.7%</span>
@@ -29,8 +33,12 @@
             <div class="card-body p-0 d-flex">
                 <div class="d-flex flex-column m-auto">
                     <div class="stats-small__data text-center">
-                        <span class="stats-small__label text-uppercase">Pages</span>
-                        <h6 class="stats-small__value count my-3">182</h6>
+                        <span class="stats-small__label text-uppercase">
+                            @awt('Blogs')
+                        </span>
+                        <h6 class="stats-small__value count my-3">
+                            0
+                        </h6>
                     </div>
                     <div class="stats-small__data">
                         <span class="stats-small__percentage stats-small__percentage--increase">12.4%</span>
@@ -46,8 +54,12 @@
             <div class="card-body p-0 d-flex">
                 <div class="d-flex flex-column m-auto">
                     <div class="stats-small__data text-center">
-                        <span class="stats-small__label text-uppercase">Comments</span>
-                        <h6 class="stats-small__value count my-3">8,147</h6>
+                        <span class="stats-small__label text-uppercase">
+                            @awt('Comments')
+                        </span>
+                        <h6 class="stats-small__value count my-3">
+                            0
+                        </h6>
                     </div>
                     <div class="stats-small__data">
                         <span class="stats-small__percentage stats-small__percentage--decrease">3.8%</span>
@@ -63,8 +75,12 @@
             <div class="card-body p-0 d-flex">
                 <div class="d-flex flex-column m-auto">
                     <div class="stats-small__data text-center">
-                        <span class="stats-small__label text-uppercase">Users</span>
-                        <h6 class="stats-small__value count my-3">2,413</h6>
+                        <span class="stats-small__label text-uppercase">
+                            @awt('Likes')
+                        </span>
+                        <h6 class="stats-small__value count my-3">
+                            0
+                        </h6>
                     </div>
                     <div class="stats-small__data">
                         <span class="stats-small__percentage stats-small__percentage--increase">12.4%</span>
@@ -80,8 +96,12 @@
             <div class="card-body p-0 d-flex">
                 <div class="d-flex flex-column m-auto">
                     <div class="stats-small__data text-center">
-                        <span class="stats-small__label text-uppercase">Subscribers</span>
-                        <h6 class="stats-small__value count my-3">17,281</h6>
+                        <span class="stats-small__label text-uppercase">
+                            @awt('Subscribers')
+                        </span>
+                        <h6 class="stats-small__value count my-3">
+                            0
+                        </h6>
                     </div>
                     <div class="stats-small__data">
                         <span class="stats-small__percentage stats-small__percentage--decrease">2.4%</span>

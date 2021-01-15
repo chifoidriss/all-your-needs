@@ -13,7 +13,7 @@ class ProductController extends Controller
 {
     public function index($collection = null, $superCategory = null, $category = null)
     {
-        $categories = Category::whereHas('products')->get();
+        $categories = Category::with('superCategory.collection')->whereHas('products')->get();
 
         $queryProducts = Product::with('categories')->where([
             'approved' => true,
