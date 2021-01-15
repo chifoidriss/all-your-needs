@@ -3,8 +3,8 @@
 @section('title', 'Bienvenue')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('assets/styles/main_styles.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/styles/responsive.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/main_styles.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
 @endsection
 
 @section('content')
@@ -34,27 +34,17 @@
 	<div class="banner">
 		<div class="container">
 			<div class="row">
+				@foreach ($collections as $item)
 				<div class="col-md-4">
-					<div class="banner_item align-items-center" style="background-image:url(/assets/images/banner_1.jpg)">
+					<div class="banner_item align-items-center" style="background-image:url(/assets/images/{{ $item->id }}.jpg)">
 						<div class="banner_category">
-							<a href="categories.html">women's</a>
+							<a href="{{ route('product.index', $item->slug) }}">
+								{{ awt($item->name) }}
+							</a>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4">
-					<div class="banner_item align-items-center" style="background-image:url(/assets/images/banner_2.jpg)">
-						<div class="banner_category">
-							<a href="categories.html">accessories's</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="banner_item align-items-center" style="background-image:url(/assets/images/banner_3.jpg)">
-						<div class="banner_category">
-							<a href="categories.html">men's</a>
-						</div>
-					</div>
-				</div>
+				@endforeach
 			</div>
 		</div>
 	</div>
@@ -70,12 +60,15 @@
 					</div>
 				</div>
 			</div>
+			
 			<div class="row align-items-center">
 				<div class="col text-center">
 					<div class="new_arrivals_sorting">
 						<ul class="arrivals_grid_sorting clearfix button-group filters-button-group">
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked" data-filter="*">all</li>
-							@foreach ($categories as $item)
+							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked" data-filter="*">
+								@awt('all')
+							</li>
+							@foreach ($collections as $item)
 							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".{{ $item->slug }}">
 								{{ awt($item->name) }}
 							</li>
@@ -84,6 +77,7 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="row">
 				<div class="col">
 					<div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
@@ -159,7 +153,7 @@
 					<div class="product_slider_container">
 						<div class="owl-carousel owl-theme product_slider">
 
-							<!-- Slide 1 -->
+							<!-- Slide X -->
 
 							@foreach ($bestSellers as $product)
 							<div class="owl-item product_slider_item">

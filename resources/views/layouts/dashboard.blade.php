@@ -28,7 +28,7 @@
                     <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
                         <a class="navbar-brand w-100 mr-0" href="{{ route('index') }}" style="line-height: 25px;">
                             <div class="d-table m-auto">
-                                <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="/assets/admin/images/shards-dashboards-logo.svg">
+                                <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="{{ asset('logo.png') }}">
                                 <span class="d-none d-md-inline ml-1">
                                     <span class="text-uppercase font-weight-bold">
                                         <span class="text-secondary">All</span><span class="text-danger">Your</span><span class="text-primary">Needs</span>
@@ -214,12 +214,12 @@
     <script src="{{ asset('assets/admin/js/libs/popper.js/1.14.3/umd/popper.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/bs-custom-file-input.min.js') }}"></script>
-    {{-- <script src="{{ asset('assets/admin/js/libs/Chart.js/2.7.1/Chart.min.js') }}"></script> --}}
+    <script src="{{ asset('assets/admin/js/libs/Chart.js/2.7.1/Chart.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/shards.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/libs/Sharrre/2.0.1/jquery.sharrre.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/extras.1.1.0.min.js') }}"></script>
-    {{-- <script src="{{ asset('assets/admin/js/shards-dashboards.1.1.0.min.js') }}"></script> --}}
-    {{-- <script src="{{ asset('assets/admin/js/app/app-blog-overview.1.1.0.min.js') }}"></script> --}}
+    <script src="{{ asset('assets/admin/js/shards-dashboards.1.1.0.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/app/app-blog-overview.1.1.0.min.js') }}"></script>
 
     <script>
         $(document).ready(function () {

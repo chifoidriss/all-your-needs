@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Colo Shop Template">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/bootstrap4/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap4/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
@@ -17,7 +17,7 @@
     
     @yield('css')
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/default.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/default.css') }}">
 </head>
 
 <body>
@@ -35,9 +35,10 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="top_nav_left">
-                                @awt('Free shipping on all u.s orders over') {{ getPrice(50) }}
+                                @awt('Free shipping on all orders over') {{ getPrice(50) }}
                             </div>
                         </div>
+
                         <div class="col-md-6 text-right">
                             <div class="top_nav_right">
                                 <ul class="top_nav_menu">
@@ -115,6 +116,12 @@
                                             @endauth
                                         </ul>
                                     </li>
+
+                                    <li class="account">
+                                        <a href="{{ route('shop.create') }}">
+                                            @awt('Shop')
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -158,7 +165,11 @@
                                 </ul>
 
                                 <ul class="navbar_user">
-                                    <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-search" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
                                     <li>
                                         <a href="{{ route('user.profile') }}">
                                             <i class="fa fa-user" aria-hidden="true"></i>
@@ -180,7 +191,6 @@
                     </div>
                 </div>
             </div>
-
         </header>
 
         <div class="fs_menu_overlay"></div>
@@ -262,6 +272,12 @@
                             </li>
                             @endauth
                         </ul>
+                    </li>
+
+                    <li class="menu_item">
+                        <a href="{{ route('shop.create') }}">
+                            @awt('Shop')
+                        </a>
                     </li>
                     
                     <li class="menu_item">
@@ -436,8 +452,8 @@
 
 
     <script src="{{ asset('assets/js/jquery-3.2.1.min.js') }}"></script>
-    <script src="{{ asset('assets/styles/bootstrap4/popper.js') }}"></script>
-    <script src="{{ asset('assets/styles/bootstrap4/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/css/bootstrap4/popper.js') }}"></script>
+    <script src="{{ asset('assets/css/bootstrap4/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/Isotope/isotope.pkgd.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/OwlCarousel2-2.2.1/owl.carousel.js') }}"></script>
     <script src="{{ asset('assets/plugins/easing/easing.js') }}"></script>

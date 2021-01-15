@@ -17,6 +17,7 @@ class CreateSuperCategoriesTable extends Migration
             $table->id();
             $table->foreignId('collection_id')->constrained()->onDelete('restrict');
             $table->string('name');
+            $table->string('slug', 150)->unique()->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
         });

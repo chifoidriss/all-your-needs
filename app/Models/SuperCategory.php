@@ -15,4 +15,9 @@ class SuperCategory extends Model
     {
         return $this->belongsTo(Collection::class);
     }
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
+    }
 }

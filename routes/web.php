@@ -54,11 +54,13 @@ Route::name('shop.')->prefix('my-shop')->middleware(['auth:web'])->group(functio
     Route::post('store', 'ShopController@store')->name('store');
     Route::get('edit', 'ShopController@edit')->name('edit');
     Route::put('update', 'ShopController@update')->name('update');
+    Route::put('update/images', 'ShopController@images')->name('update.images');
 
     # Routes of Products for vendor
     Route::resource('product', 'Shop\ProductController');
     Route::get('collections/{id}', 'Shop\ProductController@collection');
     Route::get('categories/{id}', 'Shop\ProductController@category');
+    Route::get('galleries/{id}/{product}', 'Shop\ProductController@gallery')->name('product.gallery');
     
     # Routes of Blogs for vendor
     Route::resource('blog', 'Shop\BlogController');
@@ -66,76 +68,5 @@ Route::name('shop.')->prefix('my-shop')->middleware(['auth:web'])->group(functio
     Route::resource('subscription', 'Shop\SubscriptionController');
 });
 
-Route::get('products', 'ProductController@index')->name('product.index');
-Route::get('product/{id}', 'ProductController@show')->name('product.show');
-
-
-
-// route view index categorie
-
-Route::get('/indexcat',function(){
-    return view('categorie/index');
-});
-
-Route::get('/form',function(){
-    return view('categorie/create');
-});
-
-
-//////////// route Collection///////////////////////////
-Route::get('/create_collec',function(){
-    return view ('admin/collections/create');
-});
-Route::post('/create_collec','CollectionController@create');
-Route::get('/indexcollec','CollectionController@index');
-Route::get('/edit_collec/{id}','CollectionController@edit');
-Route::post('/editcollec/{id}','CollectionController@update');
-Route::DELETE('/deletecollec/{id}','CollectionController@destroy');
-////////////////////////////////////////////////////////////
-
-
-//////////// route Offre///////////////////////////
-Route::get('/create_offert',function(){
-    return view ('offre/create');
-});
-Route::post('/create_offert','OfferController@create');
-Route::get('/indexoffert','OfferController@index');
-Route::get('/edit_offert/{id}','OfferController@edit');
-Route::post('/editoffert/{id}','OfferController@update');
-Route::DELETE('/deleteoffert/{id}','OfferController@destroy');
-////////////////////////////////////////////////////////////
-
-
-
-//////////// route theme///////////////////////////
-Route::get('/create_theme',function(){
-    return view ('themes/create');
-});
-Route::post('/create_theme','ThemeController@create');
-Route::get('/indextheme','ThemeController@index');
-Route::get('/edit_theme/{id}','ThemeController@edit');
-Route::post('/edittheme/{id}','ThemeController@update');
-Route::DELETE('/deletetheme/{id}','ThemeController@destroy');
-////////////////////////////////////////////////////////////
-
-//////////// route type shops///////////////////////////
-Route::get('/create_typeshop',function(){
-    return view ('type_shop/create');
-});
-Route::post('/create_typeshop','TypeShopController@create');
-Route::get('/indextypeshop','TypeShopController@index');
-Route::get('/edit_typeshop/{id}','TypeShopController@edit');
-Route::post('/edittypeshop/{id}','TypeShopController@update');
-Route::DELETE('/deletetypeshop/{id}','TypeShopController@destroy');
-////////////////////////////////////////////////////////////
-
-
-//////////// route super category///////////////////////////
-Route::get('/create_supercat','SuperCategoryController@index1');
-Route::post('/create_supercat','SuperCategoryController@create');
-Route::get('/indexsupercat','SuperCategoryController@index');
-Route::get('/edit_supercat/{id}','SuperCategoryController@edit');
-Route::post('/editsupercat/{id}','SuperCategoryController@update');
-Route::DELETE('/deletesupercat/{id}','SuperCategoryController@destroy');
-////////////////////////////////////////////////////////////
-
+Route::get('products/{collection?}/{superCategory?}/{category?}', 'ProductController@index')->name('product.index');
+Route::get('product/{name}/{id}', 'ProductController@show')->name('product.show');

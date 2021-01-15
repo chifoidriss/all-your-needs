@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Collection;
 use App\Models\Devise;
 use App\Models\Product;
+use App\Models\Shop;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,8 +14,9 @@ class HomeController extends Controller
 
     public function index()
     {
-        $categories = Category::whereHas('products')->get();
-        $query = Product::with(['categories', 'shop'])
+        // $categories = Category::whereHas('products')->get();
+        $collections = Collection::whereHas('superCategories.categories.products')->get();
+        $queryProducts = Product::with(['categories.superCategory.collection', 'shop'])
         ->where([
             'approved' => true,
             'status' => true,
@@ -25,17 +28,19 @@ class HomeController extends Controller
             });
         });
 
-        $products = $query->orderBy('created_at', 'DESC')->limit(10)->get();
+        $products = $queryProducts->orderBy('created_at', 'DESC')->limit(10)->get();
+        
+        $bestSellers = $queryProducts->reorder()->orderByDesc(
+            Shop::select('boost')
+            ->whereColumn('shop_id', 'shops.id')
+            ->orderByDesc('boost')
+            ->limit(1)
+        )->orderBy('created_at', 'DESC')->limit(10)->get();
 
-        $bestSellers = $query->whereHas('shop', function ($query) {
-            $query->orderBy('boost', 'DESC');
-        })->orderBy('created_at', 'DESC')->limit(10)->get();
-
-        // dd($products);
         return view('index', compact([
             'products',
             'bestSellers',
-            'categories'
+            'collections',
         ]));
     }
 
