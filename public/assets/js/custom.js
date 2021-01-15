@@ -439,26 +439,27 @@ jQuery(document).ready(function($)
 	9.
     */
 	
-   $('.increment-btn').click(function (e) {
+   $('#increment-btn').click(function (e) {
 	e.preventDefault();
-	var incre_value = $(this).parents('.quantity').find('.boost-input').val();
+	var incre_value = $(this).parents('#quantity').find('#boost-input').val();
 	var value = parseInt(incre_value, 10);
 	value = isNaN(value) ? 0 : value;
-	if(value<10){
+	if(value>=0 && value<100){
 		value=value+10;
-		$(this).parents('.quantity').find('.boost-input').val(value);
+		$(this).parents('#quantity').find('#boost-input').val(value);
 	}
 
 });
 
-$('.decrement-btn').click(function (e) {
+$('#decrement-btn').click(function (e) {
 	e.preventDefault();
-	var decre_value = $(this).parents('.quantity').find('.boost-input').val();
+	
+	var decre_value = $(this).parents('#quantity').find('#boost-input').val();
 	var value = parseInt(decre_value, 10);
 	value = isNaN(value) ? 0 : value;
 	if(value>1){
-		value=value+10;
-		$(this).parents('.quantity').find('.boost-input').val(value);
+		value=value-10;
+		$(this).parents('#quantity').find('#boost-input').val(value);
 	}
 });
 
