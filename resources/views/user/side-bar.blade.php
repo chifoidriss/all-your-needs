@@ -44,19 +44,13 @@
                 @awt('Password')
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
             </a>
-            <span class="side-item" id="logout-btn" role="button">
+            <span class="side-item call-to-action-form" role="button">
                 @awt('Logout')
                 <i class="fa fa-sign-out" aria-hidden="true"></i>
             </span>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;" hidden>
+            <form action="{{ route('logout') }}" method="POST" style="display: none;" hidden>
                 @csrf
             </form>
         </div>
     </div>
 </div>
-
-<script>
-    document.getElementById('logout-btn').addEventListener('click', function () {
-        document.getElementById('logout-form').submit();
-    });
-</script>
