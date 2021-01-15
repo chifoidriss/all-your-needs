@@ -434,5 +434,33 @@ jQuery(document).ready(function($)
     			});
     		}
     	}
-    }
+	}
+	/*
+	9.
+    */
+	
+   $('.increment-btn').click(function (e) {
+	e.preventDefault();
+	var incre_value = $(this).parents('.quantity').find('.boost-input').val();
+	var value = parseInt(incre_value, 10);
+	value = isNaN(value) ? 0 : value;
+	if(value<10){
+		value=value+10;
+		$(this).parents('.quantity').find('.boost-input').val(value);
+	}
+
 });
+
+$('.decrement-btn').click(function (e) {
+	e.preventDefault();
+	var decre_value = $(this).parents('.quantity').find('.boost-input').val();
+	var value = parseInt(decre_value, 10);
+	value = isNaN(value) ? 0 : value;
+	if(value>1){
+		value=value+10;
+		$(this).parents('.quantity').find('.boost-input').val(value);
+	}
+});
+
+});
+
