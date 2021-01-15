@@ -140,10 +140,13 @@
                                         @awt('Home Page')
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item text-danger" href="#">
+                                    <a class="dropdown-item text-danger call-to-action-form" href="#">
                                         <i class="material-icons text-danger">&#xE879;</i>
                                         @awt('Logout')
                                     </a>
+                                    <form action="{{ route('logout') }}" style="display: none;" method="post" hidden>
+                                        @csrf
+                                    </form>
                                 </div>
                             </li>
                         </ul>

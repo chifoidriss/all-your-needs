@@ -95,10 +95,13 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('logout') }}">
+                                                <a href="#" class="call-to-action-form">
                                                     <i class="fa fa-user-plus" aria-hidden="true"></i>
                                                     @awt('Logout')
                                                 </a>
+                                                <form action="{{ route('logout') }}" style="display: none;" method="post" hidden>
+                                                    @csrf
+                                                </form>
                                             </li>
                                             @else
                                             <li>
@@ -461,5 +464,16 @@
     @yield('js')
 
     <script src="{{ asset('assets/js/countries.js') }}"></script>
+
+    <script>
+        $(document).ready(function () {
+            // bsCustomFileInput.init();
+            
+            $('.call-to-action-form').click(function (e) {
+                e.preventDefault();
+                $(this).next('form').trigger('submit');
+            });
+        })
+    </script>
 </body>
 </html>
