@@ -7,7 +7,6 @@ use App\Models\Shop;
 use App\Models\TypeShop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Support\Facades\Storage;
 
 class ShopController extends Controller
@@ -91,12 +90,9 @@ class ShopController extends Controller
     {
         $shop = Shop::whereUserId(Auth::id())->firstOrFail();
         $shop->delete();
-        
+
         return redirect()->route('index');
     }
-
-    
-
     
     
     public function images(Request $request)

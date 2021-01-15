@@ -28,6 +28,10 @@ Route::name('admin.')->prefix('admin')->middleware(['auth:web','admin'])->group(
     Route::resource('collections', 'CollectionController');
     Route::resource('super_cat', 'SuperCategoryController');
     Route::resource('categorie', 'CategoryController');
+    Route::resource('devise', 'DeviseController');
+    Route::resource('manager_user', 'ManagerUserController');
+    Route::resource('approved_shop','ApprovedShopController');
+   
 });
 
 Route::get('/', 'HomeController@index')->name('index');

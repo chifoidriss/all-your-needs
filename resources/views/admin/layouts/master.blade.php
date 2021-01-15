@@ -35,6 +35,26 @@
             <span>@awt('Collections')</span>
         </a>
     </li>
+
+    <li class="nav-item">
+        <a class="nav-link @if(Route::is('admin.devise.*')) active @endif" href="{{ route('admin.devise.index') }}">
+            <i class="material-icons">shop_two</i>
+            <span>@awt('Devise')</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link @if(Route::is('admin.manager_user.*')) active @endif" href="{{ route('admin.manager_user.index') }}">
+            <i class="material-icons">shop_two</i>
+            <span>@awt('Management Users')</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link @if(Route::is('admin.approved_shop.*')) active @endif" href="{{ route('admin.approved_shop.index') }}">
+            <i class="material-icons">shop_two</i>
+            <span>@awt('Management Shops')</span>
+        </a>
+    </li>
     
     <li class="nav-item">
         <a class="nav-link @if(Route::is('admin.offre.*')) active @endif" href="{{ route('admin.offre.index') }}">

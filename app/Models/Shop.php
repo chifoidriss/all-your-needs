@@ -15,4 +15,8 @@ class Shop extends Model
     {
         return $this->hasMany(Subscription::class);
     }
+
+    public function type_shop(){
+        return $this->belongsTo(TypeShop::class);
+    }
 }
