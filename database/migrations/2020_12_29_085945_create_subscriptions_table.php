@@ -18,8 +18,8 @@ class CreateSubscriptionsTable extends Migration
             $table->foreignId('shop_id')->constrained()->onDelete('restrict');
             $table->foreignId('offer_id')->constrained()->onDelete('restrict');
             $table->unsignedDecimal('amount');
-            $table->date('start');
-            $table->date('end');
+            $table->dateTime('start');
+            $table->dateTime('end');
             $table->timestamps();
         });
     }

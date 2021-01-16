@@ -18,12 +18,12 @@ class CreateProductsTable extends Migration
             $table->foreignId('shop_id')->constrained()->onDelete('restrict');
             $table->string('slug', 150)->unique()->nullable();
             $table->string('name');
-            $table->longText('description')->nullable();
+            $table->text('description')->nullable();
+            $table->longText('content')->nullable();
             $table->unsignedDecimal('price');
             $table->unsignedDecimal('old_price');
             $table->unsignedSmallInteger('qty');
             $table->string('image')->nullable();
-            $table->longText('images')->nullable();
             $table->boolean('approved')->default(true);
             $table->boolean('status')->default(true);
             $table->timestamps();
