@@ -123,8 +123,7 @@
                                 <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                     <img class="user-avatar rounded-circle mr-2" src="/assets/admin/images/avatars/0.jpg" alt="User Avatar">
                                     <span class="d-none d-md-inline-block">
-                                        {{ ucfirst(Auth::user()->surname) }}
-                                        {{ ucfirst(Auth::user()->name) }}
+                                        {{ ucfirst(Auth::user()->fullName) }}
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-small">
