@@ -39,7 +39,9 @@
 		<div class="col">
 			<div id="google_map">
 				<div class="map_container">
-					<div id="map"></div>
+					<div id="map">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7959.6847652993865!2d9.760306024150212!3d4.052550788212226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10610daa5c37ea13%3A0x4f65674762a98afb!2sCite%20des%20Palmiers%2C%20Douala!5e0!3m2!1sfr!2scm!4v1611596638640!5m2!1sfr!2scm" width="1200" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -54,14 +56,12 @@
 				<h1>Contact Us</h1>
 				<p>There are many ways to contact us. You may drop us a line, give us a call or send an email, choose what suits you the most.</p>
 				<div>
-					<p>(800) 686-6688</p>
-					<p>info.deercreative@gmail.com</p>
+					<p>(+237) 671 50 40 37</p>
+					<p>wallylegenie.@gmail.com</p>
 				</div>
+				
 				<div>
-					<p>mm</p>
-				</div>
-				<div>
-					<p>Open hours: 8.00-18.00 Mon-Fri</p>
+					<p>Open hours: 8.00- 00.00 Mon-Sat</p>
 					<p>Sunday: Closed</p>
 				</div>
 			</div>
@@ -71,7 +71,7 @@
 			<div class="follow_us_contents">
 				<h1>@awt('Follow Us')</h1>
 				<ul class="social d-flex flex-row">
-					<li><a href="#" style="background-color: #3a61c9"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+					<li><a href="https://www.facebook.com/allyourneeds237" style="background-color: #3a61c9"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 					<li><a href="#" style="background-color: #41a1f6"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 					<li><a href="#" style="background-color: #fb4343"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
 					<li><a href="#" style="background-color: #8f6247"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
