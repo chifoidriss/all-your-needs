@@ -48,17 +48,17 @@
                 <div class="row">
                     <div class="col-12 image_col">
                         <div class="single_product_image">
-                            <div class="single_product_image_background" style="background-image:url({{ asset('storage/'.$product->image) }})"></div>
+                            <div class="single_product_image_background" id="product_img" style="background-image:url({{ asset('storage/'.$product->image) }})"></div>
                         </div>
                     </div>
                     
                     <div class="col-12">
-                        <div class="d-flex mt-2">
-                            <span role="button" class="border radius p-1 mr-1 active">
-                                <img height="64px" src="{{ asset('storage/'.$product->image) }}" id="product_img" data-image="{{ asset('storage/'.$product->image) }}">
+                        <div class="d-flex mt-2 galleries">
+                            <span role="button" class="gallery border border-primary radius p-1 mr-1">
+                                <img height="64px" src="{{ asset('storage/'.$product->image) }}" onclick="changeImage(this)" data-image="{{ asset('storage/'.$product->image) }}">
                             </span>
                             @foreach ($product->galleries as $item)
-                            <span role="button" class="border radius p-1 mx-1">
+                            <span role="button" class="gallery border radius p-1 mx-1">
                                 <img height="64px" src="{{ asset('storage/'.$item->image) }}" onclick="changeImage(this)" data-image="{{ asset('storage/'.$item->image) }}">
                             </span>
                             @endforeach
@@ -75,7 +75,9 @@
                         <div class="product_details_title">
                             <h2>{{ $product->name }}</h2>
                             <p>
-                                {{ $product->description }}
+                                <b>@awt('Disponibility') :</b>
+                                {{ $product->qty }}
+                                @awt('in stock')
                             </p>
                         </div>
 
@@ -118,60 +120,60 @@
                         </div>
         
                         <div class="mt-4">
-                            <div class="row">
-                                <div class="col-12">
-                                    <a href="#" class="btn btn-block btn-primary">
-                                        <i class="fa fa-comment" aria-hidden="true"></i>
-                                        @awt('Contact on') Whatsapp
-                                    </a>
-                                </div>
+                            <div class="d-flex flex-column">
+                                <a class="btn btn-block btn-outline-success" target="tab" href="https://api.whatsapp.com/send?phone={{ $product->shop->phone }}&text=@awt('Hi, I am interested in') [ {{ $product->name }} ] @awt('in') AllYourNeeds.">
+                                    <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                                    {{-- @awt('Contact on') --}}
+                                    Whatsapp ({{ $product->shop->phone }})
+                                </a>
+                                
+                                <a class="btn btn-block btn-outline-primary" target="tab" href="http://m.me/{{ $product->shop->facebook }}?ref=AllYourNeeds&source=@awt('Hi, I am interested in') [ {{ $product->name }} ] @awt('in') AllYourNeeds.">
+                                    <i class="fa fa-comment" aria-hidden="true"></i>
+                                    {{-- @awt('Contact on') --}}
+                                    Messenger ({{ $product->shop->facebook }})
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4">
-                    <div class="free_delivery mt-0 px-2 d-flex flex-row align-items-center justify-content-between">
+                    <div class="free_delivery mt-0 px-2 d-flex align-items-center justify-content-start">
                         <span class="ti-truck"></span>
                         <span>@awt('free delivery')</span>
                     </div>
-                    <div class="free_delivery mt-0 px-2 d-flex flex-row align-items-center justify-content-between">
+                    <div class="free_delivery mt-0 px-2 d-flex align-items-center justify-content-start">
                         <span class="ti-money"></span>
                         <span>@awt('cach on delivery')</span>
                     </div>
-                    <div class="free_delivery mt-0 mb-2 px-2 d-flex flex-row align-items-center justify-content-between">
-                        <i class="fa fa-undo" aria-hidden="true"></i>
+                    <div class="free_delivery mt-0 px-2 d-flex align-items-center justify-content-start">
+                        <span class="ti-back-left"></span>
                         <span>@awt('45 days return')</span>
                     </div>
+                    <div class="free_delivery mt-0 mb-2 px-2 d-flex align-items-center justify-content-start">
+                        <span class="ti-time"></span>
+                        <span>@awt('opening all week')</span>
+                    </div>
 
-                <div class="mt-4">
-                    <div class="row">
-                        <div class="col-md-6 col-12">
-                            <a href="https://api.whatsapp.com/send?phone=+237691247618&text= Bonjour {{ $product->shop->name }} j'aimerais acheter le produit: dont la quantité est :"  class="btn btn-block btn-success">
-                                <i class="fa fa-comment" aria-hidden="true"></i>
-                                @awt('Contact on') Whatsapp
-                            </a>
-                        </div>
-                        <div class="p-2 d-flex flex-wrap align-items-center justify-content-between">
-                            <div class="d-flex flex-column">
-                                <div class="">
-                                    <b>{{ $product->shop->follows->count() }}</b>
-                                    @awt('Followers')
-                                </div>
-                                <div class="">
-                                    <b>{{ $product->likes->count() }}</b>
-                                    @awt('Likes')
-                                </div>
-                                <div class="">
-                                    <b>{{ $product->shop->products->count() }}</b>
-                                    @awt('Products')
-                                </div>
+                    <div class="p-2 d-flex flex-wrap align-items-center justify-content-between">
+                        <div class="d-flex flex-column">
+                            <div class="">
+                                <b>{{ $product->shop->follows->count() }}</b>
+                                @awt('Followers')
                             </div>
                             <div class="">
-                                <a href="#" class="btn btn-sm btn-outline-info">
-                                    @awt('Follow')
-                                </a>
+                                <b>{{ $product->likes->count() }}</b>
+                                @awt('Likes')
                             </div>
+                            <div class="">
+                                <b>{{ $product->shop->products->count() }}</b>
+                                @awt('Products')
+                            </div>
+                        </div>
+                        <div class="">
+                            <a href="#" class="btn btn-sm btn-outline-info">
+                                @awt('Follow')
+                            </a>
                         </div>
                     </div>
 
@@ -197,7 +199,7 @@
         <div class="row">
             <div class="col">
                 <div class="tabs_container">
-                    <ul class="tabs d-flex flex-sm-row flex-column align-items-left align-items-md-center justify-content-center">
+                    <ul class="tabs d-flex align-items-center justify-content-start">
                         <li class="tab active" data-active-tab="tab_1">
                             <span>@awt('Description')</span>
                         </li>
@@ -327,9 +329,13 @@
 
 <script>
     var product_img = document.getElementById('product_img');
+    // var galleries = document.getElementsByClassName('gallery');
     function changeImage(img) {
-        console.log(img);
-        product_img.style.backgroundImage = img.dataImage;
+        var image = img.getAttribute('data-image');
+        // galleries.classList.remove('border-primary');
+        $('.galleries .gallery').removeClass('border-primary');
+        product_img.style.backgroundImage = "url("+image+")";
+        img.parentElement.classList.add('border-primary');
     }
 </script>
 @endsection

@@ -139,6 +139,10 @@ Breadcrumbs
     color: #66acc1;
 }
 
+.galleries {
+    overflow-x: scroll;
+}
+
 .position-relative {
     position: relative;
 }
