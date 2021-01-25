@@ -1,4 +1,4 @@
-<a href="{{ route('product.show', [Str::slug($product->name), $product->id]) }}">
+{{-- <a href="{{ route('product.show', [Str::slug($product->name), $product->id]) }}"> --}}
 <div class="product-item 
     @foreach ($product->categories as $item)
     {{ $item->superCategory->collection->slug }}
@@ -36,4 +36,4 @@
         </a>
     </div>
 </div>
-</a>
+{{-- </a> --}}

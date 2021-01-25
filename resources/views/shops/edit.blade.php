@@ -21,12 +21,12 @@
                 @method('PUT')
 
                 <div class="form-group">
-                    <label for="image">@awt('Logo to my Shop')</label>
+                    <label for="logo">@awt('Logo to my Shop')</label>
                     <div class="custom-file">
-                        <input id="image" name="image" class="custom-file-input @error('image') is-invalid @enderror"
+                        <input id="logo" name="logo" class="custom-file-input @error('logo') is-invalid @enderror"
                             type="file" accept="image/*" onchange="preview_image(event, 'preview-logo')">
-                        <label for="image" class="custom-file-label">@awt('Select Image')</label>
-                        @error('image')
+                        <label for="logo" class="custom-file-label">@awt('Select Image File')</label>
+                        @error('logo')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
@@ -37,17 +37,17 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="image">@awt('Background cover')</label>
+                    <label for="banner">@awt('Background cover')</label>
                     <div class="custom-file">
-                        <input id="image" name="image" class="custom-file-input @error('image') is-invalid @enderror"
+                        <input id="banner" name="banner" class="custom-file-input @error('banner') is-invalid @enderror"
                             type="file" accept="image/*" onchange="preview_image(event, 'preview-cover')">
-                        <label for="image" class="custom-file-label">@awt('Select Image')</label>
-                        @error('image')
+                        <label for="banner" class="custom-file-label">@awt('Select Image File')</label>
+                        @error('banner')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="mt-2 py-2">
-                        <img src="{{ asset('storage/'.$shop->logo) }}"
+                        <img src="{{ asset('storage/'.$shop->banner) }}"
                             id="preview-cover" class="img" height="196px">
                     </div>
                 </div>

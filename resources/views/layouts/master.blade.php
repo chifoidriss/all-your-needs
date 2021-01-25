@@ -22,7 +22,10 @@
 
 <body>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> c1e2548c59c9adda47c8bf74772f0f6858c34276
     <div class="super_container">
 
         <!-- Header -->
@@ -36,7 +39,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="top_nav_left">
-                                @awt('Contact us at : +237 671 50 40 37 / +237 691 67 48 09') 
+                                @awt('Contact us at') : +237 671 50 40 37 / +237 691 67 48 09
                             </div>
                         </div>
 
@@ -138,7 +141,7 @@
             <div class="main_nav_container">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-12 text-right">
+                        <div class="col-lg-12 text-right position-relative">
                             <div class="logo_container">
                                 <!-- <a href="{{ route('index') }}">
                                     All<span>Your</span><Span class="text-primary">Needs</Span>
@@ -147,7 +150,26 @@
                                    <img src="{{asset('assets/images/logo.png')}}"  style="width:150px; height:80px !important;" alt="">
                                 </a>
                             </div>
+
+                            <div class="search-bar" id="search-bar">
+                                <form action="{{ route('product.index') }}" method="GET" class="form-inline">
+                                    <div class="input-group w-100">
+                                        <input type="text" name="q" class="form-control" placeholder="@awt('Search ')...">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-primary" type="submit">
+                                                <i class="fa fa-search"></i>
+                                                <span class="d-md-inline d-none">@awt('Search ')</span>
+                                            </button>
+                                            <button class="btn btn-outline-danger close-search-bar" type="button">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
                             <nav class="navbar">
+
                                 <ul class="navbar_menu">
                                     <li>
                                         <a href="{{ route('index') }}">
@@ -173,7 +195,7 @@
 
                                 <ul class="navbar_user">
                                     <li>
-                                        <a href="#">
+                                        <a href="#" class="btn-search-input">
                                             <i class="fa fa-search" aria-hidden="true"></i>
                                         </a>
                                     </li>
@@ -189,7 +211,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                                
+
                                 <div class="hamburger_container">
                                     <i class="fa fa-bars" aria-hidden="true"></i>
                                 </div>
@@ -333,7 +355,7 @@
 					<h2 class="mt-4  ml-2">RvjCorp</h2>
 				</div>
                 <div class="owl-item product_slider_item">
-					<h2 class="mt-4  ml-2">HomeDev</h2>
+					<h2 class="mt-4  ml-2">Homedeve</h2>
 				</div>
                 <div class="owl-item product_slider_item">
 					<h2 class="mt-4  ml-2">Kiku</h2>
@@ -434,7 +456,7 @@
                             <div class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center mr-2">
                                 <ul class="footer_nav">
                                     <li>
-                                        <a href="#">
+                                        <a href="{{ route('shop.create') }}">
                                             @awt('Sell on AllYourNeeds')
                                         </a>
                                     </li>
@@ -500,11 +522,29 @@
     <script>
         $(document).ready(function () {
             // bsCustomFileInput.init();
+
+            var searchBar = document.getElementById('search-bar');
             
             $('.call-to-action-form').click(function (e) {
                 e.preventDefault();
                 $(this).next('form').trigger('submit');
             });
+            
+            $('.btn-search-input').click(function (e) {
+                e.preventDefault();
+                $('.search-bar').slideDown('slow');
+            });
+            
+            $('.close-search-bar').click(function (e) {
+                e.preventDefault();
+                $('.search-bar').slideUp('slow');
+            });
+
+            // window.onclick = function(event) {
+            //     if (event.target == modal) {
+            //         searchBar.style.display = "none";
+            //     }
+            // }
         })
     </script>
 </body>

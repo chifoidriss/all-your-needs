@@ -15,8 +15,8 @@ class CreateBlogThemeTable extends Migration
     {
         Schema::create('blog_theme', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('blog_id')->constrained()->onDelete('restrict');
-            $table->foreignId('theme_id')->constrained()->onDelete('restrict');
+            $table->foreignId('blog_id')->constrained()->onDelete('cascade');
+            $table->foreignId('theme_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

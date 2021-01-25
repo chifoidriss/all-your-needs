@@ -3,6 +3,34 @@
 @section('title', Auth::user()->shop->name)
 @section('page-header', awt('Shop Overview'))
 
+@section('alert')
+    @if (!$subscription)
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                @awt('Please you don\'t have a valid subscription. Please contact the admin for more information')
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    @endif
+    
+    @if (!$shop->status)
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                @awt('Please wait until the admin confirms your store')
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    @endif
+@endsection
+
 @section('content')
 
 <!-- Small Stats Blocks -->

@@ -11,6 +11,7 @@ class Product extends Model
 
     protected $guarded = [];
 
+
     public function shop()
     {
         return $this->belongsTo(Shop::class);
@@ -36,5 +37,11 @@ class Product extends Model
             return '- '.$rate.'%';
         }
         return null;
+    }
+    
+    
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
     }
 }

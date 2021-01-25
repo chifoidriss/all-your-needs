@@ -13,7 +13,7 @@ function formatDate($date, $forHumans = 1, $onlyDate = 0) {
     if ($onlyDate == 1) {
         return date("d M Y", strtotime($date));
     }
-    return date("d M Y à H:i", strtotime($date));
+    return date("d M Y - H:i", strtotime($date));
 }
 
 

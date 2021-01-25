@@ -25,9 +25,9 @@ class Subscription extends Model
     
     public function getIsActiveAttribute()
     {
-        $end = Carbon::createFromFormat('Y-m-d', $this->end);
+        $end = Carbon::createFromFormat('Y-m-d H:i:s', $this->end);
         $today = Carbon::now();
-        if ($today->diffInDays($end, false) >= 0) {
+        if ($today->diffInSeconds($end, false) >= 0) {
             return true;
         }
         return false;

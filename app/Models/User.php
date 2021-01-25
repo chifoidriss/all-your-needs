@@ -53,4 +53,12 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
+
+    public function getIsAdminAttribute()
+    {
+        if ($this->roles->firstWhere('name','admin')) {
+            return true;
+        }
+        return false;
+    }
 }

@@ -15,10 +15,19 @@ class CreateShopsTable extends Migration
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('restrict');
-            $table->foreignId('type_shop_id')->constrained()->onDelete('restrict');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('type_shop_id')->constrained()->onDelete('cascade');
             $table->string('name');
-            $table->string('phone_whatsapp');
+            $table->string('email')->after('name')->nullable();
+            $table->string('url')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('fax')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('country')->nullable();
+            $table->string('zip')->nullable();
             $table->boolean('status')->default(false);
             $table->unsignedSmallInteger('boost')->default(0);
             $table->string('logo')->nullable();

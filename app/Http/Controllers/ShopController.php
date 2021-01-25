@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Shop;
+use App\Models\Subscription;
 use App\Models\TypeShop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,10 +17,13 @@ class ShopController extends Controller
     {
         $shop = Shop::whereUserId(Auth::id())->firstOrFail();
         $products = Product::whereShopId($shop->id)->count();
+
+        $subscription = Subscription::whereShopId($shop->id)->where('end', '>=', date('Y-m-d'))->first();
         
         return view('vendor.index', compact([
             'shop',
             'products',
+            'subscription',
         ]));
     }
     
@@ -80,6 +84,18 @@ class ShopController extends Controller
         
         $shop->fill($request->only([
             'name',
+            'type_shop_id',
+            'email',
+            'url',
+            'phone',
+            'fax',
+            'facebook',
+            'twitter',
+            'address',
+            'city',
+            'country',
+            'zip',
+            'description',
             'phone',
             'type_shop_id'
         ]));
@@ -114,12 +130,12 @@ class ShopController extends Controller
             $shop->logo = $logo;
         }
         
-        if ($request->hasFile('cover')) {
-            if ($shop->cover) {
-                Storage::disk('public')->delete($shop->cover);
+        if ($request->hasFile('banner')) {
+            if ($shop->banner) {
+                Storage::disk('public')->delete($shop->banner);
             }
-            $cover = $request->file('cover')->store('shops/cover/'.date('F').date('Y'), 'public');
-            $shop->cover = $cover;
+            $banner = $request->file('banner')->store('shops/banner/'.date('F').date('Y'), 'public');
+            $shop->banner = $banner;
         }
 
         $shop->save();
