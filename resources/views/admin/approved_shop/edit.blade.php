@@ -18,20 +18,20 @@
                  @csrf
                     @method('PUT')
                 <div class="input-group" id="quantity">
-                <div class="input-group-prepend">
-                        <button class="btn btn-primary " id='decrement-btn' type='button'>
-                            <span class=''>-</span>
-                        </button>
-                </div>
-                        <input type="number" min='0' max='100' class="form-control"
-                            value="{{$approved_shop->boost}}" id="boost-input"  name="boost" disabled='true'> 
+                    <div class="input-group-prepend">
+                            <button class="btn btn-primary " id='decrement-btn' type='button'>
+                                <span class=''>-</span>
+                            </button>
+                    </div>
+                        <input type="number" class="form-control"
+                            value="{{$approved_shop->boost}}" id="boost-input"  name="boost" readonly> 
                     
 
-                <div class="input-group-append">
-                        <button class="btn btn-primary " type='button' id='increment-btn'>
-                            <span >+</span>
-                        </button>
-                </div>
+                    <div class="input-group-append">
+                            <button class="btn btn-primary " type='button' id='increment-btn'>
+                                <span >+</span>
+                            </button>
+                    </div>
                
                 </div></br>
                 <div class="form-group">

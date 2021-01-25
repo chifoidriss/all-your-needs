@@ -122,7 +122,7 @@
                 <div class="mt-4">
                     <div class="row">
                         <div class="col-md-6 col-12">
-                            <a href="#" class="btn btn-block btn-primary">
+                            <a href="https://api.whatsapp.com/send?phone=+237691247618&text= Bonjour {{ $product->shop->name }} j'aimerais acheter le produit: dont la quantité est :"  class="btn btn-block btn-success">
                                 <i class="fa fa-comment" aria-hidden="true"></i>
                                 @awt('Contact on') Whatsapp
                             </a>

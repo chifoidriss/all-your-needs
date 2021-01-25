@@ -24,7 +24,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link @if(Route::is('shop.blog.*')) active @endif" href="{{ route('shop.blog.index') }}">
+        <a class="nav-link @if(Route::is('shop.blog.*')) active @endif" href="#">
             <i class="material-icons">view_module</i>
             <span>@awt('Blogs')</span>
         </a>

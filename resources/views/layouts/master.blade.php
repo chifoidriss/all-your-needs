@@ -22,6 +22,20 @@
 
 <body>
 
+
+   <div class="color-switcher animated visible">
+        <div class="social-wrapper">
+           FGFGGG
+        </div>
+
+        <div class="close">
+            <i class="material-icons">close</i>
+        </div>
+        <div class="color-switcher-toggle animated pulse infinite">
+            <i class="material-icons">close</i>
+        </div>
+   </div>
+
     <div class="super_container">
 
         <!-- Header -->
@@ -35,7 +49,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="top_nav_left">
-                                @awt('Free shipping on all orders over') {{ getPrice(50) }}
+                                @awt('Contact us at : +237 671 50 40 37 / +237 691 67 48 09') 
                             </div>
                         </div>
 
@@ -311,50 +325,37 @@
         @yield('content')
 
 
-        <!-- Benefit -->
+        <!-- Partners -->
 
-        <div class="benefit">
-            <div class="container">
-                <div class="row benefit_row">
-                    <div class="col-lg-3 benefit_col">
-                        <div class="benefit_item d-flex flex-row align-items-center">
-                            <div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
-                            <div class="benefit_content">
-                                <h6>@awt('free shipping')</h6>
-                                <p>@awt('Suffered Alteration in Some Form')</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 benefit_col">
-                        <div class="benefit_item d-flex flex-row align-items-center">
-                            <div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
-                            <div class="benefit_content">
-                                <h6>@awt('cach on delivery')</h6>
-                                <p>@awt('The Internet Tend To Repeat')</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 benefit_col">
-                        <div class="benefit_item d-flex flex-row align-items-center">
-                            <div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true"></i></div>
-                            <div class="benefit_content">
-                                <h6>@awt('45 days return')</h6>
-                                <p>@awt('Making it Look Like Readable')</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 benefit_col">
-                        <div class="benefit_item d-flex flex-row align-items-center">
-                            <div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
-                            <div class="benefit_content">
-                                <h6>@awt('opening all week')</h6>
-                                <p>@awt('8AM - 09PM')</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="col text-center mt-4">
+			<div class="section_title">
+					<h2>@awt('Partners')</h2>
+			</div>
+	    </div>
+        <div class="owl-carousel owl-theme product_slider">
+
+							<!-- Slide partners -->
+				<div class="owl-item product_slider_item ml-4">
+					<h2 class="mt-4 ml-4">Allo Bailleur</h2>
+				</div>
+
+                <div class="owl-item product_slider_item">
+					<h2 class="mt-4  ml-2">RvjCorp</h2>
+				</div>
+                <div class="owl-item product_slider_item">
+					<h2 class="mt-4  ml-2">HomeDev</h2>
+				</div>
+                <div class="owl-item product_slider_item">
+					<h2 class="mt-4  ml-2">Kiku</h2>
+				</div>
+                <div class="owl-item product_slider_item">
+					<h2 class="mt-4  ml-2">Stoready</h2>
+				</div>
+			
+		</div>
+
+        <!-- cookie -->
+                
 
         <!-- Newsletter -->
 
@@ -381,7 +382,7 @@
 
         <!-- Footer -->
 
-        <footer class="footer">
+        <footer class="footer" style="background:#1e1e27;">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
@@ -389,7 +390,7 @@
                             <ul class="footer_nav">
                                 <li>
                                     <a href="#">
-                                        @awt('Blog')
+                                        @awt('Home')
                                     </a>
                                 </li>
                                 <li>
@@ -406,7 +407,7 @@
                         </div>
                     </div>
                     
-                    <div class="col-lg-6">
+                    <!-- <div class="col-lg-4">
                         <div class="footer_social d-flex flex-row align-items-center justify-content-lg-end justify-content-center">
                             <ul>
                                 <li>
@@ -436,18 +437,59 @@
                                 </li>
                             </ul>
                         </div>
+                    </div> -->
+
+                        <div class="col-lg-6">
+                        
+                            <div class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center mr-2">
+                                <ul class="footer_nav">
+                                    <li>
+                                        <a href="#">
+                                            @awt('Sell on AllYourNeeds')
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            @awt('About it')
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('contact') }}">
+                                            @awt('Contact us')
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-lg-12">
+                
+
+                <div class="row" >
+                    <div class="col-lg-3">
                         <div class="footer_nav_container">
                             <div class="cr">
-                                @awt('Copyright') © {{ date('Y') }} AllYourNeeds @awt('All Rights Reserverd').
+                                @awt('Copyright') © {{ date('Y') }} RvjCorp && HomeDev @awt('All Rights Reserverd').
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="footer_nav_container">
+                            <div class="cr">
+                                 @awt('We are distributed throughout the national territory as well as on the international territory').
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="footer_nav_container">
+                            <div class="cr">
+                                @awt('Contact us at :+237 671 50 40 37 / +237 691 67 48 09 Douala-Cameroon') (Cité des Palmiers).
                             </div>
                         </div>
                     </div>
                 </div>
+
+                
             </div>
         </footer>
     </div>

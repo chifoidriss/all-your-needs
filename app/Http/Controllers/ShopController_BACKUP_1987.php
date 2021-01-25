@@ -7,11 +7,8 @@ use App\Models\Shop;
 use App\Models\TypeShop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-<<<<<<< HEAD
 use DB;
-=======
 use Illuminate\Support\Facades\Storage;
->>>>>>> 1108b27b3d588d07941ba29a306ee4a4f36bbac4
 
 class ShopController extends Controller
 {
@@ -97,11 +94,9 @@ class ShopController extends Controller
         
         return redirect()->route('index');
     }
-<<<<<<< HEAD
 
     
 
-=======
     
     
     public function images(Request $request)
@@ -128,5 +123,4 @@ class ShopController extends Controller
 
         return back();
     }
->>>>>>> 1108b27b3d588d07941ba29a306ee4a4f36bbac4
 }

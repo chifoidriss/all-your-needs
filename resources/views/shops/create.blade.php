@@ -43,7 +43,7 @@
                     give us a call or send an email, choose what suits you the most.
                 </p>
 				<div>
-					<p>(800) 686-6688</p>
+					<p>(+237) 671 50 40 37</p>
 					<p>info.deercreative@gmail.com</p>
 				</div>
 			</div>
@@ -59,6 +59,11 @@
                     <div class="form-group">
                         <label for="name" role="button">@awt('Name of your shop')</label>
                         <input type="text" name="name" id="name" class="form-control" placeholder="@awt('Name of your shop')" required>
+                    </div>
+
+					<div class="form-group">
+                        <label for="phone" role="button">@awt('Your Number Phone Whatsapp')</label>
+                        <input type="text" name="phone" id="phone" class="form-control" placeholder="@awt('Your Number Phone Whatsapp')" required>
                     </div>
 
                     <div class="form-group">

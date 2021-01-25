@@ -41,7 +41,8 @@ class ShopController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255|unique:shops'
+            'name' => 'required|string|max:255|unique:shops',
+            'phone' => 'required|string|max:255|unique:shops'
         ]);
 
         $shop = Shop::whereUserId(Auth::id())->first();
@@ -52,6 +53,7 @@ class ShopController extends Controller
         $shop->user_id = Auth::id();
         $shop->fill($request->only([
             'name',
+            'phone',
             'type_shop_id'
         ]));
 
@@ -78,6 +80,7 @@ class ShopController extends Controller
         
         $shop->fill($request->only([
             'name',
+            'phone',
             'type_shop_id'
         ]));
 

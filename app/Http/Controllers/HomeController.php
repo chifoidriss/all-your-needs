@@ -35,7 +35,11 @@ class HomeController extends Controller
             ->whereColumn('shop_id', 'shops.id')
             ->orderByDesc('boost')
             ->limit(1)
-        )->orderBy('created_at', 'DESC')->limit(10)->get();
+        )->whereHas('shop', function ($query)
+        {
+            $query->where('boost','>=',20);
+        })
+        ->orderBy('created_at', 'DESC')->limit(10)->get();
 
         return view('index', compact([
             'products',
