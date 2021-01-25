@@ -51,7 +51,10 @@
 
 @media only screen and (max-width: 1280px)
 {
-	
+	.card.card-small.card-post.mb-4.p-4
+	{
+		min-height: 400px;
+	}
 }
 
 /************
@@ -64,6 +67,10 @@
 	{
 		min-height: 475px;
 		 height: calc(150vw / 2.9); 
+	}
+	.card.card-small.card-post.mb-4.p-4
+	{
+		min-height: 360px;
 	}
 	.main_slider_content
 	{
