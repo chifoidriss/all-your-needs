@@ -63,7 +63,7 @@
 	.main_slider
 	{
 		min-height: 475px;
-		height: calc(150vw / 1.714);
+		 height: calc(150vw / 2.9); 
 	}
 	.main_slider_content
 	{
@@ -491,10 +491,10 @@
 	}
 	.main_slider
 	{
-		height: calc(100vh - 70px);
+		height: calc(100vh - 240px);
 		/*height: 80vw;*/
 		min-height: auto;
-		margin-top: 70px;
+		margin-top: 100px;
 	}
 	.main_slider_content h6
 	{
@@ -682,7 +682,13 @@
 14. 400px
 ************/
 
-@media only screen and (max-width: 400px)
+/* @media  (min-width: 375px)
 {
-	
-}
+	.main_slider
+	{
+		height: calc(100vh - 380px);
+		/*height: 80vw;*/
+		/* min-height: auto;
+		margin-top: 100px; */
+	/*}
+} */

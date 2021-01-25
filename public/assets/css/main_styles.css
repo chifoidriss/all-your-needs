@@ -1684,3 +1684,22 @@ section
 {
 	color: #fe4c50;
 }
+/* header display **/
+@media(max-width:576px){
+	.col-md-2 .card{
+		
+		display: none;
+		
+	}
+	.main-slider{
+		height:200px;
+	}
+}
+@media(max-width:991px){
+	.col-md-2 .card{
+		
+		display: none;
+		
+	}
+}
+

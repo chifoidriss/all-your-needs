@@ -223,7 +223,7 @@
     <script src="{{ asset('assets/admin/js/extras.1.1.0.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/shards-dashboards.1.1.0.js') }}"></script>
     <script src="{{ asset('assets/admin/js/app/app-blog-overview.1.1.0.js') }}"></script>
-    <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <!-- <script src="{{ asset('assets/js/custom.js') }}"></script> -->
 
     <script>
         $(document).ready(function () {

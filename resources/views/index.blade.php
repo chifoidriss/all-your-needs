@@ -15,11 +15,11 @@
 	
 		<div class="container fill_height ">
 			<div class="row mt-4">
-				<div class="col-2">
-					<div class="card card-small card-post mb-4">
-						<h6>Spring / Summer Collection 2017</h6>
+				<div class="col-md-2">
+					<div class="card card-small card-post mb-4 p-4">
+						<h6>Spring / Summer Collection 2018</h6>
 						<h5>@awt('Get up to 30% Off New Arrivals')</h5>
-						<div class="red_button shop_now_button">
+						<div class="red_button">
 							<a href="{{ route('product.index') }}">
 								@awt('shop now')
 							</a>
@@ -27,7 +27,7 @@
 					</div>
 				</div>
 
-				<div class="col-8">
+				<div class="col-md-8">
 				  <div class="card card-small card-post mb-4">
 					 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 							<ol class="carousel-indicators">
@@ -60,11 +60,11 @@
 
 		
 
-				<div class="col-2">
+				<div class="col-md-2">
 					<div class="card card-small card-post mb-4 p-4">
 						<h6>Spring / Summer Collection 2017</h6>
 						<h5>@awt('Get up to 30% Off New Arrivals')</h5>
-						<div class="red_button shop_now_button">
+						<div class="red_button">
 							<a href="{{ route('product.index') }}">
 								@awt('shop now')
 							</a>
@@ -170,16 +170,14 @@
 				<div class="col">
 					<div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
 
-						<div class="owl-carousel owl-theme product_slider">
-
 							<!-- Slide X -->
 
 							@foreach ($products as $product)
-							<div class="owl-item product_slider_item">
+							
 								@include('includes.product')
-							</div>
+							
 							@endforeach
-						</div>
+					
 						<!-- Slider Navigation -->
 
 						<div class="product_slider_nav_left product_slider_nav d-flex align-items-center justify-content-center flex-column">

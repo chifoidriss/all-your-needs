@@ -23,19 +23,6 @@
 <body>
 
 
-   <div class="color-switcher animated visible">
-        <div class="social-wrapper">
-           FGFGGG
-        </div>
-
-        <div class="close">
-            <i class="material-icons">close</i>
-        </div>
-        <div class="color-switcher-toggle animated pulse infinite">
-            <i class="material-icons">close</i>
-        </div>
-   </div>
-
     <div class="super_container">
 
         <!-- Header -->
@@ -153,8 +140,11 @@
                     <div class="row">
                         <div class="col-lg-12 text-right">
                             <div class="logo_container">
-                                <a href="{{ route('index') }}">
+                                <!-- <a href="{{ route('index') }}">
                                     All<span>Your</span><Span class="text-primary">Needs</Span>
+                                </a> -->
+                                <a href="{{ route('index') }}">
+                                   <img src="{{asset('assets/images/logo.png')}}"  style="width:150px; height:80px !important;" alt="">
                                 </a>
                             </div>
                             <nav class="navbar">
