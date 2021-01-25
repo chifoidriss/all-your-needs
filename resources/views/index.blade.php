@@ -5,6 +5,7 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('assets/css/main_styles.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+
 @endsection
 
 @section('content')
@@ -62,8 +63,32 @@
 
 				<div class="col-md-2">
 					<div class="card card-small card-post mb-4 p-4">
-						<h6>Spring / Summer Collection 2017</h6>
-						<h5>@awt('Get up to 30% Off New Arrivals')</h5>
+						
+							<div class="d-flex align-items-center">
+								<div class="benefit_icons">
+									<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+								</div>
+								<span>
+									<p class="text">@awt('Sell On AllYourNeeds?')</p>
+								</span>
+							</div>
+							<div class="d-flex align-items-center">
+								<div class="benefit_icons">
+									<i class="fa fa-phone" aria-hidden="true"></i>
+								</div>
+								<span>
+									<p class="text">@awt('Sell On AllYourNeeds?')</p>
+								</span>
+							</div>
+
+							<div class="d-flex align-items-center">
+								<div class="benefit_icons">
+									<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+								</div>
+								<span>
+									<p class="text">@awt('Sell On AllYourNeeds?')</p>
+								</span>
+							</div>
 						
 					</div>
 				</div>
