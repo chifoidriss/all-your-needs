@@ -15,8 +15,8 @@ class CreateSubscriptionsTable extends Migration
     {
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('shop_id')->constrained()->onDelete('restrict');
-            $table->foreignId('offer_id')->constrained()->onDelete('restrict');
+            $table->foreignId('shop_id')->constrained()->onDelete('cascade');
+            $table->foreignId('offer_id')->constrained()->onDelete('cascade');
             $table->unsignedDecimal('amount');
             $table->dateTime('start');
             $table->dateTime('end');

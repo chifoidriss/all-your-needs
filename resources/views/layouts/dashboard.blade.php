@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ app()->getLocale() }}">
 
 <head>
     <meta name="robots" content="noindex,nofollow"/>
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/css/all.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/material/material-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/admin/css/shards-dashboards.1.1.0.min.css') }}" id="main-stylesheet" data-version="1.1.0">
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/shards-dashboards.1.1.0.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/extras.1.1.0.min.css') }}">
 
     @yield('css')
@@ -75,8 +75,54 @@
                             </div>
                         </form>
 
+
+
                         <ul class="navbar-nav border-left flex-row ">
-                            <li class="nav-item border-right dropdown notifications">
+                            <li class="nav-item border-right dropdown text-uppercase notifications">
+                                <a class="nav-link nav-link-icon text-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="nav-link-icon__wrapper">
+                                        <div class="nav-link-icon__wrapper">
+                                            <i class="material-icons">euro_symbol</i>
+                                            <span class="badge badge-pill badge-danger">
+                                                {{ Cookie::get('devise', 'eur') }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-small" aria-labelledby="dropdownMenuLink">
+                                    @foreach (App\Models\Devise::all() as $item)
+                                        @if ($item->name != Cookie::get('devise', 'eur'))
+                                        <a class="dropdown-item" href="{{ route('devise', $item->name) }}">
+                                            {{ $item->name }}
+                                        </a>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </li>
+                            
+                            <li class="nav-item border-right dropdown text-uppercase notifications">
+                                <a class="nav-link nav-link-icon text-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="nav-link-icon__wrapper">
+                                        <div class="nav-link-icon__wrapper">
+                                            <i class="material-icons">language</i>
+                                            <span class="badge badge-pill badge-danger">
+                                                {{ Cookie::get('locale', 'en') }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-small" aria-labelledby="dropdownMenuLink">
+                                    @foreach (config('app.locales') as $key => $value)
+                                        @if (config('app.locale') != $key)
+                                        <a class="dropdown-item" href="{{ route('locale', $key) }}">
+                                            {{ $value }}
+                                        </a>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </li>
+                            
+                            {{-- <li class="nav-item border-right dropdown notifications">
                                 <a class="nav-link nav-link-icon text-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <div class="nav-link-icon__wrapper">
                                         <i class="material-icons">&#xE7F4;</i>
@@ -117,7 +163,7 @@
                                         @awt('View all Notifications')
                                     </a>
                                 </div>
-                            </li>
+                            </li> --}}
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
@@ -177,6 +223,7 @@
 
                     <!-- End Page Header -->
 
+                    @yield('alert')
 
                     @yield('content')
                 </div>
@@ -222,7 +269,6 @@
     <script src="{{ asset('assets/admin/js/libs/Sharrre/2.0.1/jquery.sharrre.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/extras.1.1.0.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/shards-dashboards.1.1.0.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/app/app-blog-overview.1.1.0.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
 
     <script>

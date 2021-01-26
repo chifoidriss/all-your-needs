@@ -17,6 +17,26 @@
             <span>@awt('Products')</span>
         </a>
     </li>
+    {{-- <li class="nav-item">
+        <a class="nav-link @if(Route::is('shop.product.*')) active @endif" href="{{ route('shop.product.index') }}" data-toggle="collapse" data-target="#products">
+            <i class="material-icons">work</i>
+            <span>@awt('Products')</span>
+        </a>
+        <ul class="nav flex-column collapse" id="products">
+            <li class="nav-item">
+                <a class="nav-link @if(Route::is('shop.product.*')) active @endif" href="{{ route('shop.product.index') }}">
+                    <i class="material-icons">work</i>
+                    <span>@awt('List of Products')</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @if(Route::is('shop.product.*')) active @endif" href="{{ route('shop.product.index') }}">
+                    <i class="material-icons">work</i>
+                    <span>@awt('List of Products')</span>
+                </a>
+            </li>
+        </ul>
+    </li> --}}
     <li class="nav-item">
         <a class="nav-link @if(Route::is('shop.subscription.*')) active @endif" href="{{ route('shop.subscription.index') }}">
             <i class="material-icons">payment</i>

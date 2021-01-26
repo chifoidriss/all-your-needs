@@ -43,96 +43,148 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-7">
+        <div class="col-lg-4">
             <div class="single_product_pics">
                 <div class="row">
-                    <div class="col-lg-3 thumbnails_col order-lg-1 order-2">
-                        <div class="single_product_thumbnails">
-                            <ul>
-                                <li class="active">
-                                    <img src="{{ asset('storage/'.$product->image) }}" data-image="{{ asset('storage/'.$product->image) }}">
-                                </li>
-                                @foreach ($product->galleries as $item)
-                                <li>
-                                    <img src="{{ asset('storage/'.$item->image) }}" data-image="{{ asset('storage/'.$item->image) }}">
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-9 image_col order-lg-2 order-1">
+                    <div class="col-12 image_col">
                         <div class="single_product_image">
                             <div class="single_product_image_background" style="background-image:url({{ asset('storage/'.$product->image) }})"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12">
+                        <div class="d-flex mt-2">
+                            <span role="button" class="border radius p-1 mr-1 active">
+                                <img height="64px" src="{{ asset('storage/'.$product->image) }}" id="product_img" data-image="{{ asset('storage/'.$product->image) }}">
+                            </span>
+                            @foreach ($product->galleries as $item)
+                            <span role="button" class="border radius p-1 mx-1">
+                                <img height="64px" src="{{ asset('storage/'.$item->image) }}" onclick="changeImage(this)" data-image="{{ asset('storage/'.$item->image) }}">
+                            </span>
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-5">
-            <div class="product_details">
-                <div class="product_details_title">
-                    <h2>{{ $product->name }}</h2>
-                    <p>
-                        {{ $product->description }}
-                    </p>
-                </div>
-                <div class="free_delivery d-flex flex-row align-items-center justify-content-center">
-                    <span class="ti-truck"></span>
-                    <span>@awt('free delivery')</span>
-                </div>
-                <div class="original_price">{{ getPrice($product->old_price) }}</div>
-                <div class="product_price">{{ getPrice($product->price) }}</div>
-                <ul class="star_rating">
-                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                    <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                </ul>
-                
-                {{-- <div class="product_color">
-                    <span>Select Color:</span>
-                    <ul>
-                        <li style="background: #e54e5d"></li>
-                        <li style="background: #252525"></li>
-                        <li style="background: #60b3f3"></li>
-                    </ul>
-                </div> --}}
+        <div class="col-lg-8">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="product_details">
+                        <div class="product_details_title">
+                            <h2>{{ $product->name }}</h2>
+                            <p>
+                                {{ $product->description }}
+                            </p>
+                        </div>
 
-                <div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">
-                    <span>@awt('Quantity'):</span>
-                    <div class="quantity_selector">
-                        <span class="minus">
-                            <i class="fa fa-minus" aria-hidden="true"></i>
-                        </span>
-                        <span id="quantity_value">1</span>
-                        <span class="plus">
-                            <i class="fa fa-plus" aria-hidden="true"></i>
-                        </span>
+                        <div class="original_price">{{ getPrice($product->old_price) }}</div>
+                        <div class="product_price">{{ getPrice($product->price) }}</div>
+                        <ul class="star_rating">
+                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                        </ul>
+                        
+                        {{-- <div class="product_color">
+                            <span>Select Color:</span>
+                            <ul>
+                                <li style="background: #e54e5d"></li>
+                                <li style="background: #252525"></li>
+                                <li style="background: #60b3f3"></li>
+                            </ul>
+                        </div> --}}
+        
+                        <div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">
+                            <span>@awt('Quantity'):</span>
+                            <div class="quantity_selector">
+                                <span class="minus">
+                                    <i class="fa fa-minus" aria-hidden="true"></i>
+                                </span>
+                                <span id="quantity_value">1</span>
+                                <span class="plus">
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <div class="red_button add_to_cart_button">
+                                <a href="#">
+                                    @awt('add to cart')
+                                </a>
+                            </div>
+                            <div class="product_favorite d-flex flex-column align-items-center justify-content-center"></div>
+                        </div>
+        
+                        <div class="mt-4">
+                            <div class="row">
+                                <div class="col-12">
+                                    <a href="#" class="btn btn-block btn-primary">
+                                        <i class="fa fa-comment" aria-hidden="true"></i>
+                                        @awt('Contact on') Whatsapp
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="red_button add_to_cart_button">
-                        <a href="#">
-                            @awt('add to cart')
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="free_delivery mt-0 px-2 d-flex flex-row align-items-center justify-content-between">
+                        <span class="ti-truck"></span>
+                        <span>@awt('free delivery')</span>
+                    </div>
+                    <div class="free_delivery mt-0 px-2 d-flex flex-row align-items-center justify-content-between">
+                        <span class="ti-money"></span>
+                        <span>@awt('cach on delivery')</span>
+                    </div>
+                    <div class="free_delivery mt-0 mb-2 px-2 d-flex flex-row align-items-center justify-content-between">
+                        <i class="fa fa-undo" aria-hidden="true"></i>
+                        <span>@awt('45 days return')</span>
+                    </div>
+
+                    <div class="border">
+                        <a href="#" class="p-2 border-bottom font-weight-bold text-secondary text-uppercase d-flex align-items-center justify-content-between">
+                            @awt('Vendor information')
+                            <span>
+                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                            </span>
                         </a>
+                        <div class="pt-2 px-2">
+                            <b>{{ $product->shop->name }}</b>
+                        </div>
+                        <div class="p-2 d-flex flex-wrap align-items-center justify-content-between">
+                            <div class="d-flex flex-column">
+                                <div class="">
+                                    <b>{{ $product->shop->follows->count() }}</b>
+                                    @awt('Followers')
+                                </div>
+                                <div class="">
+                                    <b>{{ $product->likes->count() }}</b>
+                                    @awt('Likes')
+                                </div>
+                                <div class="">
+                                    <b>{{ $product->shop->products->count() }}</b>
+                                    @awt('Products')
+                                </div>
+                            </div>
+                            <div class="">
+                                <a href="#" class="btn btn-sm btn-outline-info">
+                                    @awt('Follow')
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="product_favorite d-flex flex-column align-items-center justify-content-center"></div>
-                </div>
 
-                <div class="mt-4">
-                    <div class="row">
-                        <div class="col-md-6 col-12">
-                            <a href="#" class="btn btn-block btn-primary">
-                                <i class="fa fa-comment" aria-hidden="true"></i>
-                                @awt('Contact on') Whatsapp
-                            </a>
-                        </div>
-                        <div class="col-md-6 col-12">
-                            <a href="#" class="btn btn-block btn-primary">
-                                <i class="fa fa-comment" aria-hidden="true"></i>
-                                @awt('Contact on') Messenger
-                            </a>
-                        </div>
+                    <div class="py-2">
+                        @awt('Sell on')
+                        <a href="{{ route('shop.create') }}">
+                            <span class="text-uppercase font-weight-bold">
+                                <span class="text-secondary">All</span><span class="text-danger">Your</span><span class="text-primary">Needs</span>
+                            </span>
+                            ?
+                        </a>
                     </div>
                 </div>
             </div>
@@ -151,9 +203,9 @@
                         <li class="tab active" data-active-tab="tab_1">
                             <span>@awt('Description')</span>
                         </li>
-                        <li class="tab" data-active-tab="tab_2">
+                        {{-- <li class="tab" data-active-tab="tab_2">
                             <span>@awt('Additional Information')</span>
-                        </li>
+                        </li> --}}
                         <li class="tab" data-active-tab="tab_3">
                             <span>@awt('Reviews') (2)</span>
                         </li>
@@ -174,7 +226,7 @@
                                 <h4>@awt('Description')</h4>
                             </div>
                             <div class="tab_text_block">
-                                {!! $product->information !!}    
+                                {!! $product->description !!}    
                             </div>
                         </div>
                     </div>
@@ -182,17 +234,17 @@
 
                 <!-- Tab Additional Info -->
 
-                <div id="tab_2" class="tab_container">
+                {{-- <div id="tab_2" class="tab_container">
                     <div class="row">
                         <div class="col additional_info_col">
                             <div class="tab_title additional_info_title">
                                 <h4>@awt('Additional Information')</h4>
                             </div>
-                            {{-- <p>COLOR:<span>Gold, Red</span></p>
-                            <p>SIZE:<span>L,M,XL</span></p> --}}
+                            <p>COLOR:<span>Gold, Red</span></p>
+                            <p>SIZE:<span>L,M,XL</span></p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Tab Reviews -->
 
@@ -274,4 +326,12 @@
 @section('js')
 <script src="{{ asset('assets/plugins/jquery-ui-1.12.1.custom/jquery-ui.js') }}"></script>
 <script src="{{ asset('assets/js/single_custom.js') }}"></script>
+
+<script>
+    var product_img = document.getElementById('product_img');
+    function changeImage(img) {
+        console.log(img);
+        product_img.style.backgroundImage = img.dataImage;
+    }
+</script>
 @endsection

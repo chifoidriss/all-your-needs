@@ -35,8 +35,8 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $subscription->offer->name }}</td>
                         <td>{{ getPrice($subscription->amount) }}</td>
-                        <td>{{ formatDate($subscription->start, 0, 1) }}</td>
-                        <td>{{ formatDate($subscription->end, 0, 1) }}</td>
+                        <td>{{ formatDate($subscription->start, 0, 0) }}</td>
+                        <td>{{ formatDate($subscription->end, 0, 0) }}</td>
                         <td>{{ $subscription->is_active ? awt('Active') : awt('Expired') }}</td>
                         <td>
                             <a href="#" class="btn btn-danger">

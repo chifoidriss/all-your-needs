@@ -153,6 +153,49 @@
                         @enderror
                     </div>
                 </div>
+
+                {{-- <div class="form-group">
+                    <div class="table-responsive">
+                        <table class="table table-sm table-hover">
+                            <caption>
+                                <a href="#" class="add-line text-primary">
+                                    <i class="fas fa-plus"></i>
+                                    @awt('Add new line')
+                                </a>
+                            </caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">@awt('Description') (EN)</th>
+                                    <th scope="col">@awt('Value')</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            @foreach ($product->content as $line)
+                            <tr>
+                                <th role="row">
+                                    {{ $loop->index + 1 }}
+                                </th>
+    
+                                <td>
+                                    <input type="text" name="keys[]" class="form-control" value="{{ $line['key'] }}">
+                                </td>
+        
+                                <td>
+                                    <input type="text" name="values[]" class="form-control" value="{{ $line['value'] }}">
+                                </td>
+                                
+                                <td>
+                                    <a class="remove-line text-danger" role="button">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            @endforeach
+    
+                        </table>
+                    </div>
+                </div> --}}
     
                 <div class="form-group">
                     <label for="image">@awt('Product Image')</label>
@@ -198,7 +241,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="description">@awt('Description')</label>
+                    <label for="description">@awt('description')</label>
                     <textarea class="form-control @error('description') is-invalid @enderror"
                     id="description" name="description" rows="20">{{ old('description', $product->description) }}</textarea>
                     @error('description')
@@ -326,4 +369,35 @@
                 'image | removeformat | help'
         });
     </script>
+
+<script>
+    $('.remove-line').click(function (e) {
+        e.preventDefault();
+        $(this).parent().parent().remove();
+    });
+
+    $('.add-line').click(function (e) {
+        e.preventDefault();
+
+        var node = '';
+        node =  '<tr>' +
+                    '<th role="row">' +
+                        '.' +
+                    '</th>' +
+                    '<td>' +
+                        '<input type="text" name="keys[]" class="form-control" placeholder="@awt("Type here to enter something")">' +
+                    '</td>' +
+                    '<td>' +
+                        '<input type="text" name="values[]" class="form-control" placeholder="@awt("Type here to enter something")">' +
+                    '</td>' +
+                    '<td>' +
+                        '<a href="#" class="remove-line text-danger" role="button">' +
+                            '<i class="fas fa-times"></i>' +
+                        '</a>' +
+                    '</td>' +
+                '</tr>';
+
+        $(this).parent().parent().append(node);
+    });
+</script>
 @endsection

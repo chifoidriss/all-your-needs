@@ -15,7 +15,7 @@ class CreateSuperCategoriesTable extends Migration
     {
         Schema::create('super_categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('collection_id')->constrained()->onDelete('restrict');
+            $table->foreignId('collection_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->string('slug', 150)->unique()->nullable();
             $table->string('description')->nullable();

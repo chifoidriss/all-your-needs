@@ -58,6 +58,8 @@ Route::name('shop.')->prefix('my-shop')->middleware(['auth:web'])->group(functio
 
     # Routes of Products for vendor
     Route::resource('product', 'Shop\ProductController');
+    Route::get('product/status/{id}', 'Shop\ProductController@status')->name('product.status');
+
     Route::get('collections/{id}', 'Shop\ProductController@collection');
     Route::get('categories/{id}', 'Shop\ProductController@category');
     Route::get('galleries/{id}/{product}', 'Shop\ProductController@gallery')->name('product.gallery');
@@ -70,3 +72,4 @@ Route::name('shop.')->prefix('my-shop')->middleware(['auth:web'])->group(functio
 
 Route::get('products/{collection?}/{superCategory?}/{category?}', 'ProductController@index')->name('product.index');
 Route::get('product/{name}/{id}', 'ProductController@show')->name('product.show');
+// Route::get('shop/{name}', 'ShopController@show')->name('shop.show');

@@ -23,10 +23,30 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $order = request()->order ?? 'asc';
+        $q = request()->q;
+        $filter = request()->filter;
+        $per_page = request()->per_page ?? 10;
+
         $shop = Shop::whereUserId(Auth::id())->firstOrFail();
-        $products = Product::whereShopId($shop->id)->paginate(10);
+        $products = Product::whereShopId($shop->id);
+
+        if ($q && strlen($q) >= 2) {
+            $products = $products->where('name', 'like', "%$q%");
+        }
+
+        if ($filter) {
+            $products = $products->orderBy($filter, $order);
+        }
+
+        $products = $products->paginate($per_page);
+        
         return view('vendor.products.index', compact([
-            'products'
+            'products',
+            'order',
+            'q',
+            'filter',
+            'per_page',
         ]));
     }
 
@@ -221,6 +241,21 @@ class ProductController extends Controller
         ])->firstOrFail();
 
         $product->delete();
+
+        return back();
+    }
+
+
+    public function status($id)
+    {
+        $shop = Shop::whereUserId(Auth::id())->firstOrFail();
+        $product = Product::where([
+            'id' => $id,
+            'shop_id' => $shop->id
+        ])->firstOrFail();
+
+        $product->status = !$product->status;
+        $product->save();
 
         return back();
     }
