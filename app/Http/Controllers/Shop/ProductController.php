@@ -92,6 +92,7 @@ class ProductController extends Controller
         $product->fill($request->only([
             'name',
             'description',
+            'keywords',
             'price',
             'old_price',
             'qty'
@@ -193,6 +194,7 @@ class ProductController extends Controller
         $product->fill($request->only([
             'name',
             'description',
+            'keywords',
             'price',
             'old_price',
             'qty'

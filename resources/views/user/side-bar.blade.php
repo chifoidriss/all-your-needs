@@ -29,6 +29,12 @@
                 @awt('My favorites')
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
             </a>
+            @if (Auth::user()->isAdmin)
+            <a class="side-item text-danger" href="{{ route('admin.index') }}">
+                @awt('Administration')
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </a>
+            @endif
             @if (Auth::user()->shop)
             <a class="side-item creation" href="{{ route('shop.show') }}">
                 @awt('Manage my shop')

@@ -75,7 +75,12 @@
             <span>@awt('Type of Shop')</span>
         </a>
     </li>
-
+    <li class="nav-item">
+        <a class="nav-link @if(Route::is('admin.subscription.*')) active @endif" href="{{ route('admin.subscription.index') }}">
+            <i class="material-icons">shop_two</i>
+            <span>@awt('Subscription')</span>
+        </a>
+    </li>
     <li class="nav-item">
         <a class="nav-link @if(Route::is('admin.super_cat.*')) active @endif" href="{{ route('admin.super_cat.index') }}">
             <i class="material-icons">shop_two</i>

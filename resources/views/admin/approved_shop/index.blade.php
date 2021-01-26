@@ -17,6 +17,7 @@
                           <th scope="col" class="border-0">#</th>
                           <th scope="col" class="border-0"> Name</th>
                           <th scope="col" class="border-0">Type Shop</th>
+                          <th scope="col" class="border-0">Boost Level</th>
                           <th scope="col" class="border-0">Date Creation</th>
                           <th scope="col" class="border-0">Actions</th>
                          
@@ -27,6 +28,14 @@
                           <td>{{$loop->iteration}}</td>
                           <td>{{$shop->name}}</td>
                           <td>{{$shop->type_shop->name}}</td>
+                          <td>
+                              <div class="progress progress-sm mb-3">
+                                  <div id="progress-bar-example-1" class="progress-bar" role="progressbar"
+                                     style="width: {{$shop->boost}}%" aria-valuenow="{{$shop->boost}}" aria-valuemin="0"  aria-valuemax="100">
+                                  </div>
+                              </div>
+                              
+                          </td>
                           <td>{{$shop->created_at}}</td>
                           <td>
                             <form  action="{{route('admin.approved_shop.destroy', $shop->id)}}" method="post">
@@ -36,9 +45,11 @@
                                 <a href="{{route('admin.approved_shop.edit',$shop->id)}}"> 
                                   <button type="button"  class="btn btn-sm btn-outline-success">Boost Shop</button>
                                 </a>
-                                <button type="submit"  class="btn btn-sm btn-outline-warning">Approve Shop</button>
-                                 <button type="submit" class="btn btn-sm btn-outline-danger">Desapprove Shop</button>
-
+                                @if($shop->status)
+                                  <button type="submit"  class="btn btn-sm btn-outline-warning">Desapprove </button>
+                                @else
+                                  <button type="submit"  class="btn btn-sm btn-outline-danger">Approve Shop</button>
+                                @endif
                             </form>
                           </td>
                          

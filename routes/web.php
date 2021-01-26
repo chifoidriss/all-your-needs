@@ -31,7 +31,7 @@ Route::name('admin.')->prefix('admin')->middleware(['auth:web','admin'])->group(
     Route::resource('devise', 'DeviseController');
     Route::resource('manager_user', 'ManagerUserController');
     Route::resource('approved_shop','ApprovedShopController');
-   
+    Route::resource('subscription', 'SubscriptionController');
 });
 
 Route::get('/', 'HomeController@index')->name('index');

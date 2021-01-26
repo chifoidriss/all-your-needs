@@ -15,14 +15,27 @@ class ProductController extends Controller
     {
         $categories = Category::with('superCategory.collection')->whereHas('products')->get();
 
-        $queryProducts = Product::with('categories')->where([
+        // $queryProducts = Product::with(['categories.superCategory.collection', 'shop'])
+        // ->where([
+        //     'approved' => true,
+        //     'status' => true,
+        // ])->whereHas('shop', function($query) {
+        //     $query->where([
+        //         'status' => true
+        //     ])->whereHas('subscriptions', function($query) {
+        //         $query->where('end', '>=', date('Y-m-d'));
+        //     });
+        // });
+
+        $queryProducts = Product::with(['categories.superCategory.collection', 'shop'])
+        ->where([
             'approved' => true,
             'status' => true,
         ])->whereHas('shop', function($query) {
             $query->where([
                 'status' => true
             ])->whereHas('subscriptions', function($query) {
-                $query->where('end', '>=', date('Y-m-d'));
+                $query->where('end', '>=', date('Y-m-d H:i:s'));
             });
         })->orderByDesc(
             Shop::select('boost')
@@ -30,6 +43,8 @@ class ProductController extends Controller
             ->orderByDesc('boost')
             ->limit(1)
         );
+
+        $q = request()->q;
 
         if ($collection) {
             $collection = Collection::whereSlug($collection)->first();
@@ -56,6 +71,12 @@ class ProductController extends Controller
                     $query->where('category_id', $category->id);
                 });
             }
+        }
+
+        if ($q && strlen($q) >= 2) {
+            $queryProducts = $queryProducts->where('name', 'like', "%$q%")
+                                            ->orWhere('price', 'like', "%$q%")
+                                            ->orWhere('keywords', 'like', "%$q%");
         }
 
         $products = $queryProducts->latest()->paginate(8);

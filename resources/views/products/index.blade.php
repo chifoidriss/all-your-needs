@@ -161,7 +161,7 @@
 
                             <!-- Product Grid -->
 
-                            <div class="product-grid">
+                            <div class="product-grid owl-carousel owl-theme">
                                 @foreach ($products as $product)
                                     @include('includes.product')
                                 @endforeach

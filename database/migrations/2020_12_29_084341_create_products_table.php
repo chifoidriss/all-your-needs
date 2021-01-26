@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->longText('content')->nullable();
+            $table->string('keywords')->nullable();
             $table->unsignedDecimal('price');
             $table->unsignedDecimal('old_price');
             $table->unsignedSmallInteger('qty');

@@ -17,6 +17,11 @@ class Subscription extends Model
     {
         return $this->belongsTo(Offer::class);
     }
+
+    public function shop()
+    {
+        return $this->belongsTo(Shop::class);
+    }
     
     public function getIsActiveAttribute()
     {

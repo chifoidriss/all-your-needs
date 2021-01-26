@@ -11,13 +11,59 @@
 
 	<!-- Slider -->
 
-	<div class="main_slider" style="background-image:url(/assets/images/slider_1.jpg)">
-		<div class="container fill_height">
-			<div class="row align-items-center fill_height">
-				<div class="col">
-					<div class="main_slider_content">
+	<div class="main_slider" > 
+	
+		<div class="container fill_height ">
+			<div class="row mt-4">
+				<div class="col-2">
+					<div class="card card-small card-post mb-4">
 						<h6>Spring / Summer Collection 2017</h6>
-						<h1>@awt('Get up to 30% Off New Arrivals')</h1>
+						<h5>@awt('Get up to 30% Off New Arrivals')</h5>
+						<div class="red_button shop_now_button">
+							<a href="{{ route('product.index') }}">
+								@awt('shop now')
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-8">
+				  <div class="card card-small card-post mb-4">
+					 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+							<ol class="carousel-indicators">
+								<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+								<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+								<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+							</ol>
+  							<div class="carousel-inner">
+								<div class="carousel-item active">
+									<img class="d-block w-100 " style="max-height:400px;" src="/assets/images/vendeur1.jpg" alt="First slide">
+								</div>
+									<div class="carousel-item">
+								<img class="d-block w-100" style="max-height:400px;" src="/assets/images/vendeur2.jpg" alt="Second slide">
+								</div>
+								<div class="carousel-item">
+									<img class="d-block w-100" style="max-height:400px;" src="/assets/images/vendeur3.jpg" alt="Third slide">
+								</div>
+  							</div>
+							<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+									<span class="sr-only">Previous</span>
+							</a>
+							<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"></span>
+									<span class="sr-only">Next</span>
+							</a>
+					   </div>
+					</div>
+				</div>
+
+		
+
+				<div class="col-2">
+					<div class="card card-small card-post mb-4 p-4">
+						<h6>Spring / Summer Collection 2017</h6>
+						<h5>@awt('Get up to 30% Off New Arrivals')</h5>
 						<div class="red_button shop_now_button">
 							<a href="{{ route('product.index') }}">
 								@awt('shop now')
@@ -27,8 +73,50 @@
 				</div>
 			</div>
 		</div>
-	</div>
-
+	</div> 
+ <!-- pub -->
+	<div class="benefit" style=" margin-top: -10rem !important;">
+            <div class="container">
+                <div class="row benefit_row">
+                    <div class="col-lg-3 benefit_col">
+                        <div class="benefit_item d-flex flex-row align-items-center">
+                            <div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
+                            <div class="benefit_content">
+                                <h6>@awt('free shipping')</h6>
+                                <p>@awt('Suffered Alteration in Some Form')</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 benefit_col">
+                        <div class="benefit_item d-flex flex-row align-items-center">
+                            <div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
+                            <div class="benefit_content">
+                                <h6>@awt('cach on delivery')</h6>
+                                <p>@awt('The Internet Tend To Repeat')</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 benefit_col">
+                        <div class="benefit_item d-flex flex-row align-items-center">
+                            <div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true"></i></div>
+                            <div class="benefit_content">
+                                <h6>@awt('45 days return')</h6>
+                                <p>@awt('Making it Look Like Readable')</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 benefit_col">
+                        <div class="benefit_item d-flex flex-row align-items-center">
+                            <div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
+                            <div class="benefit_content">
+                                <h6>@awt('opening all week')</h6>
+                                <p>@awt('8AM - 09PM')</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 	<!-- Banner -->
 
 	<div class="banner">
@@ -82,10 +170,24 @@
 				<div class="col">
 					<div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
 
-						@foreach ($products as $product)
-							@include('includes.product')
-						@endforeach
+						<div class="owl-carousel owl-theme product_slider">
 
+							<!-- Slide X -->
+
+							@foreach ($products as $product)
+							<div class="owl-item product_slider_item">
+								@include('includes.product')
+							</div>
+							@endforeach
+						</div>
+						<!-- Slider Navigation -->
+
+						<div class="product_slider_nav_left product_slider_nav d-flex align-items-center justify-content-center flex-column">
+							<i class="fa fa-chevron-left" aria-hidden="true"></i>
+						</div>
+						<div class="product_slider_nav_right product_slider_nav d-flex align-items-center justify-content-center flex-column">
+							<i class="fa fa-chevron-right" aria-hidden="true"></i>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -223,6 +325,7 @@
 			</div>
 		</div>
 	</div>
+       
 
 @endsection
 

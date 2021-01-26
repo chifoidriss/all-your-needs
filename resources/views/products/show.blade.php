@@ -144,15 +144,13 @@
                         <span>@awt('45 days return')</span>
                     </div>
 
-                    <div class="border">
-                        <a href="#" class="p-2 border-bottom font-weight-bold text-secondary text-uppercase d-flex align-items-center justify-content-between">
-                            @awt('Vendor information')
-                            <span>
-                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                            </span>
-                        </a>
-                        <div class="pt-2 px-2">
-                            <b>{{ $product->shop->name }}</b>
+                <div class="mt-4">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <a href="https://api.whatsapp.com/send?phone=+237691247618&text= Bonjour {{ $product->shop->name }} j'aimerais acheter le produit: dont la quantité est :"  class="btn btn-block btn-success">
+                                <i class="fa fa-comment" aria-hidden="true"></i>
+                                @awt('Contact on') Whatsapp
+                            </a>
                         </div>
                         <div class="p-2 d-flex flex-wrap align-items-center justify-content-between">
                             <div class="d-flex flex-column">

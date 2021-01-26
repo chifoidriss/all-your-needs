@@ -154,6 +154,15 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label for="keywords">@awt('keywords')</label>
+                    <input type="text" class="form-control @error('keywords') is-invalid @enderror"
+                        id="keywords" name="keywords" value="{{ old('keywords', $product->keywords) }}">
+                    @error('keywords')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
                 {{-- <div class="form-group">
                     <div class="table-responsive">
                         <table class="table table-sm table-hover">
