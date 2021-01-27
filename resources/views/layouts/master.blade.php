@@ -307,7 +307,7 @@
                     
                     <li class="menu_item">
                         <a href="{{ route('index') }}">
-                            @awt('home')
+                            @awt('Home')
                         </a>
                     </li>
                     <li class="menu_item">
@@ -317,12 +317,12 @@
                     </li>
                     <li class="menu_item">
                         <a href="#">
-                            @awt('blog')
+                            @awt('Blog')
                         </a>
                     </li>
                     <li class="menu_item">
                         <a href="{{ route('contact') }}">
-                            @awt('contact')
+                            @awt('Contact')
                         </a>
                     </li>
                 </ul>
@@ -339,7 +339,8 @@
 			<div class="section_title">
 				<h2>@awt('Partners')</h2>
 			</div>
-	    </div>
+        </div>
+        
         <div class="owl-carousel owl-theme product_slider">
 
             <!-- Slide partners -->
@@ -446,27 +447,26 @@
                         </div>
                     </div> -->
 
-                        <div class="col-lg-6">
-                        
-                            <div class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center mr-2">
-                                <ul class="footer_nav">
-                                    <li>
-                                        <a href="{{ route('shop.create') }}">
-                                            @awt('Sell on AllYourNeeds')
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            @awt('About it')
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('contact') }}">
-                                            @awt('Contact us')
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+                    <div class="col-lg-6">
+                        <div class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center mr-2">
+                            <ul class="footer_nav">
+                                <li>
+                                    <a href="{{ route('shop.create') }}">
+                                        @awt('Sell on') AllYourNeeds
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        @awt('About us')
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('contact') }}">
+                                        @awt('Contact us')
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
@@ -476,7 +476,7 @@
                     <div class="col-lg-3">
                         <div class="footer_nav_container">
                             <div class="cr">
-                                @awt('Copyright') © {{ date('Y') }} RvjCorp && HomeDev @awt('All Rights Reserverd').
+                                @awt('Copyright') © {{ date('Y') }} RvjCorp && Homedeve @awt('All Rights Reserverd').
                             </div>
                         </div>
                     </div>
@@ -490,7 +490,7 @@
                     <div class="col-lg-4">
                         <div class="footer_nav_container">
                             <div class="cr">
-                                @awt('Contact us at :+237 671 50 40 37 / +237 691 67 48 09 Douala-Cameroon') (Cité des Palmiers).
+                                @awt('Contact us at') :+237 671 50 40 37 / +237 691 67 48 09 Douala-Cameroon (Cité des Palmiers).
                             </div>
                         </div>
                     </div>
