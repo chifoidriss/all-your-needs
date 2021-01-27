@@ -20,7 +20,8 @@ class CategoryController extends Controller
         $validateDate=$request->validate([
             'name'=>'required',
             'description'=>'required',
-            'supercategory_id'=>'required',
+            'super_category_id'=>'required',
+            'slug'=>'required',
         ]);
 
         $collection = Collection::create($validateDate);
@@ -49,7 +50,8 @@ class CategoryController extends Controller
        $validateDate=$request->validate([
           'name'=>'required',
           'description'=>'required',
-          'supercategory_id'=>'required',
+          'super_category_id'=>'required',
+          'slug'=>'required',
       ]);
 
       $collection = Category::findOrFail($id);

@@ -12,6 +12,7 @@ class SuperCategoryController extends Controller
         $isEdit = false;
         $superCategory = new SuperCategory();
         $collections = Collection::all();
+
         return view ('admin.super_category.create-edit', compact([
             'collections',
             'isEdit',
@@ -25,6 +26,7 @@ class SuperCategoryController extends Controller
             'name'=>'required',
             'description'=>'required',
             'collection_id'=>'required',
+            'slug'=>'required',
         ]);
 
         $collection = Collection::create($validateDate);
@@ -55,14 +57,15 @@ class SuperCategoryController extends Controller
     
     public function update(Request $request, $id){
    
-       $validateDate=$request->validate([
+        $validateDate=$request->validate([
             'name'=>'required',
             'description'=>'required',
             'collection_id'=>'required',
+            'slug'=>'required',
         ]);
 
-        $collection = SuperCategory::findOrFail($id);
-        $collection = SuperCategory::where($id)->update($validateDate);
+        $superCategory = SuperCategory::findOrFail($id);
+        $superCategory->update($validateDate);
             
         return redirect('admin/super_cat');
 

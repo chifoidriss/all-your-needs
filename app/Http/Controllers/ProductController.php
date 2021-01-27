@@ -97,9 +97,26 @@ class ProductController extends Controller
             });
         })->firstOrFail();
 
+        $similar = Product::where('id', '<>', $product->id)
+        ->where([
+            'approved' => true,
+            'status' => true,
+        ])->whereHas('shop', function($query) {
+            $query->where([
+                'status' => true
+            ])->whereHas('subscriptions', function($query) {
+                $query->where('end', '>=', date('Y-m-d'));
+            });
+        })
+        ->whereHas('categories', function ($query) use ($product) {
+            $query->whereIn('category_id', $product->categories);
+        })->limit(10)->get();
+
+        // dd($similar);
 
         return view('products.show', compact([
-            'product'
+            'product',
+            'similar',
         ]));
     }
 }

@@ -17,7 +17,7 @@
 		<div class="container fill_height">
 			<div class="row mt-4">
 				<div class="col-md-2">
-					<div class="card card-small card-post mb-4 p-4">
+					<div class="card card-small card-post mb-4 p-2">
 						<h6>@awt('Spring / Summer Collection') 2021</h6>
 						<h5>@awt('Get up to 30% Off New Arrivals')</h5>
 						<div class="red_button">
@@ -62,7 +62,7 @@
 		
 
 				<div class="col-md-2">
-					<div class="card card-small card-post mb-4 p-4">
+					<div class="card card-small card-post mb-4 p-2">
 						
 							<div class="d-flex align-items-center">
 								<div class="benefit_icons">

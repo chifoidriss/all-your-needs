@@ -15,35 +15,44 @@
                      @csrf   
                      @method('PUT')        
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Name" name="name" value="{{$rep->name}}"> 
-                        
-                    </div>
-
-
-                    <div class="form-group">
-                        <textarea type="text" class="form-control" name="description"  value="{{$rep->description}}" > 
-
-                        </textarea>
-                        
+                        <label for="name">name</label>
+                        <input type="text" class="form-control" placeholder="Name" id="name" name="name" value="{{$rep->name}}"> 
+                        @error('name')
+                           <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror  
                     </div>
 
                     <div class="form-group">
-                        <select class="form-control" name="supercategory_id" > 
-                             <option>
+                        <label for="slug">Slug</label>
+                        <input type="text" id="slug" class="form-control @error('slug') is-invalid @enderror" placeholder="Slug" name="slug" value="{{ old('slug') }}"> 
+                        @error('slug')
+                           <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror    
+                     </div>
+
+
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea type="text" class="form-control" id="description" name="description"  value="{{$rep->description}}"></textarea>
+                        @error('description')
+                           <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror  
+                    </div>
+
+                    <div class="form-group">
+                        <select class="form-control" name="super_category_id"> 
+                            <option value="">
                                 Choice a super category
-                              </option>
-                               @foreach($collection as $collec)
-                               <option value="{{$collec->id}}">
-                                   {{$collec->name}}
-                                </option>
-                                @endforeach
+                            </option>
+                            @foreach($collection as $collec)
+                            <option value="{{$collec->id}}">
+                                {{$collec->name}}
+                            </option>
+                            @endforeach
                         </select>
-                        
                     </div>
-
-                   
-                            
-                    <div class="col mb-6">
+    
+                    <div class="form-group">
                         <button type="submit" class="mb-2 btn btn-primary mr-2">Edit</button>
                         <button type="reset" class="mb-2 btn btn-danger mr-2">Cancel</button>
                     </div>           

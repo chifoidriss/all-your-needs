@@ -39,6 +39,12 @@
                     @enderror   
                 </div>
 
+                <div class="form-group">
+                    <input type="text" id="slug" class="form-control @error('slug') is-invalid @enderror" placeholder="Slug" name="slug" value="{{ old('slug',$superCategory->slug) }}"> 
+                    @error('slug')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror    
+                </div>
 
                 <div class="form-group">
                     <textarea type="text" id="description" class="form-control @error('description') is-invalid @enderror"
@@ -50,7 +56,7 @@
 
                 <div class="form-group">
                     <select class="form-control @error('collection_id') is-invalid @enderror" name="collection_id" id='collection_id'> 
-                        <option>
+                        <option value="">
                             Choisir une collection
                         </option>
                         @foreach($collections as $collection)

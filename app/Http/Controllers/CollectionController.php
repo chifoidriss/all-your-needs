@@ -16,9 +16,10 @@ class CollectionController extends Controller
 
 
     public function store(Request $request){
-        $validateDate=$request->validate([
+        $validateDate = $request->validate([
             'name'=>'required',
             'description'=>'required',
+            'slug'=>'required',
         ]);
 
         $collection = Collection::create($validateDate);
@@ -45,6 +46,7 @@ class CollectionController extends Controller
         $validateDate=$request->validate([
             'name'=>'required',
             'description'=>'required',
+            'slug'=>'required',
         ]);
 
         $collection = Collection::findOrFail($id);
