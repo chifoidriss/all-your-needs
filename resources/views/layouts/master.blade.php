@@ -145,7 +145,7 @@
                                     All<span>Your</span><Span class="text-primary">Needs</Span>
                                 </a> -->
                                 <a href="{{ route('index') }}">
-                                   <img src="{{asset('assets/images/logo.png')}}"  style="width:150px; height:80px !important;" alt="">
+                                   <img src="{{asset('assets/images/logo.png')}}" style="width:75px; height:75px !important;" alt="logo AllYourNeeds">
                                 </a>
                             </div>
 
@@ -205,7 +205,7 @@
                                     <li class="checkout">
                                         <a href="#">
                                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                            <span id="checkout_items" class="checkout_items">2</span>
+                                            <span id="checkout_items" class="checkout_items">0</span>
                                         </a>
                                     </li>
                                 </ul>
