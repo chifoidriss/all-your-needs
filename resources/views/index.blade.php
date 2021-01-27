@@ -64,11 +64,7 @@
 					<div class="card card-small card-post mb-4 p-4">
 						<h6>Spring / Summer Collection 2017</h6>
 						<h5>@awt('Get up to 30% Off New Arrivals')</h5>
-						<div class="red_button">
-							<a href="{{ route('product.index') }}">
-								@awt('shop now')
-							</a>
-						</div>
+						
 					</div>
 				</div>
 			</div>
