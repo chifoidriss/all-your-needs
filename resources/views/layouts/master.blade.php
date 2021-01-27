@@ -343,20 +343,20 @@
         <div class="owl-carousel owl-theme product_slider">
 
             <!-- Slide partners -->
-            <div class="owl-item product_slider_item ml-4">
+            <div class="owl-item">
                 <h2 class="mt-4 ml-4">Allo Bailleur</h2>
             </div>
 
-            <div class="owl-item product_slider_item">
-                <h2 class="mt-4  ml-2">RvjCorp</h2>
+            <div class="owl-item">
+                <h2 class="mt-4  ml-4">RvjCorp</h2>
             </div>
-            <div class="owl-item product_slider_item">
+            <div class="owl-item">
                 <h2 class="mt-4  ml-2">Homedeve</h2>
             </div>
-            <div class="owl-item product_slider_item">
+            <div class="owl-item">
                 <h2 class="mt-4  ml-2">Kiku</h2>
             </div>
-            <div class="owl-item product_slider_item">
+            <div class="owl-item ">
                 <h2 class="mt-4  ml-2">Stoready</h2>
             </div>
 		</div>
