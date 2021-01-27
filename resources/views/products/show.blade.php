@@ -121,14 +121,16 @@
         
                         <div class="mt-4">
                             <div class="d-flex flex-column">
-                                <a class="btn btn-block btn-success" href="https://api.whatsapp.com/send?phone=+237691247618&text=Bonjour {{ $product->shop->name }} j'aimerais acheter le produit: dont la quantité est :">
-                                    <i class="fa fa-comment" aria-hidden="true"></i>
-                                    @awt('Contact on') Whatsapp
+                                <a class="btn btn-block btn-outline-success" target="tab" href="https://api.whatsapp.com/send?phone={{ $product->shop->phone }}&text=@awt('Hi, I am interested in') [ {{ $product->name }} ] @awt('in') AllYourNeeds.">
+                                    <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                                    {{-- @awt('Contact on') --}}
+                                    Whatsapp ({{ $product->shop->phone }})
                                 </a>
                                 
-                                <a class="btn btn-block btn-primary" href="https://api.whatsapp.com/send?phone=+237691247618&text=Bonjour {{ $product->shop->name }} j'aimerais acheter le produit: dont la quantité est :">
+                                <a class="btn btn-block btn-outline-primary" target="tab" href="http://m.me/{{ $product->shop->facebook }}?ref=AllYourNeeds&source=@awt('Hi, I am interested in') [ {{ $product->name }} ] @awt('in') AllYourNeeds.">
                                     <i class="fa fa-comment" aria-hidden="true"></i>
-                                    @awt('Contact on') Messenger
+                                    {{-- @awt('Contact on') --}}
+                                    Messenger ({{ $product->shop->facebook }})
                                 </a>
                             </div>
                         </div>
@@ -197,7 +199,7 @@
         <div class="row">
             <div class="col">
                 <div class="tabs_container">
-                    <ul class="tabs d-flex flex-sm-row flex-column align-items-left align-items-md-center justify-content-center">
+                    <ul class="tabs d-flex align-items-center justify-content-start">
                         <li class="tab active" data-active-tab="tab_1">
                             <span>@awt('Description')</span>
                         </li>

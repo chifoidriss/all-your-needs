@@ -113,11 +113,11 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="facebook">Facebook URL</label>
-                        <input type="url" class="form-control" name="facebook" id="facebook" placeholder="Facebook URL" value="{{ old('facebook', $shop->facebook) }}">
+                        <input type="text" class="form-control" name="facebook" id="facebook" placeholder="Facebook URL" value="{{ old('facebook', $shop->facebook) }}">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="twitter">Twitter URL</label>
-                        <input type="url" class="form-control" name="twitter" id="twitter" placeholder="Twitter URL" value="{{ old('twitter', $shop->twitter) }}">
+                        <input type="text" class="form-control" name="twitter" id="twitter" placeholder="Twitter URL" value="{{ old('twitter', $shop->twitter) }}">
                     </div>
                 </div>
     

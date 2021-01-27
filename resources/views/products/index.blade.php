@@ -120,18 +120,29 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <span>@awt('Show')</span>
-                                        <span class="num_sorting_text">8</span>
+                                        <span>@awt('Show'):</span>
+                                        <span class="num_sorting_text">{{ $show }}</span>
                                         <i class="fa fa-angle-down"></i>
                                         <ul class="sorting_num">
                                             <li class="num_sorting_btn">
-                                                <span>8</span>
+                                                <a href="{{ add_query_params(['show' => 8]) }}">
+                                                    8
+                                                </a>
                                             </li>
                                             <li class="num_sorting_btn">
-                                                <span>12</span>
+                                                <a href="{{ add_query_params(['show' => 12]) }}">
+                                                    12
+                                                </a>
                                             </li>
                                             <li class="num_sorting_btn">
-                                                <span>24</span>
+                                                <a href="{{ add_query_params(['show' => 16]) }}">
+                                                    16
+                                                </a>
+                                            </li>
+                                            <li class="num_sorting_btn">
+                                                <a href="{{ add_query_params(['show' => 24]) }}">
+                                                    24
+                                                </a>
                                             </li>
                                         </ul>
                                     </li>
@@ -139,20 +150,26 @@
 
                                 <div class="pages d-flex flex-row align-items-center">
                                     <div class="page_current">
-                                        <span>1</span>
+                                        <span>{{ $products->currentPage() }}</span>
                                         <ul class="page_selection">
-                                            <li><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
+                                            @for ($i = 1; $i <= $products->lastPage(); $i++)
+                                                @if ($products->currentPage() != $i)
+                                                    <li>
+                                                        <a href="{{ $products->url($i) }}">
+                                                            {{ $i }}
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                            @endfor
                                         </ul>
                                     </div>
                                     
                                     <div class="page_total">
-                                        <span>@awt('of')</span> 3
+                                        <span>@awt('of')</span> {{ $products->lastPage() }}
                                     </div>
                                     
                                     <div id="next_page" class="page_next">
-                                        <a href="#">
+                                        <a href="{{ $products->nextPageUrl() }}">
                                             <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                                         </a>
                                     </div>
@@ -173,37 +190,60 @@
                                 <ul class="product_sorting">
                                     <li>
                                         <span>@awt('Show'):</span>
-                                        <span class="num_sorting_text">04</span>
+                                        <span class="num_sorting_text">{{ $show }}</span>
                                         <i class="fa fa-angle-down"></i>
                                         <ul class="sorting_num">
-                                            <li class="num_sorting_btn"><span>01</span></li>
-                                            <li class="num_sorting_btn"><span>02</span></li>
-                                            <li class="num_sorting_btn"><span>03</span></li>
-                                            <li class="num_sorting_btn"><span>04</span></li>
+                                            <li class="num_sorting_btn">
+                                                <a href="{{ add_query_params(['show' => 8]) }}">
+                                                    8
+                                                </a>
+                                            </li>
+                                            <li class="num_sorting_btn">
+                                                <a href="{{ add_query_params(['show' => 12]) }}">
+                                                    12
+                                                </a>
+                                            </li>
+                                            <li class="num_sorting_btn">
+                                                <a href="{{ add_query_params(['show' => 16]) }}">
+                                                    16
+                                                </a>
+                                            </li>
+                                            <li class="num_sorting_btn">
+                                                <a href="{{ add_query_params(['show' => 24]) }}">
+                                                    24
+                                                </a>
+                                            </li>
                                         </ul>
                                     </li>
                                 </ul>
 
                                 <span class="showing_results">
-                                    @awt('Showing') 1–3 @awt('of') 12 @awt('results')
+                                    @awt('Showing') {{ $products->firstItem() }}–{{ $products->lastItem() }}
+                                    @awt('of') {{ $products->total() }} @awt('results')
                                 </span>
                                 
                                 <div class="pages d-flex flex-row align-items-center">
                                     <div class="page_current">
-                                        <span>1</span>
+                                        <span>{{ $products->currentPage() }}</span>
                                         <ul class="page_selection">
-                                            <li><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
+                                            @for ($i = 1; $i <= $products->lastPage(); $i++)
+                                                @if ($products->currentPage() != $i)
+                                                    <li>
+                                                        <a href="{{ $products->url($i) }}">
+                                                            {{ $i }}
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                            @endfor
                                         </ul>
                                     </div>
                                     
                                     <div class="page_total">
-                                        <span>@awt('of')</span> 3
+                                        <span>@awt('of')</span> {{ $products->lastPage() }}
                                     </div>
 
                                     <div id="next_page_1" class="page_next">
-                                        <a href="#">
+                                        <a href="{{ $products->nextPageUrl() }}">
                                             <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                                         </a>
                                     </div>

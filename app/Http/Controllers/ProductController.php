@@ -15,18 +15,6 @@ class ProductController extends Controller
     {
         $categories = Category::with('superCategory.collection')->whereHas('products')->get();
 
-        // $queryProducts = Product::with(['categories.superCategory.collection', 'shop'])
-        // ->where([
-        //     'approved' => true,
-        //     'status' => true,
-        // ])->whereHas('shop', function($query) {
-        //     $query->where([
-        //         'status' => true
-        //     ])->whereHas('subscriptions', function($query) {
-        //         $query->where('end', '>=', date('Y-m-d'));
-        //     });
-        // });
-
         $queryProducts = Product::with(['categories.superCategory.collection', 'shop'])
         ->where([
             'approved' => true,
@@ -45,6 +33,7 @@ class ProductController extends Controller
         );
 
         $q = request()->q;
+        $show = request()->show ?? 8;
 
         if ($collection) {
             $collection = Collection::whereSlug($collection)->first();
@@ -79,7 +68,7 @@ class ProductController extends Controller
                                             ->orWhere('keywords', 'like', "%$q%");
         }
 
-        $products = $queryProducts->latest()->paginate(8);
+        $products = $queryProducts->latest()->paginate($show);
         
         // dd($products);
 
@@ -88,7 +77,8 @@ class ProductController extends Controller
             'categories',
             'collection',
             'superCategory',
-            'category'
+            'category',
+            'show',
         ]));
     }
 
