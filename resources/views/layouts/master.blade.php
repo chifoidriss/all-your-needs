@@ -22,10 +22,6 @@
 
 <body>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> c1e2548c59c9adda47c8bf74772f0f6858c34276
     <div class="super_container">
 
         <!-- Header -->
@@ -154,7 +150,7 @@
                             <div class="search-bar" id="search-bar">
                                 <form action="{{ route('product.index') }}" method="GET" class="form-inline">
                                     <div class="input-group w-100">
-                                        <input type="text" name="q" class="form-control" placeholder="@awt('Search ')...">
+                                        <input type="text" name="q" class="form-control" placeholder="@awt('Search something')..." value="{{ request()->q }}">
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-primary" type="submit">
                                                 <i class="fa fa-search"></i>
@@ -341,29 +337,28 @@
 
         <div class="col text-center mt-4">
 			<div class="section_title">
-					<h2>@awt('Partners')</h2>
+				<h2>@awt('Partners')</h2>
 			</div>
 	    </div>
         <div class="owl-carousel owl-theme product_slider">
 
-							<!-- Slide partners -->
-				<div class="owl-item product_slider_item ml-4">
-					<h2 class="mt-4 ml-4">Allo Bailleur</h2>
-				</div>
+            <!-- Slide partners -->
+            <div class="owl-item product_slider_item ml-4">
+                <h2 class="mt-4 ml-4">Allo Bailleur</h2>
+            </div>
 
-                <div class="owl-item product_slider_item">
-					<h2 class="mt-4  ml-2">RvjCorp</h2>
-				</div>
-                <div class="owl-item product_slider_item">
-					<h2 class="mt-4  ml-2">Homedeve</h2>
-				</div>
-                <div class="owl-item product_slider_item">
-					<h2 class="mt-4  ml-2">Kiku</h2>
-				</div>
-                <div class="owl-item product_slider_item">
-					<h2 class="mt-4  ml-2">Stoready</h2>
-				</div>
-			
+            <div class="owl-item product_slider_item">
+                <h2 class="mt-4  ml-2">RvjCorp</h2>
+            </div>
+            <div class="owl-item product_slider_item">
+                <h2 class="mt-4  ml-2">Homedeve</h2>
+            </div>
+            <div class="owl-item product_slider_item">
+                <h2 class="mt-4  ml-2">Kiku</h2>
+            </div>
+            <div class="owl-item product_slider_item">
+                <h2 class="mt-4  ml-2">Stoready</h2>
+            </div>
 		</div>
 
         <!-- cookie -->

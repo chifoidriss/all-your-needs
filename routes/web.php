@@ -72,4 +72,4 @@ Route::name('shop.')->prefix('my-shop')->middleware(['auth:web'])->group(functio
 
 Route::get('products/{collection?}/{superCategory?}/{category?}', 'ProductController@index')->name('product.index');
 Route::get('product/{name}/{id}', 'ProductController@show')->name('product.show');
-// Route::get('shop/{name}', 'ShopController@show')->name('shop.show');
+Route::get('shop/{name}', 'ShopController@detail')->name('shop.detail');
