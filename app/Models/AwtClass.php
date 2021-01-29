@@ -1,11 +1,12 @@
 <?php
-namespace App\Actions\AWT;
+
+namespace App\Models;
 
 use Exception;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Lang;
 
-class AWTClass
+class AwtClass
 {
 
     /**

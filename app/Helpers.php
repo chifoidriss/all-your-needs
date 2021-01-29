@@ -1,6 +1,6 @@
 <?php
 
-use App\Actions\AWT\AWTClass;
+use App\Models\AwtClass;
 use App\Models\Devise;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Cookie;
@@ -72,5 +72,5 @@ function add_query_params(array $params = []) {
 function awt($word, $locale = null) {
     // return $word;
     
-    return (new AWTClass())->awtTrans($word, $locale);
+    return (new AwtClass())->awtTrans($word, $locale);
 }
