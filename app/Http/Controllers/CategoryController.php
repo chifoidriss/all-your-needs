@@ -24,7 +24,7 @@ class CategoryController extends Controller
             'slug'=>'required',
         ]);
 
-        $collection = Collection::create($validateDate);
+        $collection = Category::create($validateDate);
             
         return redirect('admin/categorie');
     }
@@ -47,19 +47,17 @@ class CategoryController extends Controller
     
     public function update(Request $request, $id){
    
-       $validateDate=$request->validate([
-          'name'=>'required',
-          'description'=>'required',
-          'super_category_id'=>'required',
-          'slug'=>'required',
-      ]);
+        $validateDate=$request->validate([
+            'name'=>'required',
+            'description'=>'required',
+            'super_category_id'=>'required',
+            'slug'=>'required',
+        ]);
 
-      $collection = Category::findOrFail($id);
-      $collection = Category::where($id)->update($validateDate);
+        $category = Category::findOrFail($id);
+        $category->update($validateDate);
         
-     return redirect('admin/categorie');
-
-
+        return redirect('admin/categorie');
     }
 
     public function destroy($id){
