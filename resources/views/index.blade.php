@@ -14,11 +14,11 @@
 
 	<div class="main_slider" > 
 	
-		<div class="container fill_height">
+		<div class="container fill_height ">
 			<div class="row mt-4">
 				<div class="col-md-2">
-					<div class="card card-small card-post mb-4 p-2">
-						<h6>@awt('Spring / Summer Collection') 2021</h6>
+					<div class="card card-small card-post mb-4 p-4">
+						<h6>Spring / Summer Collection 2018</h6>
 						<h5>@awt('Get up to 30% Off New Arrivals')</h5>
 						<div class="red_button">
 							<a href="{{ route('product.index') }}">
@@ -62,31 +62,34 @@
 		
 
 				<div class="col-md-2">
-					<div class="card card-small card-post mb-4 p-2">
+					<div class="card card-small card-post mb-4 p-4">
 						
 							<div class="d-flex align-items-center">
+							  
 								<div class="benefit_icons">
 									<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 								</div>
-								<span>
-									<p class="text">@awt('Sell On AllYourNeeds?')</p>
-								</span>
+								<a href="{{route('user.profile')}}">
+									<span>
+										<p class="text">@awt('Sell On AllYourNeeds?')</p>
+									</span>
+							 	</a>
 							</div>
 							<div class="d-flex align-items-center">
 								<div class="benefit_icons">
 									<i class="fa fa-phone" aria-hidden="true"></i>
 								</div>
 								<span>
-									<p class="text">@awt('Sell On AllYourNeeds?')</p>
+									<p class="text">@awt(' Contact us at : 671 50 40 37 ')</p>
 								</span>
 							</div>
 
 							<div class="d-flex align-items-center">
 								<div class="benefit_icons">
-									<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+									<i class="fa fa-truck" aria-hidden="true"></i>
 								</div>
 								<span>
-									<p class="text">@awt('Sell On AllYourNeeds?')</p>
+									<p class="text">@awt('home delivery')</p>
 								</span>
 							</div>
 						
