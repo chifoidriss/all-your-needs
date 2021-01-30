@@ -3,11 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    
     <title>@yield('title') - All Your Needs</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="All Your Needs">
+    <meta name="keywords" content="all-your-needs, shopping,e-commerce,vendre,vendeur,Wally le génie, ALL YOUR NEEDS, mèches, perruques,vetements,bijoux" />
+	<meta name="author" content="Rvj && Chifo" />
 
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap4/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}">
@@ -341,26 +343,36 @@
 			</div>
         </div>
         
-        <div class="owl-carousel owl-theme product_slider">
+        <div class="owl-carousel owl-theme product_slider mt-4">
 
             <!-- Slide partners -->
-            <div class="owl-item">
-                <h2 class="mt-4 ml-4">Allo Bailleur</h2>
+             <div class="owl-item">
+              <a href="">
+               <img src="{{asset('assets/images/logo/allo.png')}}" alt="" width="200px" height="150px">
+              </a>
             </div>
 
             <div class="owl-item">
-                <h2 class="mt-4  ml-4">RvjCorp</h2>
+             <a href="">
+                <img src="{{asset('assets/images/logo/Rvj.png')}}" alt="" width="200px" height="150px">
+             </a>
             </div>
             <div class="owl-item">
-                <h2 class="mt-4  ml-2">Homedeve</h2>
+             <a href="https://www.homedeve.com/">
+                <img src="{{asset('assets/images/logo/homedeve.png')}}" alt="" width="200px" height="150px">
+             </a>
             </div>
             <div class="owl-item">
-                <h2 class="mt-4  ml-2">Kiku</h2>
+             <a href="https://www.stoready.com/en/">
+                <img src="{{asset('assets/images/logo/stoready.png')}}" alt="" width="200px" height="150px">
+             </a>
             </div>
             <div class="owl-item ">
-                <h2 class="mt-4  ml-2">Stoready</h2>
+             <a href="https://www.kikuu.cm/">
+                <img src="{{asset('assets/images/logo/kiku.png')}}" alt="" width="200px" height="150px">
+             </a>
             </div>
-		</div>
+		</div> 
 
         <!-- cookie -->
                 
