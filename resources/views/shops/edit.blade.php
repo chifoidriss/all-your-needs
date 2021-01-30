@@ -90,65 +90,65 @@
     
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="{{ old('email', $shop->email) }}">
+                        <label for="email">@awt('Email')</label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="@awt('Email')" value="{{ old('email', $shop->email) }}">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="url">URL</label>
-                        <input type="url" class="form-control" name="url" id="url" placeholder="URL" value="{{ old('url', $shop->url) }}">
-                    </div>
-                </div>
-    
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="phone">Numéro de téléphone (Whatsapp)</label>
-                        <input type="tel" class="form-control" name="phone" id="phone" placeholder="Numéro de téléphone (Whatsapp)" value="{{ old('phone', $shop->phone) }}">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="fax">Fax</label>
-                        <input type="tel" class="form-control" name="fax" id="fax" placeholder="Fax" value="{{ old('fax', $shop->fax) }}">
+                        <label for="url">@awt('Website')</label>
+                        <input type="url" class="form-control" name="url" id="url" placeholder="@awt('Website')" value="{{ old('url', $shop->url) }}">
                     </div>
                 </div>
     
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="facebook">Facebook URL</label>
-                        <input type="text" class="form-control" name="facebook" id="facebook" placeholder="Facebook URL" value="{{ old('facebook', $shop->facebook) }}">
+                        <label for="phone">@awt('Phone number') (Whatsapp)</label>
+                        <input type="tel" class="form-control" name="phone" id="phone" placeholder="(Whatsapp)" value="{{ old('phone', $shop->phone) }}">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="twitter">Twitter URL</label>
-                        <input type="text" class="form-control" name="twitter" id="twitter" placeholder="Twitter URL" value="{{ old('twitter', $shop->twitter) }}">
+                        <label for="fax">@awt('Fax')</label>
+                        <input type="tel" class="form-control" name="fax" id="fax" placeholder="@awt('Fax')" value="{{ old('fax', $shop->fax) }}">
+                    </div>
+                </div>
+    
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="facebook">@awt('Facebook page')</label>
+                        <input type="text" class="form-control" name="facebook" id="facebook" placeholder="Facebook" value="{{ old('facebook', $shop->facebook) }}">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="twitter">@awt('Twitter page')</label>
+                        <input type="text" class="form-control" name="twitter" id="twitter" placeholder="Twitter" value="{{ old('twitter', $shop->twitter) }}">
                     </div>
                 </div>
     
                 <div class="form-group">
-                    <label for="address">Address</label>
+                    <label for="address">@awt('Address')</label>
                     <input type="text" class="form-control" name="address" id="address" placeholder="1234 Main St" value="{{ old('address', $shop->address) }}">
                 </div>
     
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="city">City</label>
+                        <label for="city">@awt('City')</label>
                         <input type="text" class="form-control" name="city" id="city" value="{{ old('city', $shop->city) }}">
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="country">State</label>
+                        <label for="country">@awt('State')</label>
                         <select id="country" name="country" class="custom-select select2"></select>
                     </div>
                     <div class="form-group col-md-2">
-                        <label for="zip">Zip</label>
+                        <label for="zip">@awt('Zip')</label>
                         <input type="text" class="form-control" id="zip" name="zip" value="{{ old('zip', $shop->zip) }}">
                     </div>
                 </div>
     
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <label for="description">Description</label>
+                        <label for="description">@awt('Description')</label>
                         <textarea class="form-control" id="description" name="description" rows="20">{{ old('description', $shop->description) }}</textarea>
                     </div>
                 </div>
     
-                <button type="submit" class="btn btn-accent">Update Informations</button>
+                <button type="submit" class="btn btn-accent">@awt('Update Informations')</button>
             </form>
         </div>
     </div>

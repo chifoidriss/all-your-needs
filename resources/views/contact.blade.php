@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Contacter Nous')
+@section('title', awt('Contacter Us'))
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/contact_styles.css') }}">
@@ -53,16 +53,16 @@
 
 		<div class="col-lg-6 contact_col">
 			<div class="contact_contents">
-				<h1>Contact Us</h1>
-				<p>There are many ways to contact us. You may drop us a line, give us a call or send an email, choose what suits you the most.</p>
+				<h1>@awt('Contact Us')</h1>
+				<p>@awt('There are many ways to contact us. You may drop us a line, give us a call or send an email, choose what suits you the most.')</p>
 				<div>
 					<p>(+237) 671 50 40 37</p>
-					<p>wallylegenie.@gmail.com</p>
+					<p>wallylegenie@gmail.com</p>
 				</div>
 				
 				<div>
-					<p>Open hours: 8.00- 00.00 Mon-Sat</p>
-					<p>Sunday: Closed</p>
+					<p>@awt('Open hours: 8.00 AM - 18.00 PM Mon-Sat')</p>
+					<p>@awt('Sunday: Closed')</p>
 				</div>
 			</div>
 
@@ -88,10 +88,9 @@
 				</p>
 				<form action="post">
 					<div>
-						<input id="input_name" class="form_input input_name input_ph" type="text" name="name" placeholder="@awt('Name')" required="required" data-error="Name is required.">
-						<input id="input_email" class="form_input input_email input_ph" type="email" name="email" placeholder="@awt('Email')" required="required" data-error="Valid email is required.">
-						<input id="input_website" class="form_input input_website input_ph" type="url" name="name" placeholder="@awt('Website')" required="required" data-error="Name is required.">
-						<textarea id="input_message" class="input_ph input_message" name="message"  placeholder="@awt('Message')" rows="3" required data-error="Please, write us a message."></textarea>
+						<input id="input_name" class="form_input input_name input_ph" type="text" name="name" placeholder="@awt('Name')" required="required" data-error="@awt('Name is required.')">
+						<input id="input_email" class="form_input input_email input_ph" type="email" name="email" placeholder="@awt('Email')" required="required" data-error="@awt('Valid email is required.')">
+						<textarea id="input_message" class="input_ph input_message" name="message"  placeholder="@awt('Message')" rows="3" required data-error="@awt('Please, write us a message.')"></textarea>
 					</div>
 					<div>
 						<button id="review_submit" type="submit" class="red_button message_submit_btn trans_300" value="Submit">
