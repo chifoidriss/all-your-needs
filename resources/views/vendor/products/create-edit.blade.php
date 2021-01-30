@@ -1,7 +1,7 @@
 @extends('vendor.layouts.master')
 
 @section('title', Auth::user()->shop->name)
-@section('page-header', $isEdit?'Update Product':'Add new Product')
+@section('page-header', $isEdit ? awt('Update Product') : awt('Add new Product'))
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}">

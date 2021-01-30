@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Bienvenue')
+@section('title', awt('Welcome'))
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('assets/css/main_styles.css') }}">
