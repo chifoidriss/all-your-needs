@@ -70,11 +70,10 @@ function add_query_params(array $params = []) {
 
 
 function awt($word, $locale = null) {
-    // return $word;
-<<<<<<< HEAD
+     return $word;
+
     return (new AWTClass())->awtTrans($word, $locale);
-=======
     
     return (new AwtClass())->awtTrans($word, $locale);
->>>>>>> b1cb66e07b28fc17f00d384d9af76c96cac900cb
+
 }
