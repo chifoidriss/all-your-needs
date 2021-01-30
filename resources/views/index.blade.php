@@ -18,7 +18,7 @@
 			<div class="row mt-4">
 				<div class="col-md-2">
 					<div class="card card-small card-post mb-4 p-4">
-						<h6>Spring / Summer Collection 2018</h6>
+						<h6> <u> @awt('Our Categories')</u></h6>
 						<h5>@awt('Get up to 30% Off New Arrivals')</h5>
 						<div class="red_button">
 							<a href="{{ route('product.index') }}">
@@ -91,6 +91,16 @@
 								<span>
 									<p class="text">@awt('home delivery')</p>
 								</span>
+							</div>
+						
+							<div id="slider" class="slide_pub">
+								<figure>
+									<img src="{{asset('assets/images/habit.jpeg')}}" style="height:200px;" alt>
+									<img src="{{asset('assets/images/beaute.jpg')}}" style="height:200px;" alt>
+									<img src="{{asset('assets/images/chaussure.jpg')}}" style="height:200px;" alt>
+									<img src="{{asset('assets/images/3.jpg')}}" style="height:200px;" alt>
+									<img src="{{asset('assets/images/logo.png')}}" style="height:200px;" alt>
+								</figure>
 							</div>
 						
 					</div>
@@ -314,10 +324,9 @@
 			<div class="row blogs_container">
 				<div class="col-lg-4 blog_item_col">
 					<div class="blog_item">
-						<div class="blog_background" style="background-image:url(/assets/images/blog_1.jpg)"></div>
+						<div class="blog_background" style="background-image:url(/assets/images/beaute.jpg)"></div>
 						<div class="blog_content d-flex flex-column align-items-center justify-content-center text-center">
 							<h4 class="blog_title">Here are the trends I see coming this fall</h4>
-							<span class="blog_meta">by admin | dec 01, 2017</span>
 							<a class="blog_more" href="#">Read more</a>
 						</div>
 					</div>
@@ -325,10 +334,9 @@
 				
 				<div class="col-lg-4 blog_item_col">
 					<div class="blog_item">
-						<div class="blog_background" style="background-image:url(/assets/images/blog_2.jpg)"></div>
+						<div class="blog_background" style="background-image:url(/assets/images/habit.jpeg)"></div>
 						<div class="blog_content d-flex flex-column align-items-center justify-content-center text-center">
 							<h4 class="blog_title">Here are the trends I see coming this fall</h4>
-							<span class="blog_meta">by admin | dec 01, 2017</span>
 							<a class="blog_more" href="#">Read more</a>
 						</div>
 					</div>
@@ -336,10 +344,9 @@
 
 				<div class="col-lg-4 blog_item_col">
 					<div class="blog_item">
-						<div class="blog_background" style="background-image:url(/assets/images/blog_3.jpg)"></div>
+						<div class="blog_background" style="background-image:url(/assets/images/chaussure.jpg)"></div>
 						<div class="blog_content d-flex flex-column align-items-center justify-content-center text-center">
 							<h4 class="blog_title">Here are the trends I see coming this fall</h4>
-							<span class="blog_meta">by admin | dec 01, 2017</span>
 							<a class="blog_more" href="#">Read more</a>
 						</div>
 					</div>
