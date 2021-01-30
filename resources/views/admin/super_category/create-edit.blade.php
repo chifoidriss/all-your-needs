@@ -55,13 +55,13 @@
                 </div>
 
                 <div class="form-group">
-                    <select class="form-control @error('collection_id') is-invalid @enderror" name="collection_id" id='collection_id'> 
+                    <select class="form-control @error('collection_id') is-invalid @enderror" name="collection_id" id="collection_id"> 
                         <option value="">
                             Choisir une collection
                         </option>
                         @foreach($collections as $collection)
                         <option value="{{$collection->id}}" @if(old('collection_id', $superCategory->collection_id) == $collection->id) selected @endif>
-                            {{$collection->name}}
+                            {{ $collection->name }}
                         </option>
                         @endforeach
                     </select>

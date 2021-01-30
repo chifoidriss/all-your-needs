@@ -29,7 +29,7 @@ class SuperCategoryController extends Controller
             'slug'=>'required',
         ]);
 
-        $collection = Collection::create($validateDate);
+        SuperCategory::create($validateDate);
         
         return redirect('admin/super_cat');
     }
