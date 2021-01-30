@@ -6,7 +6,7 @@ return [
      * if true it will translate the words and push it to the lang file.
      * if false it will only push the words to the lang file.
      */
-    "allow_google_translate" => false,
+    "allow_google_translate" => true,
 
 
     /*
