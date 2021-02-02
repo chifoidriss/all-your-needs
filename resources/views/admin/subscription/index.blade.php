@@ -41,7 +41,7 @@
                             <td>{{ getPrice($subscription->amount) }}</td>
                             <td>{{ formatDate($subscription->start, 0, 1) }}</td>
                             <td>{{ formatDate($subscription->end, 0, 1) }}</td>
-                            <td>{{ $subscription->is_active ? awt('Active') : awt('Expired') }}</td>
+                            
                             <td>
                                 <form  action="{{route('admin.subscription.destroy',$subscription->id)}}" method="post">
                                     @csrf
