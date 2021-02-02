@@ -40,7 +40,7 @@
                         Choice a super category
                      </option>
                      @foreach($collection as $collec)
-                     <option value="{{$collec->id}}">
+                     <option value="{{$collec->id}}"  @if(old('super_category_id', $collec->super_category_id) == $collec->id) selected @endif>
                         {{$collec->name}}
                      </option>
                      @endforeach

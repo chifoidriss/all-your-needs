@@ -35,7 +35,7 @@
               <td>{{ ++$i }}</td>
               <td>{{$collec->name}}</td>
               <td>{{$collec->description}}</td>
-              <td>{{$collec->namec}}</td>
+              <td>{{$collec->superCategory->name}}</td>
               <td>
                 <form  action="{{route('admin.categorie.destroy',$collec->id)}}" method="post">
                     @csrf
