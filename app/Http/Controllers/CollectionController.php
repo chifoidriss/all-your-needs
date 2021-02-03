@@ -5,66 +5,101 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Collection;
+use Illuminate\Support\Facades\Storage;
 
 class CollectionController extends Controller
-
 {
 
     public function create(){
-        return view ('admin.collections.create');
+        $isEdit = false;
+        $collection = new Collection();
+
+        return view ('admin.collections.create-edit', compact([
+            'collection',
+            'isEdit'
+        ]));
     }
 
 
     public function store(Request $request){
-        $validateDate = $request->validate([
+        $request->validate([
             'name'=>'required',
             'description'=>'required',
             'slug'=>'required',
+            'image' => 'required|image|max:100'
         ]);
 
-        $collection = Collection::create($validateDate);
+        $collection = new Collection();
+        $collection->fill($request->only([
+            'name',
+            'description',
+            'slug'
+        ]));
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image')->store('collections', 'public');
+            $collection->image = $image;
+        }
+
+        $collection->save();
             
         return redirect('admin/collections');
     }
 
     public function index(){
+        $collections = Collection::all();
 
-        $recup_collection = Collection::all();
-
-        return view('admin/collections/index',compact('recup_collection'))->with('i');
+        return view('admin/collections/index',compact([
+            'collections'
+        ]));
     }
 
     public function edit($id){
-        $recup=Collection::findOrFail($id);
-          
+        $isEdit = true;
+        $collection = Collection::findOrFail($id);
         
-        return view('admin.collections.edit',compact('recup'));
+        return view('admin.collections.create-edit',compact([
+            'collection',
+            'isEdit'
+        ]));
     }
     
     public function update(Request $request, $id){
-   
-        $validateDate=$request->validate([
+        $request->validate([
             'name'=>'required',
             'description'=>'required',
             'slug'=>'required',
+            'image' => 'nullable|image|max:100'
         ]);
 
         $collection = Collection::findOrFail($id);
-        $collection->update($validateDate);
+        $collection->fill($request->only([
+            'name',
+            'description',
+            'slug'
+        ]));
+
+        if ($request->hasFile('image')) {
+            if ($collection->image) {
+                Storage::disk('public')->delete($collection->image);
+            }
+            $image = $request->file('image')->store('collections', 'public');
+            $collection->image = $image;
+        }
+
+        $collection->save();
             
         return redirect('admin/collections');
     }
 
     public function destroy($id){
+        $collection = Collection::findOrFail($id);
 
-        $delete=Collection::findOrFail($id);
-        $delete->delete();
+        if ($collection->image) {
+            Storage::disk('public')->delete($collection->image);
+        }
+
+        $collection->delete();
         return redirect ("admin/collections");
-    }
-
-    public function show($id){
-        // $data = DB::table('collections')->select('$collection.*')->where('id_$collection','=',$id)->get();
-    
-        // return view ('collection/detail_$collection',compact('data'));
     }
 }

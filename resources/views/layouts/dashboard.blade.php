@@ -181,6 +181,12 @@
                                         <i class="material-icons">shop</i>
                                         @awt('My Shop')
                                     </a>
+                                    @if (Auth::user()->isAdmin)
+                                    <a class="dropdown-item" href="{{ route('admin.index') }}">
+                                        <i class="material-icons">dashboard</i>
+                                        @awt('Administration')
+                                    </a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('index') }}">
                                         <i class="material-icons">home</i>
                                         @awt('Home Page')

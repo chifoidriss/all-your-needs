@@ -63,12 +63,12 @@
         </a>
     </li>
 
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link @if(Route::is('admin.themes.*')) active @endif" href="{{ route('admin.themes.index') }}">
             <i class="material-icons">shop_two</i>
             <span>@awt('Themes')</span>
         </a>
-    </li>
+    </li> --}}
     <li class="nav-item">
         <a class="nav-link @if(Route::is('admin.type-shop.*')) active @endif" href="{{ route('admin.type-shop.index') }}">
             <i class="material-icons">shop_two</i>

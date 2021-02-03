@@ -277,10 +277,6 @@
     </div>
 </div>
 <!-- End Small Stats Blocks -->
-
-<div class="row">
-
-</div>
 @endsection
 
 @section('js')
@@ -378,35 +374,4 @@
                 'image | removeformat | help'
         });
     </script>
-
-<script>
-    $('.remove-line').click(function (e) {
-        e.preventDefault();
-        $(this).parent().parent().remove();
-    });
-
-    $('.add-line').click(function (e) {
-        e.preventDefault();
-
-        var node = '';
-        node =  '<tr>' +
-                    '<th role="row">' +
-                        '.' +
-                    '</th>' +
-                    '<td>' +
-                        '<input type="text" name="keys[]" class="form-control" placeholder="@awt("Type here to enter something")">' +
-                    '</td>' +
-                    '<td>' +
-                        '<input type="text" name="values[]" class="form-control" placeholder="@awt("Type here to enter something")">' +
-                    '</td>' +
-                    '<td>' +
-                        '<a href="#" class="remove-line text-danger" role="button">' +
-                            '<i class="fas fa-times"></i>' +
-                        '</a>' +
-                    '</td>' +
-                '</tr>';
-
-        $(this).parent().parent().append(node);
-    });
-</script>
 @endsection

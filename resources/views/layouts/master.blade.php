@@ -92,13 +92,21 @@
                                             @auth
                                             <li>
                                                 <a href="{{ route('user.profile') }}">
-                                                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                                    <i class="fa fa-user" aria-hidden="true"></i>
                                                     @awt('Profile')
                                                 </a>
                                             </li>
+                                            @if (Auth::user()->isAdmin)
+                                                <li>
+                                                    <a href="{{ route('admin.index') }}">
+                                                        <i class="fa fa-circle" aria-hidden="true"></i>
+                                                        @awt('Admin')
+                                                    </a>
+                                                </li>
+                                            @endif
                                             <li>
                                                 <a href="#" class="call-to-action-form">
-                                                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                                    <i class="fa fa-sign-out" aria-hidden="true"></i>
                                                     @awt('Logout')
                                                 </a>
                                                 <form action="{{ route('logout') }}" style="display: none;" method="post" hidden>
@@ -274,13 +282,21 @@
                             @auth
                             <li>
                                 <a href="{{ route('user.profile') }}">
-                                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                    <i class="fa fa-user" aria-hidden="true"></i>
                                     @awt('Profile')
                                 </a>
                             </li>
+                            @if (Auth::user()->isAdmin)
+                            <li>
+                                <a href="{{ route('admin.index') }}">
+                                    <i class="fa fa-circle" aria-hidden="true"></i>
+                                    @awt('Administration')
+                                </a>
+                            </li>
+                            @endif
                             <li>
                                 <a href="{{ route('logout') }}">
-                                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i>
                                     @awt('Logout')
                                 </a>
                             </li>

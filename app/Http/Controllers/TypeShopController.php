@@ -9,7 +9,12 @@ use App\Models\TypeShop;
 class TypeShopController extends Controller
 {
     public function create() {
-        return view('admin.type-shop.create');
+        $typeShop = new TypeShop();
+        $isEdit = false;
+        return view('admin.type-shop.create-edit', compact([
+            'typeShop',
+            'isEdit'
+        ]));
     }
 
     public function store(Request $request){
@@ -20,7 +25,8 @@ class TypeShopController extends Controller
         $collection = new TypeShop();
         $collection->fill($request->only([
             'name',
-            'description']));
+            'description']
+        ));
 
         $collection->save();
             
@@ -29,18 +35,21 @@ class TypeShopController extends Controller
     }
 
     public function index(){
+        $typeShops = TypeShop::all();
 
-        // $recup_collection = DB::table('type_shops')->select('type_shops.*')->get();
-        $recup_collection = TypeShop::all();
-
-        return view('admin.type-shop.index', compact('recup_collection'))->with('i');
+        return view('admin.type-shop.index', compact([
+            'typeShops'
+        ]));
     }
 
     public function edit($id){
-        $recup=DB::table('type_shops')->select('type_shops.*')->where('id','=',$id)->get();
-          
-        
-        return view('admin.type-shop.edit',compact('recup'));
+        $typeShop = TypeShop::findOrFail($id);
+        $isEdit = true;
+
+        return view('admin.type-shop.create-edit',compact([
+            'typeShop',
+            'isEdit'
+        ]));
     }
     
     public function update(Request $request, $id){
@@ -48,28 +57,20 @@ class TypeShopController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
         ]);
-        $collection = TypeShop::findOrFail($id);
-        $collection->fill($request->only([
+
+        $typeShop = TypeShop::findOrFail($id);
+        $typeShop->fill($request->only([
             'name',
-            'description']));
+            'description'
+        ]));
 
-        $collection->save();
+        $typeShop->save();
         return redirect('admin/type-shop');
-
-
     }
 
     public function destroy($id){
-
-        //$etat="0";
-     $delete= TypeShop::findOrFail($id);
-      $delete->delete();
+        $typeShop = TypeShop::findOrFail($id);
+        $typeShop->delete();
         return redirect ("admin/type-shop");
-    }
-
-    public function show($id){
-        // $data = DB::table('collections')->select('$collection.*')->where('id_$collection','=',$id)->get();
-    
-        // return view ('collection/detail_$collection',compact('data'));
     }
 }

@@ -9,64 +9,66 @@ use DB;
 class OfferController extends Controller
 {
 
-      public function create(){
-          return view('admin/offre.create');
-      }
-      public function store(Request $request){
-            $validate=$request->validate([
-                'name'  => 'required',
-                'description'  => 'required',
-                'price'  => 'required',
-                'period'  => 'required',
-                'status'  => 'required',
-            ]);
-            $collection=Offer::create($validate);
-                
-             return redirect('admin/offre');
+    public function create() {
+        $offer = new Offer();
+        $isEdit = false;
 
+        return view('admin.offers.create-edit', compact([
+            'offer',
+            'isEdit'
+        ]));
     }
 
-    public function index(){
-
-            $recup_collection = Offer::all();
-
-            return view('admin.offre.index',compact('recup_collection'))->with('i');
-    }
-
-    public function edit($id){
-        //$recup=DB::table('offers')->select('offers.*')->where('id','=',$id)->get();
-             $recup=Offer::findOrfail($id);
+    public function store(Request $request) {
+        $validate = $request->validate([
+            'name'  => 'required',
+            'description'  => 'required',
+            'price'  => 'required',
+            'period'  => 'required'
+        ]);
         
-        return view('admin.offre.edit',compact('recup'));
-    }
-    
-    public function update(Request $request, $id){
-
-         $validate=$request->validate([
-                'name'  => 'required',
-                'description'  => 'required',
-                'price'  => 'required',
-                'period'  => 'required',
-                'status'  => 'required',
-            ]);
-           
-            Offer::whereId($id)->update($validate);
-         
+        Offer::create($validate);
+            
         return redirect('admin/offre');
-
-
     }
 
-    public function destroy($id){
+    public function index() {
+        $offers = Offer::all();
 
-       $delete=Offer::findOrFail($id);
-       $delete->delete();
-        return redirect ("admin/offre");
+        return view('admin.offers.index', compact([
+            'offers'
+        ]));
     }
 
-    public function show($id){
-        // $data = DB::table('collections')->select('$collection.*')->where('id_$collection','=',$id)->get();
+    public function edit($id) {
+        $offer = Offer::findOrFail($id);
+        $isEdit = true;
+        
+        return view('admin.offers.create-edit', compact([
+            'offer',
+            'isEdit'
+        ]));
+    }
     
-        // return view ('collection/detail_$collection',compact('data'));
+    public function update(Request $request, $id) {
+        $validate = $request->validate([
+            'name'  => 'required',
+            'description'  => 'required',
+            'price'  => 'required',
+            'period'  => 'required'
+        ]);
+
+        $offer = Offer::findOrFail($id);
+            
+        $offer->update($validate);
+            
+        return redirect('admin/offre');
+    }
+
+    public function destroy($id) {
+        $offer = Offer::findOrFail($id);
+        $offer->delete();
+
+        return redirect("admin/offre");
     }
 }

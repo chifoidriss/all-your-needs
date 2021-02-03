@@ -82,7 +82,7 @@ class ProductController extends Controller
             'old_price' => 'nullable|numeric',
             'qty' => 'required|numeric',
             'category' => 'required|array',
-            'image' => 'required|image',
+            'image' => 'required|image|max:200',
             'images.*' => 'nullable|image',
         ]);
 
@@ -102,8 +102,8 @@ class ProductController extends Controller
         
         if ($request->hasFile('image')) {
             $image = $request->file('image')->store('products/image/'.date('F').date('Y'), 'public');
+            $product->image = $image;
         }
-        $product->image = $image;
         $product->save();
         $product->slug = $product->id.'-'.Str::slug($product->name);
         $product->save();
@@ -181,7 +181,7 @@ class ProductController extends Controller
             'old_price' => 'nullable|numeric',
             'qty' => 'required|numeric',
             'category' => 'nullable|array',
-            'image' => 'nullable|image',
+            'image' => 'nullable|image|max:200',
             'images.*' => 'nullable|image',
         ]);
 

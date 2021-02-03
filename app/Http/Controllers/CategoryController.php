@@ -12,16 +12,23 @@ class CategoryController extends Controller
 {
    
     public function create(){
-        $collection=SuperCategory::all();
-        return view ('admin.categorie.create',compact('collection'));
+        $superCategories = SuperCategory::all();
+        $isEdit = false;
+        $category = new Category();
+        
+        return view('admin.categories.create-edit', compact([
+            'superCategories',
+            'isEdit',
+            'category'
+        ]));
     }
     
     public function store(Request $request){
-        $validateDate=$request->validate([
-            'name'=>'required',
-            'description'=>'required',
-            'super_category_id'=>'required',
-            'slug'=>'required',
+        $validateDate = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'super_category_id' => 'required',
+            'slug' => 'required',
         ]);
 
         $collection = Category::create($validateDate);
@@ -30,28 +37,31 @@ class CategoryController extends Controller
     }
 
     public function index(){
+        $categories =   Category::with(['superCategory.collection'])->get();
 
-        // $recup_collection =   $recup_collection = DB::table('categories')->join('super_categories','super_categories.id','=','categories.super_category_id')->select('categories.*','super_categories.name as namec')->get();
-        $recup_collection =   Category::with(['superCategory.collection'])->get();
-
-        return view('admin/categorie/index',compact('recup_collection'))->with('i');
+        return view('admin.categories.index',compact([
+            'categories'
+        ]));
     }
 
     public function edit($id){
-        $recup= Category::findOrFail($id);
-        $collection=SuperCategory::all();
-          
+        $category= Category::findOrFail($id);
+        $superCategories = SuperCategory::all();
+        $isEdit = true;
         
-        return view('admin.categorie.edit',compact('recup','collection'));
+        return view('admin.categories.create-edit',compact([
+            'superCategories',
+            'isEdit',
+            'category'
+        ]));
     }
     
     public function update(Request $request, $id){
-   
-        $validateDate=$request->validate([
-            'name'=>'required',
-            'description'=>'required',
-            'super_category_id'=>'required',
-            'slug'=>'required',
+        $validateDate = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'super_category_id' => 'required',
+            'slug' => 'required',
         ]);
 
         $category = Category::findOrFail($id);
@@ -61,15 +71,8 @@ class CategoryController extends Controller
     }
 
     public function destroy($id){
-
-        $delete=Category::findOrFail($id);
+        $delete = Category::findOrFail($id);
         $delete->delete();
         return redirect ("admin/categorie");
-    }
-
-    public function show($id){
-        // $data = DB::table('collections')->select('$collection.*')->where('id_$collection','=',$id)->get();
-    
-        // return view ('collection/detail_$collection',compact('data'));
     }
 }

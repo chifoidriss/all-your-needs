@@ -15,7 +15,8 @@ class HomeController extends Controller
     public function index()
     {
         // $categories = Category::whereHas('products')->get();
-        $collections = Collection::whereHas('superCategories.categories.products')->get();
+        // $collections = Collection::whereHas('superCategories.categories.products')->get();
+        $collections = Collection::get();
         $queryProducts = Product::with(['categories.superCategory.collection', 'shop'])
         ->where([
             'approved' => true,

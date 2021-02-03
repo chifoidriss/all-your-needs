@@ -14,7 +14,7 @@
 
 	<div class="main_slider" > 
 	
-		<div class="container fill_height ">
+		<div class="container fill_height">
 			<div class="row mt-4">
 				<div class="col-md-2">
 					<div class="card card-small card-post mb-4 p-4">
@@ -48,18 +48,16 @@
 								</div>
   							</div>
 							<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-									<span class="sr-only">Previous</span>
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								<span class="sr-only">Previous</span>
 							</a>
 							<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-									<span class="carousel-control-next-icon" aria-hidden="true"></span>
-									<span class="sr-only">Next</span>
+								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+								<span class="sr-only">Next</span>
 							</a>
 					   </div>
 					</div>
 				</div>
-
-		
 
 				<div class="col-md-2">
 					<div class="card card-small card-post mb-4 p-4">
@@ -158,7 +156,7 @@
 			<div class="row">
 				@foreach ($collections as $item)
 				<div class="col-md-4">
-					<div class="banner_item align-items-center" style="background-image:url(/assets/images/{{ $item->id }}.jpg)">
+					<div class="banner_item align-items-center" style="background-image:url({{ asset('storage/'. $item->image) }})">
 						<div class="banner_category">
 							<a href="{{ route('product.index', $item->slug) }}">
 								{{ awt($item->name) }}
@@ -354,8 +352,6 @@
 			</div>
 		</div>
 	</div>
-       
-
 @endsection
 
 @section('js')
