@@ -16,6 +16,7 @@ class HomeController extends Controller
     {
         // $categories = Category::whereHas('products')->get();
         // $collections = Collection::whereHas('superCategories.categories.products')->get();
+        $categories = Category::get();
         $collections = Collection::get();
         $queryProducts = Product::with(['categories.superCategory.collection', 'shop'])
         ->where([
@@ -46,6 +47,7 @@ class HomeController extends Controller
             'products',
             'bestSellers',
             'collections',
+            'categories'
         ]));
     }
 

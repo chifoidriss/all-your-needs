@@ -2,16 +2,13 @@
 
 @section('page-header', $isEdit ? awt('Update Currency'): awt('Create Currency'))
 
-
-
-
 @section('content')
- <div  class="card card-small mb-4 mt-4">
+<div  class="card card-small mb-4 mt-4">
     <div class="row">
         <div class="col-sm-12 col-md-12 pl-5 pr-5">
             <strong class="text-muted d-block mb-2">
                 @if ($isEdit)
-                  @awt('Update')
+                    @awt('Update')
                 @else
                     @awt('Create')
                 @endif
@@ -39,7 +36,6 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror   
                 </div>
-
 
                 <div class="form-group">
                     <label for="display_name">@awt('Display name')</label>
@@ -78,11 +74,11 @@
                 </div>
 
                 <div class="form-group">
-                  <button type="submit" class="btn btn-primary">@awt('Submit')</button>
-                  <button type="reset" class="btn btn-danger">@awt('Cancel')</button>
+                    <button type="submit" class="btn btn-primary">@awt('Submit')</button>
+                    <button type="reset" class="btn btn-danger">@awt('Cancel')</button>
                 </div> 
             </form>
         </div>
     </div>
- </div>
+</div>
 @endsection

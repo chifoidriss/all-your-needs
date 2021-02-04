@@ -6,47 +6,97 @@
 <link rel="stylesheet" href="{{ asset('assets/css/main_styles.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
 
+<style>
+	.sidebar {
+		float: left;
+	}
+	.sidebar_section {
+		/* padding-bottom: 35px; */
+	}
+	.sidebar_title h5 {
+		font-size: 18px;
+		margin-bottom: 0px;
+	}
+	.sidebar_categories li a {
+		font-size: 14px;
+		line-height: 40px;
+		color: #51545f;
+	}
+	.sidebar_categories li a:hover {
+		color: #fe4c50;
+	}
+	.sidebar_categories li a span {
+		margin-right: 5px;
+	}
+</style>
+
 @endsection
 
 @section('content')
 
 	<!-- Slider -->
 
-	<div class="main_slider" > 
-	
-		<div class="container fill_height">
-			<div class="row mt-4">
-				<div class="col-md-2">
-					<div class="card card-small card-post mb-4 p-4">
-						<h6> <u> @awt('Our Categories')</u></h6>
+	<div class="main_slider mb-0"> 
+		<div class="container">
+			<div class="h-100">
+				<div class="col m-20 x-0">
+					<div class="card box-shadow py-2 px-3 h-home">
+						{{-- <h6><u>@awt('Our Categories')</u></h6>
 						<h5>@awt('Get up to 30% Off New Arrivals')</h5>
 						<div class="red_button">
 							<a href="{{ route('product.index') }}">
 								@awt('shop now')
 							</a>
+						</div> --}}
+	
+						<div class="sidebar">
+							<div class="sidebar_section">
+								<div class="sidebar_title border-bottom pb-2">
+									<h5>
+										<span class="btn btn-sm btn-white">
+											<i class="fa fa-bars" aria-hidden="true"></i>
+										</span>
+										@awt('Our Categories')
+									</h5>
+								</div>
+								<ul class="sidebar_categories">
+									@foreach ($categories as $category)
+									<li class="">
+										<a href="{{ route('product.index',[$category->superCategory->collection->slug, $category->superCategory->slug, $category->slug]) }}">
+											<span>
+												<i class="fa fa-angle-double-right" aria-hidden="true"></i>
+											</span>
+											{{ awt($category->name) }}
+										</a>
+									</li>
+									@endforeach
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
-
-				<div class="col-md-8">
-				  <div class="card card-small card-post mb-4">
-					 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+	
+				<div class="col m-60 x-100">
+					<div class="card box-shadow h-home">
+						<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 							<ol class="carousel-indicators">
 								<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
 								<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
 								<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 							</ol>
-  							<div class="carousel-inner">
+	
+							<div class="carousel-inner">
 								<div class="carousel-item active">
-									<img class="d-block w-100 " style="max-height:400px;" src="/assets/images/vendeur1.jpg" alt="First slide">
-								</div>
-									<div class="carousel-item">
-								<img class="d-block w-100" style="max-height:400px;" src="/assets/images/vendeur2.jpg" alt="Second slide">
+									<img class="d-block w-100 h-100" src="/assets/images/vendeur1.jpg" alt="First slide">
 								</div>
 								<div class="carousel-item">
-									<img class="d-block w-100" style="max-height:400px;" src="/assets/images/vendeur3.jpg" alt="Third slide">
+									<img class="d-block w-100 h-100" src="/assets/images/vendeur2.jpg" alt="Second slide">
 								</div>
-  							</div>
+								<div class="carousel-item">
+									<img class="d-block w-100 h-100" src="/assets/images/vendeur3.jpg" alt="Third slide">
+								</div>
+							</div>
+								
 							<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 								<span class="sr-only">Previous</span>
@@ -55,100 +105,110 @@
 								<span class="carousel-control-next-icon" aria-hidden="true"></span>
 								<span class="sr-only">Next</span>
 							</a>
-					   </div>
+						</div>
 					</div>
 				</div>
-
-				<div class="col-md-2">
-					<div class="card card-small card-post mb-4 p-4">
+	
+				<div class="col m-20 x-0">
+					<div class="card box-shadow h-home">
+						<div class="card py-2 px-3">
+							<div class="d-flex align-items-center">
+								<div class="">
+									<div class="benefit_icons">
+										<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+									</div>
+								</div>
+								<div class="ml-2">
+									<a href="{{route('shop.create')}}">
+										@awt('Sell On AllYourNeeds?')
+									</a>
+								</div>
+							</div>
+							
+							<div class="d-flex align-items-center my-1">
+								<div class="">
+									<div class="benefit_icons">
+										<i class="fa fa-phone" aria-hidden="true"></i>
+									</div>
+								</div>
+								<div class="ml-2">
+									@awt('Contact us') +237 671 50 40 37
+								</div>
+							</div>
+	
+							<div class="d-flex align-items-center">
+								<div class="">
+									<div class="benefit_icons">
+										<i class="fa fa-truck" aria-hidden="true"></i>
+									</div>
+								</div>
+								<div class="ml-2">
+									@awt('home delivery')
+								</div>
+							</div>
+						</div>
 						
-							<div class="d-flex align-items-center">
-							  
-								<div class="benefit_icons">
-									<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-								</div>
-								<a href="{{route('user.profile')}}">
-									<span>
-										<p class="text">@awt('Sell On AllYourNeeds?')</p>
-									</span>
-							 	</a>
-							</div>
-							<div class="d-flex align-items-center">
-								<div class="benefit_icons">
-									<i class="fa fa-phone" aria-hidden="true"></i>
-								</div>
-								<span>
-									<p class="text">@awt(' Contact us at : 671 50 40 37 ')</p>
-								</span>
-							</div>
-
-							<div class="d-flex align-items-center">
-								<div class="benefit_icons">
-									<i class="fa fa-truck" aria-hidden="true"></i>
-								</div>
-								<span>
-									<p class="text">@awt('home delivery')</p>
-								</span>
-							</div>
-						
-							<div id="slider" class="slide_pub">
+						<div class="card h-100">
+							<div id="slider" class="card slide_pub-">
 								<figure>
-									<img src="{{asset('assets/images/habit.jpeg')}}" style="height:200px;" alt>
-									<img src="{{asset('assets/images/beaute.jpg')}}" style="height:200px;" alt>
-									<img src="{{asset('assets/images/chaussure.jpg')}}" style="height:200px;" alt>
-									<img src="{{asset('assets/images/3.jpg')}}" style="height:200px;" alt>
-									<img src="{{asset('assets/images/logo.png')}}" style="height:200px;" alt>
+									<img src="{{asset('assets/images/habit.jpeg')}}" style="height: auto; width: 100%;">
+									<img src="{{asset('assets/images/beaute.jpg')}}" style="height: auto; width: 100%;">
+									<img src="{{asset('assets/images/chaussure.jpg')}}" style="height: auto; width: 100%;">
+									<img src="{{asset('assets/images/3.jpg')}}" style="height: auto; width: 100%;">
+									<img src="{{asset('assets/images/logo.png')}}" style="height: auto; width: 100%;">
 								</figure>
 							</div>
-						
-					</div>
+						</div>	
+					</div>			
 				</div>
 			</div>
 		</div>
 	</div> 
- <!-- pub -->
-	<div class="benefit" style=" margin-top: -10rem !important;">
-            <div class="container">
-                <div class="row benefit_row">
-                    <div class="col-lg-3 benefit_col">
-                        <div class="benefit_item d-flex flex-row align-items-center">
-                            <div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
-                            <div class="benefit_content">
-                                <h6>@awt('free shipping')</h6>
-                                <p>@awt('Suffered Alteration in Some Form')</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 benefit_col">
-                        <div class="benefit_item d-flex flex-row align-items-center">
-                            <div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
-                            <div class="benefit_content">
-                                <h6>@awt('cach on delivery')</h6>
-                                <p>@awt('The Internet Tend To Repeat')</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 benefit_col">
-                        <div class="benefit_item d-flex flex-row align-items-center">
-                            <div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true"></i></div>
-                            <div class="benefit_content">
-                                <h6>@awt('45 days return')</h6>
-                                <p>@awt('Making it Look Like Readable')</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 benefit_col">
-                        <div class="benefit_item d-flex flex-row align-items-center">
-                            <div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
-                            <div class="benefit_content">
-                                <h6>@awt('opening all week')</h6>
-                                <p>@awt('8AM - 09PM')</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+	
+	<!-- pub -->
+	<div class="benefit benefit-mt-0" style="margin-top: -210px !important;">
+		<div class="container">
+			<div class="row benefit_row">
+				<div class="col-lg-3 benefit_col">
+					<div class="benefit_item d-flex flex-row align-items-center">
+						<div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
+						<div class="benefit_content">
+							<h6>@awt('free shipping')</h6>
+							<p>@awt('Suffered Alteration in Some Form')</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 benefit_col">
+					<div class="benefit_item d-flex flex-row align-items-center">
+						<div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
+						<div class="benefit_content">
+							<h6>@awt('cach on delivery')</h6>
+							<p>@awt('The Internet Tend To Repeat')</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 benefit_col">
+					<div class="benefit_item d-flex flex-row align-items-center">
+						<div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true"></i></div>
+						<div class="benefit_content">
+							<h6>@awt('45 days return')</h6>
+							<p>@awt('Making it Look Like Readable')</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 benefit_col">
+					<div class="benefit_item d-flex flex-row align-items-center">
+						<div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
+						<div class="benefit_content">
+							<h6>@awt('opening all week')</h6>
+							<p>@awt('8AM - 09PM')</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 	<!-- Banner -->
 
 	<div class="banner">

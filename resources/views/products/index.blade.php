@@ -67,7 +67,9 @@
                         @foreach ($categories as $category)
                         <li class="@if($category == $category->slug) active @endif">
                             <a href="{{ route('product.index',[$category->superCategory->collection->slug, $category->superCategory->slug, $category->slug]) }}">
-                                <span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
+                                <span>
+                                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                </span>
                                 {{ awt($category->name) }}
                             </a>
                         </li>

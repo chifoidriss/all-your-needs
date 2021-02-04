@@ -83,7 +83,7 @@
                                         </ul>
                                     </li>
 
-                                    <li class="account">
+                                    <li class="account text-left" style="min-width: 150px !important;">
                                         <a href="#">
                                             @awt('My Account')
                                             <i class="fa fa-angle-down"></i>
@@ -152,8 +152,12 @@
                                 <!-- <a href="{{ route('index') }}">
                                     All<span>Your</span><Span class="text-primary">Needs</Span>
                                 </a> -->
+                                <span class="btn btn-white btn-categories">
+                                    {{-- <i class="fa fa-ellipsis-v" aria-hidden="true"></i> --}}
+                                    <i class="fa fa-list-ul" aria-hidden="true"></i>
+                                </span>
                                 <a href="{{ route('index') }}">
-                                   <img src="{{asset('assets/images/logo.png')}}" style="width:75px; height:75px !important;" alt="logo AllYourNeeds">
+                                    <img class="logo-img" src="{{asset('assets/images/all-your-needs.webp')}}" alt="logo AllYourNeeds">
                                 </a>
                             </div>
 
@@ -353,7 +357,7 @@
 
         <!-- Partners -->
 
-        <div class="col text-center mt-4">
+        <div class="container text-center mt-4">
 			<div class="section_title">
 				<h2>@awt('Partners')</h2>
 			</div>
