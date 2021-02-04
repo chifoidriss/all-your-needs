@@ -125,7 +125,7 @@
         
                         <div class="mt-4">
                             <div class="d-flex flex-column">
-                                <a class="btn btn-block btn-outline-success" target="tab" href="https://api.whatsapp.com/send?phone={{ $product->shop->phone }}&text=@awt('Hi, I am interested in') [ {{ $product->name }} ] @awt('in') AllYourNeeds.">
+                                <a class="btn btn-block btn-outline-success" target="tab" href="https://api.whatsapp.com/send?phone=+237{{ $product->shop->phone }}&text=@awt('Hi, I am interested in') [ {{ $product->name }} ] @awt('in') AllYourNeeds.">
                                     <i class="fa fa-whatsapp" aria-hidden="true"></i>
                                     {{-- @awt('Contact on') --}}
                                     Whatsapp ({{ $product->shop->phone }})
