@@ -110,8 +110,8 @@
 				</div>
 	
 				<div class="hd-col m-20 x-0">
-					<div class="card box-shadow h-100">
-						<div class="card py-2 px-3">
+					<div class="h-100">
+						<div class="card box-shadow py-2 px-3">
 							<div class="d-flex align-items-center">
 								<div class="">
 									<div class="benefit_icons">
@@ -148,7 +148,7 @@
 							</div>
 						</div>
 						
-						<div class="card h-100">
+						<div class="card box-shadow" style="position: absolute; bottom: 0;">
 							<div id="slider" class="card slide_pub-">
 								<figure>
 									<img src="{{asset('assets/images/habit.jpeg')}}" style="height: auto; width: 100%;">
