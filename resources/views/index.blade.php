@@ -216,7 +216,7 @@
 			<div class="row">
 				@foreach ($collections as $item)
 				<div class="col-md-4">
-					<div class="banner_item align-items-center" style="background-image:url({{ asset('storage/'. $item->image) }})">
+					<div class="banner_item align-items-center" style="background-image:url({{ asset('uploads/'. $item->image) }})">
 						<div class="banner_category">
 							<a href="{{ route('product.index', $item->slug) }}">
 								{{ awt($item->name) }}

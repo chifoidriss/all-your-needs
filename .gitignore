@@ -1,6 +1,7 @@
 /node_modules
 /public/hot
 /public/storage
+/public/uploads
 /storage/*.key
 /resources/lang/awt.php
 /resources/lang/fr/awt.php

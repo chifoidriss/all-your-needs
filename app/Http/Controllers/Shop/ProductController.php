@@ -101,7 +101,7 @@ class ProductController extends Controller
         $product->shop_id = $shop->id;
         
         if ($request->hasFile('image')) {
-            $image = $request->file('image')->store('products/image/'.date('F').date('Y'), 'public');
+            $image = $request->file('image')->store('products/image/'.date('F').date('Y'), 'upload');
             $product->image = $image;
         }
         $product->save();
@@ -112,7 +112,7 @@ class ProductController extends Controller
 
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $file) {
-                $path = $file->store('products/images/'.date('F').date('Y'), 'public');
+                $path = $file->store('products/images/'.date('F').date('Y'), 'upload');
 
                 $product->galleries()->create([
                     'image' => $path
@@ -202,9 +202,9 @@ class ProductController extends Controller
         
         if ($request->hasFile('image')) {
             if ($product->image) {
-                Storage::disk('public')->delete($product->image);
+                Storage::disk('upload')->delete($product->image);
             }
-            $image = $request->file('image')->store('products/image/'.date('F').date('Y'), 'public');
+            $image = $request->file('image')->store('products/image/'.date('F').date('Y'), 'upload');
             $product->image = $image;
         }
 
@@ -217,7 +217,7 @@ class ProductController extends Controller
 
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $file) {
-                $path = $file->store('products/images/'.date('F').date('Y'), 'public');
+                $path = $file->store('products/images/'.date('F').date('Y'), 'upload');
 
                 $product->galleries()->create([
                     'image' => $path
@@ -287,7 +287,7 @@ class ProductController extends Controller
             'product_id' => $product->id
         ])->firstOrFail();
         
-        Storage::disk('public')->delete($gallery->image);
+        Storage::disk('upload')->delete($gallery->image);
         
         $gallery->delete();
 

@@ -37,7 +37,7 @@ class CollectionController extends Controller
         ]));
 
         if ($request->hasFile('image')) {
-            $image = $request->file('image')->store('collections', 'public');
+            $image = $request->file('image')->store('collections', 'upload');
             $collection->image = $image;
         }
 
@@ -81,9 +81,9 @@ class CollectionController extends Controller
 
         if ($request->hasFile('image')) {
             if ($collection->image) {
-                Storage::disk('public')->delete($collection->image);
+                Storage::disk('upload')->delete($collection->image);
             }
-            $image = $request->file('image')->store('collections', 'public');
+            $image = $request->file('image')->store('collections', 'upload');
             $collection->image = $image;
         }
 
@@ -96,7 +96,7 @@ class CollectionController extends Controller
         $collection = Collection::findOrFail($id);
 
         if ($collection->image) {
-            Storage::disk('public')->delete($collection->image);
+            Storage::disk('upload')->delete($collection->image);
         }
 
         $collection->delete();

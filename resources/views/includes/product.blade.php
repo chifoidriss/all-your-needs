@@ -5,7 +5,7 @@
         @endforeach">
         <div class="product discount product_filter">
             <div class="product_image">
-                <img src="{{ asset('storage/'.$product->image) }}" alt="{{ $product->name }}">
+                <img src="{{ asset('uploads/'.$product->image) }}" alt="{{ $product->name }}">
             </div>
 
             <div class="favorite favorite_left"></div>

@@ -52,18 +52,18 @@
                 <div class="row">
                     <div class="col-12 image_col">
                         <div class="single_product_image">
-                            <div class="single_product_image_background" id="product_img" style="background-image:url({{ asset('storage/'.$product->image) }})"></div>
+                            <div class="single_product_image_background" id="product_img" style="background-image:url({{ asset('uploads/'.$product->image) }})"></div>
                         </div>
                     </div>
                     
                     <div class="col-12">
                         <div class="d-flex mt-2 galleries">
                             <span role="button" class="gallery border border-primary radius p-1 mr-1">
-                                <img height="64px" src="{{ asset('storage/'.$product->image) }}" onclick="changeImage(this)" data-image="{{ asset('storage/'.$product->image) }}">
+                                <img height="64px" src="{{ asset('uploads/'.$product->image) }}" onclick="changeImage(this)" data-image="{{ asset('uploads/'.$product->image) }}">
                             </span>
                             @foreach ($product->galleries as $item)
                             <span role="button" class="gallery border radius p-1 mx-1">
-                                <img height="64px" src="{{ asset('storage/'.$item->image) }}" onclick="changeImage(this)" data-image="{{ asset('storage/'.$item->image) }}">
+                                <img height="64px" src="{{ asset('uploads/'.$item->image) }}" onclick="changeImage(this)" data-image="{{ asset('uploads/'.$item->image) }}">
                             </span>
                             @endforeach
                         </div>
