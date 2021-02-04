@@ -38,9 +38,9 @@
 
 	<div class="main_slider mb-0"> 
 		<div class="container">
-			<div class="h-100">
-				<div class="col m-20 x-0">
-					<div class="card box-shadow py-2 px-3 h-home">
+			<div class="hd-row">
+				<div class="hd-col m-20 x-0">
+					<div class="card box-shadow h-100 py-2 px-3">
 						{{-- <h6><u>@awt('Our Categories')</u></h6>
 						<h5>@awt('Get up to 30% Off New Arrivals')</h5>
 						<div class="red_button">
@@ -76,8 +76,8 @@
 					</div>
 				</div>
 	
-				<div class="col m-60 x-100">
-					<div class="card box-shadow h-home">
+				<div class="hd-col m-60 x-100">
+					<div class="card box-shadow h-100">
 						<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 							<ol class="carousel-indicators">
 								<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -109,8 +109,8 @@
 					</div>
 				</div>
 	
-				<div class="col m-20 x-0">
-					<div class="card box-shadow h-home">
+				<div class="hd-col m-20 x-0">
+					<div class="card box-shadow h-100">
 						<div class="card py-2 px-3">
 							<div class="d-flex align-items-center">
 								<div class="">
@@ -159,7 +159,7 @@
 								</figure>
 							</div>
 						</div>	
-					</div>			
+					</div>
 				</div>
 			</div>
 		</div>
@@ -416,4 +416,11 @@
 
 @section('js')
 <script src="{{ asset('assets/js/custom.js') }}"></script>
+
+<script>
+	$(".hd-row > .hd-col:not(:hidden)").equalHeights();
+	// window.onresize = function() { 
+	// 	$(".hd-row > .hd-col:not(:hidden)").equalHeights();
+	// }; 
+</script>
 @endsection

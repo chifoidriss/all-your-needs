@@ -541,6 +541,7 @@
     <script src="{{ asset('assets/plugins/Isotope/isotope.pkgd.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/OwlCarousel2-2.2.1/owl.carousel.js') }}"></script>
     <script src="{{ asset('assets/plugins/easing/easing.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.equalheights.min.js') }}"></script>
     
     @yield('js')
 
