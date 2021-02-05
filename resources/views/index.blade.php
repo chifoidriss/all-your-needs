@@ -41,14 +41,6 @@
 			<div class="hd-row">
 				<div class="hd-col m-20 x-0">
 					<div class="card box-shadow h-100 py-2 px-3">
-						{{-- <h6><u>@awt('Our Categories')</u></h6>
-						<h5>@awt('Get up to 30% Off New Arrivals')</h5>
-						<div class="red_button">
-							<a href="{{ route('product.index') }}">
-								@awt('shop now')
-							</a>
-						</div> --}}
-	
 						<div class="sidebar">
 							<div class="sidebar_section">
 								<div class="sidebar_title border-bottom pb-2">
@@ -77,31 +69,31 @@
 				</div>
 	
 				<div class="hd-col m-60 x-100">
-					<div class="card box-shadow h-100">
-						<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+					<div class="box-shadow h-100">
+						<div id="myCarousel" class="carousel slide" data-ride="carousel">
 							<ol class="carousel-indicators">
-								<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-								<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-								<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+								<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+								<li data-target="#myCarousel" data-slide-to="1"></li>
+								<li data-target="#myCarousel" data-slide-to="2"></li>
 							</ol>
 	
 							<div class="carousel-inner">
 								<div class="carousel-item active">
-									<img class="d-block w-100 h-100" src="/assets/images/vendeur1.jpg" alt="First slide">
+									<img class="d-block w-100" src="/assets/images/vendeur1.jpg" alt="First slide">
 								</div>
 								<div class="carousel-item">
-									<img class="d-block w-100 h-100" src="/assets/images/vendeur2.jpg" alt="Second slide">
+									<img class="d-block w-100" src="/assets/images/vendeur2.jpg" alt="Second slide">
 								</div>
 								<div class="carousel-item">
-									<img class="d-block w-100 h-100" src="/assets/images/vendeur3.jpg" alt="Third slide">
+									<img class="d-block w-100" src="/assets/images/vendeur3.jpg" alt="Third slide">
 								</div>
 							</div>
 								
-							<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+							<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
 								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 								<span class="sr-only">Previous</span>
 							</a>
-							<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+							<a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
 								<span class="carousel-control-next-icon" aria-hidden="true"></span>
 								<span class="sr-only">Next</span>
 							</a>
@@ -111,28 +103,32 @@
 	
 				<div class="hd-col m-20 x-0">
 					<div class="h-100">
-						<div class="card box-shadow py-2 px-3">
+						<div class="card benefit-icons box-shadow py-2 px-2">
 							<div class="d-flex align-items-center">
 								<div class="">
 									<div class="benefit_icons">
 										<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 									</div>
 								</div>
-								<div class="ml-2">
-									<a href="{{route('shop.create')}}">
-										@awt('Sell On AllYourNeeds?')
+								<div class="benefit_text ml-2">
+									<a href="{{route('shop.create')}}" class="text-secondary">
+										<span class="first">@awt('Sell On')</span>
+										<br>
+										<span class="second">AllYourNeeds ?</span>
 									</a>
 								</div>
 							</div>
 							
-							<div class="d-flex align-items-center my-1">
+							<div class="d-flex align-items-center my-3">
 								<div class="">
 									<div class="benefit_icons">
 										<i class="fa fa-phone" aria-hidden="true"></i>
 									</div>
 								</div>
-								<div class="ml-2">
-									@awt('Contact us') +237 671 50 40 37
+								<div class="benefit_text ml-2">
+									<span class="first">@awt('Contact us')</span>
+									<br>
+									<span class="second">+237 671 50 40 37</span>
 								</div>
 							</div>
 	
@@ -142,28 +138,30 @@
 										<i class="fa fa-truck" aria-hidden="true"></i>
 									</div>
 								</div>
-								<div class="ml-2">
-									@awt('home delivery')
+								<div class="benefit_text ml-2">
+									<span class="first">@awt('Home delivery')</span>
+									<br>
+									<span class="second">{{ getPrice(0) }}</span>
 								</div>
 							</div>
 						</div>
 						
-						<div class="card box-shadow" style="position: absolute; bottom: 0;">
+						<div class="box-shadow" style="position:absolute; bottom:0;">
 							<div id="slider" class="card slide_pub-">
 								<figure>
-									<img src="{{asset('assets/images/habit.jpeg')}}" style="height: auto; width: 100%;">
-									<img src="{{asset('assets/images/beaute.jpg')}}" style="height: auto; width: 100%;">
-									<img src="{{asset('assets/images/chaussure.jpg')}}" style="height: auto; width: 100%;">
-									<img src="{{asset('assets/images/3.jpg')}}" style="height: auto; width: 100%;">
-									<img src="{{asset('assets/images/logo.png')}}" style="height: auto; width: 100%;">
+									<img class="img-fluid" src="{{asset('assets/images/habit.jpeg')}}">
+									<img class="img-fluid" src="{{asset('assets/images/beaute.jpg')}}">
+									<img class="img-fluid" src="{{asset('assets/images/chaussure.jpg')}}">
+									<img class="img-fluid" src="{{asset('assets/images/3.jpg')}}">
+									<img class="img-fluid" src="{{asset('assets/images/logo.png')}}">
 								</figure>
 							</div>
-						</div>	
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div> 
+	</div>
 	
 	<!-- pub -->
 	<div class="benefit benefit-mt-0" style="margin-top: -210px !important;">
@@ -418,9 +416,12 @@
 <script src="{{ asset('assets/js/custom.js') }}"></script>
 
 <script>
-	$(".hd-row > .hd-col:not(:hidden)").equalHeights();
-	// window.onresize = function() { 
-	// 	$(".hd-row > .hd-col:not(:hidden)").equalHeights();
-	// }; 
+	$(document).ready(function () {
+		$(".hd-row > .hd-col:not(:hidden)").equalHeights();
+
+		// window.onresize = function() { 
+		// 	$(".hd-row > .hd-col:not(:hidden)").equalHeights();
+		// }; 
+	});
 </script>
 @endsection

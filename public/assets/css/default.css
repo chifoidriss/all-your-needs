@@ -140,7 +140,7 @@ Breadcrumbs
 }
 
 .galleries {
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 .position-relative {
@@ -155,6 +155,9 @@ Breadcrumbs
     z-index: 100000;
     display: none;
 }
+
+.round-md-50 { border-radius: 50%; }
+
 
 .hd-col {
 	margin: 5px 0;
@@ -182,4 +185,5 @@ Breadcrumbs
 	.hd-col.x-60,.hd-col.m-60{ width: 100%; }
 	.hd-col.x-100,.hd-col.s-100,.hd-col.m-100{ width: 100%; }
 	.hd-col.x-0{ display: none; visibility: hidden;}
+    .round-xs-50 { border-radius: 50%; }
 }

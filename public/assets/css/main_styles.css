@@ -640,6 +640,16 @@ COLOR PALETTE
 	font-size: 30px;
 	color: #fe4c50;
 }
+.benefit_text {
+	line-height: normal;
+}
+.benefit-icons .benefit_text .first {
+	font-weight: 600;
+	font-size: 14px;
+}
+.benefit-icons .benefit_text .second {
+	font-size: 12px;
+}
 
 .benefit_icons
 {
@@ -931,12 +941,11 @@ COLOR PALETTE
 {
 	color: #fe4c50;
 }
+
 /* header display **/
 @media(max-width:576px){
 	.col-md-2 .card{
-		
 		display: none;
-		
 	}
 	.main-slider{
 		height:200px;
@@ -944,9 +953,7 @@ COLOR PALETTE
 }
 @media(max-width:991px){
 	.col-md-2 .card{
-		
 		display: none;
-		
 	}
 }
 /*  slider header   */

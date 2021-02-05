@@ -125,17 +125,19 @@
         
                         <div class="mt-4">
                             <div class="d-flex flex-column">
+                                @if ($product->shop->phone)
                                 <a class="btn btn-block btn-outline-success" target="tab" href="https://api.whatsapp.com/send?phone={{ $product->shop->phone }}&text=@awt('Hi, I am interested in') [ {{ $product->name }} ] @awt('in') AllYourNeeds.">
                                     <i class="fa fa-whatsapp" aria-hidden="true"></i>
-                                    {{-- @awt('Contact on') --}}
                                     Whatsapp ({{ $product->shop->phone }})
                                 </a>
+                                @endif
                                 
+                                @if ($product->shop->facebook)
                                 <a class="btn btn-block btn-outline-primary" target="tab" href="http://m.me/{{ $product->shop->facebook }}?ref=AllYourNeeds&source=@awt('Hi, I am interested in') [ {{ $product->name }} ] @awt('in') AllYourNeeds.">
                                     <i class="fa fa-comment" aria-hidden="true"></i>
-                                    {{-- @awt('Contact on') --}}
                                     Messenger ({{ $product->shop->facebook }})
                                 </a>
+                                @endif
                             </div>
                         </div>
                     </div>

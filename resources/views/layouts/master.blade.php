@@ -148,84 +148,146 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 text-right position-relative">
-                            <div class="logo_container">
-                                <!-- <a href="{{ route('index') }}">
-                                    All<span>Your</span><Span class="text-primary">Needs</Span>
-                                </a> -->
-                                <span class="btn btn-white btn-categories">
-                                    {{-- <i class="fa fa-ellipsis-v" aria-hidden="true"></i> --}}
-                                    <i class="fa fa-list-ul" aria-hidden="true"></i>
-                                </span>
-                                <a href="{{ route('index') }}">
-                                    <img class="logo-img" src="{{asset('assets/images/all-your-needs.webp')}}" alt="logo AllYourNeeds">
-                                </a>
-                            </div>
-
-                            <div class="search-bar" id="search-bar">
-                                <form action="{{ route('product.index') }}" method="GET" class="form-inline">
-                                    <div class="input-group w-100">
-                                        <input type="text" name="q" class="form-control" placeholder="@awt('Search something')..." value="{{ request()->q }}">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-primary" type="submit">
-                                                <i class="fa fa-search"></i>
-                                                <span class="d-md-inline d-none">@awt('Search ')</span>
-                                            </button>
-                                            <button class="btn btn-outline-danger close-search-bar" type="button">
-                                                <i class="fa fa-times"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <nav class="navbar">
-
-                                <ul class="navbar_menu">
-                                    <li>
+                            <div class="row">
+                                <div class="col-md-3 col-5">
+                                    <div class="navbar w-100">
+                                        {{-- <span class="btn btn-white btn-categories">
+                                            <i class="fa fa-list-ul" aria-hidden="true"></i>
+                                        </span> --}}
+        
                                         <a href="{{ route('index') }}">
-                                            @awt('home')
+                                            <img class="logo-img" src="{{asset('assets/images/all-your-needs.webp')}}" alt="logo AllYourNeeds">
                                         </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('product.index') }}">
-                                            @awt('Products')
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            @awt('blog')
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('contact') }}">
-                                            @awt('contact')
-                                        </a>
-                                    </li>
-                                </ul>
-
-                                <ul class="navbar_user">
-                                    <li>
-                                        <a href="#" class="btn-search-input">
-                                            <i class="fa fa-search" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('user.profile') }}">
-                                            <i class="fa fa-user" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li class="checkout">
-                                        <a href="#">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                            <span id="checkout_items" class="checkout_items">0</span>
-                                        </a>
-                                    </li>
-                                </ul>
-
-                                <div class="hamburger_container">
-                                    <i class="fa fa-bars" aria-hidden="true"></i>
+                                    </div>
                                 </div>
-                            </nav>
+    
+                                <div class="col-md-5 col-12 order-md-2 order-3 d-md-inline-block d-none" id="search-block">
+                                    <div class="navbar w-100">
+                                        <form action="{{ route('product.index') }}" method="GET" class="form-inline w-100">
+                                            <div class="input-group w-100">
+                                                <input type="text" name="q" class="form-control" placeholder="@awt('Search on') AllYourNeeds..." value="{{ request()->q }}">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-danger" type="submit">
+                                                        <i class="fa fa-search"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4 col-7 order-md-3 order-2">
+                                    <nav class="navbar">
+                                        <ul class="navbar_menu">
+                                            {{-- <li>
+                                                <a href="{{ route('index') }}">
+                                                    @awt('home')
+                                                </a>
+                                            </li> --}}
+                                            {{-- <li>
+                                                <a href="{{ route('product.index') }}">
+                                                    @awt('Products')
+                                                </a>
+                                            </li> --}}
+                                            <li>
+                                                <a href="#">
+                                                    @awt('blog')
+                                                </a>
+                                            </li>
+                                            {{-- <li>
+                                                <a href="{{ route('contact') }}">
+                                                    @awt('contact')
+                                                </a>
+                                            </li> --}}
+                                        </ul>
+        
+                                        <ul class="navbar_user">
+                                            <li class="d-md-none">
+                                                <a href="#" class="btn-search-input">
+                                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <div class="dropdown">
+                                                    <span class="btn btn-light round-xs-50" data-toggle="dropdown">
+                                                        <a href="{{ route('user.profile') }}">
+                                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                                            <span class="d-md-inline-block d-none">
+                                                                @auth
+                                                                    @awt('My Account')
+                                                                @else
+                                                                    @awt('Login')
+                                                                @endauth
+                                                            </span>
+                                                            <span class="d-md-inline-block d-none">
+                                                                <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                                            </span>
+                                                        </a>
+                                                    </span>
+                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                        @auth
+                                                            <a class="dropdown-item" href="{{ route('user.profile') }}">
+                                                                <i class="fa fa-user" aria-hidden="true"></i>
+                                                                @awt('Profile')
+                                                            </a>
+                                                            @if (Auth::user()->isAdmin)
+                                                            <div class="dropdown-divider"></div>
+                                                            <a class="dropdown-item" href="{{ route('admin.index') }}">
+                                                                <i class="fa fa-circle" aria-hidden="true"></i>
+                                                                @awt('Administration')
+                                                            </a>
+                                                            @endif
+                                                            <div class="dropdown-divider"></div>
+                                                            <a href="#" class="dropdown-item call-to-action-form">
+                                                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                                                @awt('Logout')
+                                                            </a>
+                                                            <form action="{{ route('logout') }}" style="display: none;" method="post" hidden>
+                                                                @csrf
+                                                            </form>
+                                                        @else
+                                                            <div class="px-2">
+                                                                <a href="{{ route('login') }}" class="btn btn-block btn-danger">
+                                                                    @awt('Login')
+                                                                </a>
+                                                            </div>
+                                                            <div class="dropdown-divider"></div>
+                                                            <div class="px-2">
+                                                                <a href="{{ route('register') }}" class="btn btn-block btn-outline-primary">
+                                                                    @awt('Register')
+                                                                </a>
+                                                            </div>
+                                                        @endauth
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li class="d-md-inline-block d-none">
+                                                <span class="btn btn-light round-50-">
+                                                    <a href="{{ route('contact') }}">
+                                                        <i class="fa fa-phone" aria-hidden="true"></i>
+                                                        <span class="d-md-inline-block d-none">
+                                                            @awt('Contact')
+                                                        </span>
+                                                    </a>
+                                                </span>
+                                            </li>
+                                            
+                                            <li class="checkout">
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                    <span id="checkout_items" class="checkout_items">0</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+        
+                                        <div class="hamburger_container">
+                                            <i class="fa fa-bars" aria-hidden="true"></i>
+                                        </div>
+                                    </nav>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -394,8 +456,6 @@
             </div>
 		</div> 
 
-        <!-- cookie -->
-                
 
         <!-- Newsletter -->
 
@@ -560,19 +620,8 @@
             
             $('.btn-search-input').click(function (e) {
                 e.preventDefault();
-                $('.search-bar').slideDown('slow');
+                $('#search-block').toggleClass('d-none');
             });
-            
-            $('.close-search-bar').click(function (e) {
-                e.preventDefault();
-                $('.search-bar').slideUp('slow');
-            });
-
-            // window.onclick = function(event) {
-            //     if (event.target == modal) {
-            //         searchBar.style.display = "none";
-            //     }
-            // }
         })
     </script>
 </body>
