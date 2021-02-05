@@ -184,16 +184,16 @@
                                                     @awt('home')
                                                 </a>
                                             </li> --}}
-                                            {{-- <li>
+                                            <li>
                                                 <a href="{{ route('product.index') }}">
                                                     @awt('Products')
                                                 </a>
-                                            </li> --}}
-                                            <li>
+                                            </li>
+                                            {{-- <li>
                                                 <a href="#">
                                                     @awt('blog')
                                                 </a>
-                                            </li>
+                                            </li> --}}
                                             {{-- <li>
                                                 <a href="{{ route('contact') }}">
                                                     @awt('contact')
@@ -264,12 +264,12 @@
                                             </li>
 
                                             <li class="d-md-inline-block d-none">
-                                                <span class="btn btn-light round-50-">
+                                                <span class="btn btn-light round-md-50">
                                                     <a href="{{ route('contact') }}">
                                                         <i class="fa fa-phone" aria-hidden="true"></i>
-                                                        <span class="d-md-inline-block d-none">
+                                                        {{-- <span class="d-md-inline-block d-none">
                                                             @awt('Contact')
-                                                        </span>
+                                                        </span> --}}
                                                     </a>
                                                 </span>
                                             </li>
