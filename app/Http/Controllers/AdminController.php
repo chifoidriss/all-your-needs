@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Shop;
+use App\Models\Subscription;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -13,7 +17,17 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $shops = Shop::count();
+        $products = Product::count();
+        $users = User::count();
+        $subscriptions = Subscription::count();
+        
+        return view('admin.index', compact([
+            'products',
+            'shops',
+            'users',
+            'subscriptions',
+        ]));
     }
 
     /**

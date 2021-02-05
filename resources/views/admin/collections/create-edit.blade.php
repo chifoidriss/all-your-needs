@@ -68,7 +68,7 @@
                         @enderror
                     </div>
                     <div class="mt-2 py-2">
-                        <img src="@if($isEdit) {{ asset('storage/'.$collection->image) }} @endif"
+                        <img src="@if($isEdit) {{ asset('uploads/'.$collection->image) }} @endif"
                             id="preview-image" class="img" height="140px">
                     </div>
                 </div>
