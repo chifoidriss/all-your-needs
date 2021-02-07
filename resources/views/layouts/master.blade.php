@@ -90,7 +90,7 @@
                                         </ul>
                                     </li>
 
-                                    <li class="account text-left" style="min-width: 150px !important;">
+                                    {{-- <li class="account text-left" style="min-width: 150px !important;">
                                         <a href="#">
                                             @awt('My Account')
                                             <i class="fa fa-angle-down"></i>
@@ -135,7 +135,7 @@
                                             </li>
                                             @endauth
                                         </ul>
-                                    </li>
+                                    </li> --}}
 
                                     <li class="account">
                                         <a href="{{ route('shop.create') }}">
