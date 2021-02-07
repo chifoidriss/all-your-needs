@@ -31,7 +31,7 @@
                         @enderror
                     </div>
                     <div class="mt-2 py-2">
-                        <img src="{{ asset('storage/'.$shop->logo) }}"
+                        <img src="{{ asset('uploads/'.$shop->logo) }}"
                             id="preview-logo" class="img" height="64px">
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                         @enderror
                     </div>
                     <div class="mt-2 py-2">
-                        <img src="{{ asset('storage/'.$shop->banner) }}"
+                        <img src="{{ asset('uploads/'.$shop->banner) }}"
                             id="preview-cover" class="img" height="196px">
                     </div>
                 </div>
@@ -66,7 +66,7 @@
             <h6 class="m-0">@awt('Shop Details')</h6>
         </div>
         <div class="card-body">
-            <form action="{{ route('shop.update') }}" method="POST">
+            <form action="{{ route('shop.update') }}" method="POST" id="form-informations">
                 @csrf
                 @method('PUT')
                 
@@ -102,11 +102,13 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="phone">@awt('Phone number') (Whatsapp)</label>
-                        <input type="tel" class="form-control" name="phone" id="phone" placeholder="(Whatsapp)" value="{{ old('phone', $shop->phone) }}">
+                        <input type="text" class="form-control" id="number" placeholder="(Whatsapp)" value="{{ old('phone', $shop->phone) }}">
+                        <input type="hidden" name="phone" id="phone" value="{{ old('phone', $shop->phone) }}">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="fax">@awt('Fax')</label>
-                        <input type="tel" class="form-control" name="fax" id="fax" placeholder="@awt('Fax')" value="{{ old('fax', $shop->fax) }}">
+                        <input type="text" class="form-control" id="number2" placeholder="@awt('Fax')" value="{{ old('fax', $shop->fax) }}">
+                        <input type="hidden" name="fax" id="fax" value="{{ old('fax', $shop->fax) }}">
                     </div>
                 </div>
     
@@ -167,8 +169,14 @@
     <script src="{{ asset('assets/js/countries.js') }}"></script>
 
     <script>
-        $('.select2').select2();
+    </script>
 
+    <script>
+        validatePhoneNumber('#form-informations', '#number', '#phone');
+        validatePhoneNumber('#form-informations', '#number2', '#fax');
+        
+        $('.select2').select2();
+    
         populateCountriesWithDefault("country", "{{ old('country', $shop->country) }}");
 
 

@@ -35,17 +35,19 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         if ($input['email'] !== $user->email &&
             $user instanceof MustVerifyEmail) {
             $this->updateVerifiedUser($user, $input);
-        } else {
-            $user->forceFill([
-                'civility' => $input['civility'],
-                'name' => $input['name'],
-                'surname' => $input['surname'],
-                'email' => $input['email'],
-                'phone' => $input['phone'],
-                'nationality' => $input['nationality'],
-                'birth_day' => $input['birth_day'],
-            ])->save();
         }
+
+        $user->forceFill([
+            'civility' => $input['civility'],
+            'name' => $input['name'],
+            'surname' => $input['surname'],
+            'email' => $input['email'],
+            'phone' => $input['phone'],
+            'nationality' => $input['nationality'],
+            'birth_day' => $input['birth_day'],
+        ])->save();
+
+        notify()->success('your account have been updated successful.', $user->fullName);
     }
 
     /**
@@ -58,8 +60,6 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     protected function updateVerifiedUser($user, array $input)
     {
         $user->forceFill([
-            'name' => $input['name'],
-            'email' => $input['email'],
             'email_verified_at' => null,
         ])->save();
 

@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use App\Models\Shop;
-use App\Models\Subscription;
+use App\Models\Product;
 use App\Models\TypeShop;
+use App\Events\NotifyEvent;
+use Illuminate\Support\Str;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class ShopController extends Controller
 {
@@ -61,7 +65,10 @@ class ShopController extends Controller
             'type_shop_id'
         ]));
 
+        $shop->slug = Str::slug($shop->name);
         $shop->save();
+
+        event(new NotifyEvent(__FUNCTION__, 'Shop'));
         
         return redirect()->route('shop.show');
     }
@@ -82,6 +89,21 @@ class ShopController extends Controller
     {
         $shop = Shop::whereUserId(Auth::id())->firstOrFail();
         
+        Validator::make($request->all(), [
+            'name' => [
+                'required',
+                'string',
+                'max:150',
+                Rule::unique('shops')->ignore($shop->id),
+            ],
+            'phone' => [
+                'required',
+                'string',
+                'max:150',
+                Rule::unique('shops')->ignore($shop->id),
+            ]
+        ]);
+        
         $shop->fill($request->only([
             'name',
             'type_shop_id',
@@ -100,7 +122,10 @@ class ShopController extends Controller
             'type_shop_id'
         ]));
 
+        $shop->slug = Str::slug($shop->name);
         $shop->save();
+
+        event(new NotifyEvent(__FUNCTION__, 'Shop'));
         
         return redirect()->route('shop.show');
     }
@@ -110,13 +135,12 @@ class ShopController extends Controller
     {
         $shop = Shop::whereUserId(Auth::id())->firstOrFail();
         $shop->delete();
+
+        event(new NotifyEvent(__FUNCTION__, 'Shop'));
         
         return redirect()->route('index');
     }
 
-    
-
-    
     
     public function images(Request $request)
     {
@@ -139,6 +163,8 @@ class ShopController extends Controller
         }
 
         $shop->save();
+
+        event(new NotifyEvent('update', 'Shop Images'));
 
         return back();
     }

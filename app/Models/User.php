@@ -39,7 +39,7 @@ class User extends Authenticatable
 
     public function getFullNameAttribute()
     {
-        return ucwords($this->surname . ' ' .$this->name);
+        return ucwords($this->civility.' '.$this->surname . ' ' .$this->name);
     }
 
 

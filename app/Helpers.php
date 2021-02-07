@@ -74,3 +74,15 @@ function awt($word, $locale = null) {
 
     return (new AWTClass())->awtTrans($word, $locale);
 }
+
+function notifyIcon(string $type) {
+    if ($type == 'success') {
+        return 'check';
+    } elseif($type == 'warning') {
+        return 'exclamation-triangle';
+    } elseif($type == 'info') {
+        return 'info';
+    } elseif($type == 'error') {
+        return 'times';
+    }
+}

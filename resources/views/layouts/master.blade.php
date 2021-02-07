@@ -16,13 +16,20 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/OwlCarousel2-2.2.1/animate.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/notify.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/intTelInput/css/intlTelInput.min.css') }}">
     
     @yield('css')
 
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/default.css') }}">
+
+    <style>
+        .iti { width: 100%; }
+    </style>
 </head>
 
 <body>
+    @include('includes.notify')
 
     <div class="super_container">
 
@@ -593,36 +600,25 @@
         </footer>
     </div>
     
-
+    
 
     <script src="{{ asset('assets/js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('assets/css/bootstrap4/popper.js') }}"></script>
     <script src="{{ asset('assets/css/bootstrap4/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bs-custom-file-input.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/Isotope/isotope.pkgd.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/OwlCarousel2-2.2.1/owl.carousel.js') }}"></script>
     <script src="{{ asset('assets/plugins/easing/easing.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.equalheights.min.js') }}"></script>
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
     
-    @yield('js')
+    <script src="{{ asset('js/notify.js') }}"></script>
 
     <script src="{{ asset('assets/js/countries.js') }}"></script>
+    <script src="{{ asset('assets/plugins/intTelInput/js/intlTelInput.min.js') }}"></script>
+    
+    <script src="{{ asset('assets/js/general.js') }}"></script>  
 
-    <script>
-        $(document).ready(function () {
-            // bsCustomFileInput.init();
-
-            var searchBar = document.getElementById('search-bar');
-            
-            $('.call-to-action-form').click(function (e) {
-                e.preventDefault();
-                $(this).next('form').trigger('submit');
-            });
-            
-            $('.btn-search-input').click(function (e) {
-                e.preventDefault();
-                $('#search-block').toggleClass('d-none');
-            });
-        })
-    </script>
+    @yield('js')
 </body>
 </html>

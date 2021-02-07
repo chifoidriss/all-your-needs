@@ -153,6 +153,12 @@ jQuery(document).ready(function($)
 
 	function initGoogleMap()
 	{
+		var mapElement = document.getElementById('map');
+
+		if (!mapElement) {
+			return ;
+		}
+		
 		var myLatlng = new google.maps.LatLng(42.373122,-71.112387);
     	var mapOptions = 
     	{

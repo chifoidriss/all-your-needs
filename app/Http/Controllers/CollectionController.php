@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NotifyEvent;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Collection;
@@ -19,7 +20,6 @@ class CollectionController extends Controller
             'isEdit'
         ]));
     }
-
 
     public function store(Request $request){
         $request->validate([
@@ -42,6 +42,8 @@ class CollectionController extends Controller
         }
 
         $collection->save();
+
+        event(new NotifyEvent(__FUNCTION__, 'Collection'));
             
         return redirect('admin/collections');
     }
@@ -88,6 +90,8 @@ class CollectionController extends Controller
         }
 
         $collection->save();
+
+        event(new NotifyEvent(__FUNCTION__, 'Collection'));
             
         return redirect('admin/collections');
     }
@@ -100,6 +104,9 @@ class CollectionController extends Controller
         }
 
         $collection->delete();
+
+        event(new NotifyEvent(__FUNCTION__, 'Collection'));
+        
         return redirect ("admin/collections");
     }
 }

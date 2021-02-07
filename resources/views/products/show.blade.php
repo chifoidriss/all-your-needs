@@ -115,7 +115,7 @@
                                     <i class="fa fa-plus" aria-hidden="true"></i>
                                 </span>
                             </div>
-                            <div class="red_button add_to_cart_button">
+                            <div class="red_button_s add_to_cart_button_s">
                                 <a href="#">
                                     @awt('add to cart')
                                 </a>

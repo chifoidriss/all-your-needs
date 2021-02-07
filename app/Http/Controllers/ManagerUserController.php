@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NotifyEvent;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
@@ -19,7 +20,6 @@ class ManagerUserController extends Controller
         ]));
     }
 
-
     public function store(Request $request) {
         $request->validate([
             'email' => 'required',
@@ -28,6 +28,8 @@ class ManagerUserController extends Controller
 
         $user = User::whereEmail($request->email)->firstOrFail();
         $user->roles()->attach($request->roles_id);
+
+        event(new NotifyEvent(__FUNCTION__, 'User role'));
         
         return redirect('admin/manager_user');
     }
@@ -60,6 +62,8 @@ class ManagerUserController extends Controller
 
         $user = User::whereEmail($request->email)->firstOrFail();
         $user->roles()->sync($request->roles_id);
+
+        event(new NotifyEvent(__FUNCTION__, 'User role'));
         
         return redirect('admin/manager_user');
     }
@@ -67,6 +71,8 @@ class ManagerUserController extends Controller
     public function destroy($id) {
         $user = User::findOrFail($id);
         $user->roles()->sync([]);
+
+        event(new NotifyEvent(__FUNCTION__, 'User role'));
 
         return redirect ("admin/manager_user");
     }

@@ -34,6 +34,8 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
 
+        notify()->success('your account have been created successful.', ucwords($input['surname']).' '.strtoupper($input['name']));
+
         return User::create([
             'civility' => $input['civility'],
             'name' => $input['name'],

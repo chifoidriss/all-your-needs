@@ -1,7 +1,7 @@
 
 <div class="px-md-2 px-0">
     <div class="hd-side box-shadow d-flex flex-column">
-        <div class="head d-flex flex-column justify-content-center align-items-center">
+        <div class="head d-flex flex-column justify-content-center align-items-center" style="background-color: #f5ecec;">
             <input type="file" id="avatar-profile" hidden>
             <div class="avatar">
                 <span>

@@ -19,12 +19,16 @@ class FollowController extends Controller
 
         if ($follow) {
             $follow->delete();
+
+            notify()->error('Follower removed successful.');
         } else {
             Follow::create([
                 'user_id' => Auth::id(),
                 'shop_id' => $shop->id
             ]);
-        }
+
+            notify()->success('Followed successful.');
+        }        
 
         return back();
     }

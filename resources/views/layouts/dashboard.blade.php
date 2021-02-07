@@ -10,16 +10,25 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="{{ asset('assets/admin/css/all.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/material/material-icons.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/admin/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/admin/css/shards-dashboards.1.1.0.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/admin/css/extras.1.1.0.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/css/all.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/material/material-icons.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/css/shards-dashboards.1.1.0.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/css/extras.1.1.0.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/intTelInput/css/intlTelInput.min.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/notify.css') }}">
+
+    <style>
+        .iti { width: 100%; }
+    </style>
 
     @yield('css')
 </head>
 
 <body class="h-100">
+    @include('includes.notify')
+
     <div class="container-fluid">
         <div class="row">
 
@@ -270,24 +279,16 @@
     <script src="{{ asset('assets/admin/js/libs/popper.js/1.14.3/umd/popper.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/bs-custom-file-input.min.js') }}"></script>
-    {{-- <script src="{{ asset('assets/admin/js/libs/Chart.js/2.7.1/Chart.min.js') }}"></script> --}}
     <script src="{{ asset('assets/admin/js/shards.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/libs/Sharrre/2.0.1/jquery.sharrre.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/extras.1.1.0.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/shards-dashboards.1.1.0.js') }}"></script>
-    {{-- <script src="{{ asset('assets/admin/js/app/app-blog-overview.1.1.0.js') }}"></script> --}}
-    <script src="{{ asset('assets/js/custom.js') }}"></script>
 
-    <script>
-        $(document).ready(function () {
-            bsCustomFileInput.init();
-            
-            $('.call-to-action-form').click(function (e) {
-                e.preventDefault();
-                $(this).next('form').trigger('submit');
-            });
-        })
-    </script>
+    <script src="{{ asset('js/notify.js') }}"></script>
+
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script src="{{ asset('assets/plugins/intTelInput/js/intlTelInput.min.js') }}"></script>
+    <script src="{{ asset('assets/js/general.js') }}"></script>
 
     @yield('js')
 </body>

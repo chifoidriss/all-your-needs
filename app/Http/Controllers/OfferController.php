@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NotifyEvent;
 use Illuminate\Http\Request;
 use App\Models\Offer;
 use DB;
@@ -28,6 +29,8 @@ class OfferController extends Controller
         ]);
         
         Offer::create($validate);
+
+        event(new NotifyEvent(__FUNCTION__, 'Offer'));
             
         return redirect('admin/offre');
     }
@@ -61,6 +64,8 @@ class OfferController extends Controller
         $offer = Offer::findOrFail($id);
             
         $offer->update($validate);
+
+        event(new NotifyEvent(__FUNCTION__, 'Offer'));
             
         return redirect('admin/offre');
     }
@@ -68,6 +73,8 @@ class OfferController extends Controller
     public function destroy($id) {
         $offer = Offer::findOrFail($id);
         $offer->delete();
+
+        event(new NotifyEvent(__FUNCTION__, 'Offer'));
 
         return redirect("admin/offre");
     }

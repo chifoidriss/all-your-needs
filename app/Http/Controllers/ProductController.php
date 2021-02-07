@@ -69,8 +69,6 @@ class ProductController extends Controller
         }
 
         $products = $queryProducts->latest()->paginate($show);
-        
-        // dd($products);
 
         return view('products.index', compact([
             'products',
@@ -111,8 +109,6 @@ class ProductController extends Controller
         ->whereHas('categories', function ($query) use ($product) {
             $query->whereIn('category_id', $product->categories);
         })->limit(10)->get();
-
-        // dd($similar);
 
         return view('products.show', compact([
             'product',

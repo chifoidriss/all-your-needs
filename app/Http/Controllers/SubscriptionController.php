@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NotifyEvent;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use App\Models\Shop;
@@ -36,6 +37,8 @@ class SubscriptionController extends Controller
         ]);
 
         Subscription::create($validateDate);
+
+        event(new NotifyEvent(__FUNCTION__, 'Subscription'));
         
         return redirect('admin/subscription');
     }
@@ -44,6 +47,9 @@ class SubscriptionController extends Controller
     public function destroy($id){
         $subscription = Subscription::findOrFail($id);
         $subscription->delete();
+
+        event(new NotifyEvent(__FUNCTION__, 'Subscription'));
+
         return redirect('admin/subscription');
     }
 
@@ -59,6 +65,9 @@ class SubscriptionController extends Controller
 
         $subscription = Subscription::findOrFail($id);
         $subscription = $subscription->update($validateDate);
+
+        event(new NotifyEvent(__FUNCTION__, 'Subscription'));
+        
         return redirect('admin/subscription');
     }
 

@@ -58,12 +58,13 @@
                     
                     <div class="form-group">
                         <label for="name" role="button">@awt('Name of your shop')</label>
-                        <input type="text" name="name" id="name" class="form-control" placeholder="@awt('Name of your shop')" required>
+                        <input type="text" name="name" id="name" class="form-control" placeholder="@awt('Name of your shop')" value="{{ old('name') }}" required>
                     </div>
 
 					<div class="form-group">
-                        <label for="phone" role="button">@awt('Your Number Phone Whatsapp')</label>
-                        <input type="text" name="phone" id="phone" class="form-control" placeholder="@awt('Your Number Phone Whatsapp')" required>
+                        <label for="number" role="button">@awt('Your Number Phone Whatsapp')</label>
+                        <input type="text" id="number" class="form-control" placeholder="@awt('Your Number Phone Whatsapp')" value="{{ old('phone') }}" required>
+                        <input type="hidden" name="phone" id="phone">
                     </div>
 
                     <div class="form-group">
@@ -71,7 +72,9 @@
                         <select class="custom-select" name="type_shop_id" id="type_shop_id">
                             <option selected>@awt('Select one')</option>
                             @foreach ($shopTypes as $item)
-                            <option value="{{ $item->id }}">{{ awt($item->name) }}</option>
+                            <option value="{{ $item->id }}" @if(old('type_shop_id') == $item->id) selected @endif>
+								{{ awt($item->name) }}
+							</option>
                             @endforeach
                         </select>
                     </div>
@@ -87,4 +90,12 @@
 
 	</div>
 </div>
+@endsection
+
+@section('js')
+	<script src="{{ asset('assets/js/contact_custom.js') }}"></script>
+	
+	<script>
+		validatePhoneNumber('form', '#number', '#phone');
+	</script>
 @endsection

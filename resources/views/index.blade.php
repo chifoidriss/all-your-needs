@@ -39,7 +39,7 @@
 	<div class="main_slider mb-0"> 
 		<div class="container">
 			<div class="hd-row">
-				<div class="hd-col m-20 x-0">
+				<div class="hd-col md-20 sm-0 xs-0">
 					<div class="card box-shadow h-100 py-2 px-3">
 						<div class="sidebar">
 							<div class="sidebar_section">
@@ -68,7 +68,7 @@
 					</div>
 				</div>
 	
-				<div class="hd-col m-60 x-100">
+				<div class="hd-col md-60 sm-100 xs-100">
 					<div class="box-shadow h-100">
 						<div id="myCarousel" class="carousel slide" data-ride="carousel">
 							<ol class="carousel-indicators">
@@ -101,7 +101,7 @@
 					</div>
 				</div>
 	
-				<div class="hd-col m-20 x-0">
+				<div class="hd-col md-20 sm-0 xs-0">
 					<div class="h-100">
 						<div class="card benefit-icons box-shadow py-2 px-2">
 							<div class="d-flex align-items-center">
@@ -413,7 +413,7 @@
 @endsection
 
 @section('js')
-<script src="{{ asset('assets/js/custom.js') }}"></script>
+{{-- <script src="{{ asset('assets/js/custom.js') }}"></script> --}}
 
 <script>
 	$(document).ready(function () {

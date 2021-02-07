@@ -21,7 +21,6 @@ Route::name('admin.')->prefix('admin')->middleware(['auth:web','admin'])->group(
     Route::post('translation/{target}', 'LanguageController@updateTranslationFile')->name('languages.translation.update');
 
     Route::resource('type-shop', 'TypeShopController');
-    Route::resource('blogs-theme', 'Blog_themeController');
     Route::resource('themes', 'ThemeController');
     Route::resource('offre', 'OfferController');
     Route::resource('blogs', 'BlogController');
@@ -33,6 +32,7 @@ Route::name('admin.')->prefix('admin')->middleware(['auth:web','admin'])->group(
     Route::resource('approved_shop','ApprovedShopController');
     Route::resource('subscription', 'SubscriptionController');
     Route::resource('shop', 'Admin\ShopController');
+    Route::resource('role', 'Admin\RoleController');
 });
 
 Route::get('/', 'HomeController@index')->name('index');

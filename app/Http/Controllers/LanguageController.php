@@ -17,7 +17,7 @@ class LanguageController extends Controller
     {
         $locales = collect(config('app.locales'));
         if ($locales->has($locale)) {
-            // notify()->success('Your favorite language has been changed successful.');
+            notify()->success('Your favorite language has been changed successful.');
             return back()->withCookie(cookie()->forever('locale', $locale));
         }
         return back();
@@ -78,7 +78,7 @@ class LanguageController extends Controller
 
         file_put_contents($AwtFile, $lines);
 
-        // notify()->success('Language file updated successful.');
+        notify()->success('Language file updated successful.');
         return back();
     }
 }

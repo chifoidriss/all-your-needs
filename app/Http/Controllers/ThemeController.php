@@ -2,77 +2,80 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NotifyEvent;
 use Illuminate\Http\Request;
-use DB;
 use App\Models\Theme;
 
 class ThemeController extends Controller
 {
-     public function create(Request $request){
+    public function create(Request $request){
+        $theme = new Theme();
+        $isEdit = true;
 
-      return view ('admin.themes.create');
-
+        return view('admin.themes.create', compact([
+            'theme',
+            'isEdit'
+        ]));
     }
 
     public function store (Request $request){
-     $request->validate([
-         'name',
-         'description',
-     ]);
-      $collection = new Theme();
-      $collection->fill($request->only([
-          'name',
-          'description',
-      ]));
-      $collection->save();
+        $request->validate([
+            'name',
+            'description',
+        ]);
+        $theme = new Theme();
+        $theme->fill($request->only([
+            'name',
+            'description',
+        ]));
+        $theme->save();
+
+        event(new NotifyEvent(__FUNCTION__, 'Theme'));
         
         return back();
     }
 
     public function index(){
+        $themes = Theme::all();
 
-        $recup_collection = Theme::all();
-
-        return view('admin.themes.index',compact('recup_collection'))->with('i');
+        return view('admin.themes.index',compact([
+            'themes'
+        ]));
     }
 
     public function edit($id){
-        $recup=DB::table('themes')->select('themes.*')->where('id','=',$id)->get();
-         //$recup=Theme::findOrFail($id);
+        $theme = Theme::findOrFail($id);
+        $isEdit = true;
          
-        return view('admin.themes.edit',compact('recup'));
+        return view('admin.themes.create-edit', compact([
+            'theme',
+            'isEdit'
+        ]));
     }
     
-    public function update(Request $request, $id){
-
+    public function update(Request $request, $id) {
         $request->validate([
-         'name',
-         'description',
-     ]);
-      $collection = Theme::findOrFail($id);
-      $collection->fill($request->only([
-          'name',
-          'description',
-      ]));
-      $collection->save();
+            'name',
+            'description',
+        ]);
+        $theme = Theme::findOrFail($id);
+        $theme->fill($request->only([
+            'name',
+            'description',
+        ]));
+        $theme->save();
         
-         
+        event(new NotifyEvent(__FUNCTION__, 'Theme'));
+
         return redirect('admin/themes');
-
-
     }
 
     public function destroy($id){
+        $theme = Theme::findOrFail($id);
+        $theme->delete();
 
-        $delete=Theme::findOrFail($id);
-        $delete->delete();
+        event(new NotifyEvent(__FUNCTION__, 'Theme'));
       
         return redirect ("admin/themes");
-    }
-
-    public function show($id){
-        // $data = DB::table('collections')->select('$collection.*')->where('id_$collection','=',$id)->get();
-    
-        // return view ('collection/detail_$collection',compact('data'));
     }
 }

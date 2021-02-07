@@ -104,3 +104,7 @@
 	</div>
 </div>
 @endsection
+
+@section('js')
+<script src="{{ asset('assets/js/contact_custom.js') }}"></script>
+@endsection

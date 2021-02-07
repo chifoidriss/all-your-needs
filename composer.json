@@ -15,6 +15,7 @@
         "laravel/fortify": "^1.7",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
+        "mckenziearts/laravel-notify": "^2.1",
         "stichoza/google-translate-php": "^4.1"
     },
     "require-dev": {

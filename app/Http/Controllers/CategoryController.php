@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NotifyEvent;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Collection;
@@ -32,7 +33,9 @@ class CategoryController extends Controller
         ]);
 
         $collection = Category::create($validateDate);
-            
+        
+        event(new NotifyEvent(__FUNCTION__, 'Category'));
+
         return redirect('admin/categorie');
     }
 
@@ -66,6 +69,8 @@ class CategoryController extends Controller
 
         $category = Category::findOrFail($id);
         $category->update($validateDate);
+
+        event(new NotifyEvent(__FUNCTION__, 'Category'));
         
         return redirect('admin/categorie');
     }
@@ -73,6 +78,9 @@ class CategoryController extends Controller
     public function destroy($id){
         $delete = Category::findOrFail($id);
         $delete->delete();
+
+        event(new NotifyEvent(__FUNCTION__, 'Category'));
+
         return redirect ("admin/categorie");
     }
 }

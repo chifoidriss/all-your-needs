@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NotifyEvent;
 use Illuminate\Http\Request;
 use App\Models\Devise;
 
@@ -27,15 +28,14 @@ class DeviseController extends Controller
             'precision'=>'required',
         ]);
 
-        $devise = Devise::create($validateDate);
+        Devise::create($validateDate);
+        
+        event(new NotifyEvent(__FUNCTION__, 'Currency'));
         
         return redirect('admin/devise');
     }
 
     public function index() {
-
-        // $recup_collection = DB::table('super_categories')->join('collections','collections.id','=','super_categories.collection_id')->select('super_categories.*','collections.name as namec')->get();
-
         $devises = Devise::all();
 
         return view('admin.devise.index', compact('devises'));
@@ -45,15 +45,14 @@ class DeviseController extends Controller
         $devise =  Devise::findOrFail($id);
         $isEdit = true;
         
-        return view('admin.devise.create-edit',compact([
+        return view('admin.devise.create-edit', compact([
             'devise',
             'isEdit'
         ]));
     }
     
-    public function update(Request $request, $id){
-   
-        $validateDate=$request->validate([
+    public function update(Request $request, $id) {
+        $validateDate = $request->validate([
             'name'=>'required',
             'display_name'=>'required',
             'symbol'=>'required',
@@ -61,17 +60,18 @@ class DeviseController extends Controller
             'precision'=>'required',
         ]);
         $devise = Devise::findOrFail($id);
-        $devise = Devise::where('id','=',$id)->update($validateDate);
-            
+        $devise->update($validateDate);
+        
+        event(new NotifyEvent(__FUNCTION__, 'Currency'));
         return redirect('admin/devise');
-
-
     }
 
-    public function destroy($id){
-
-        $delete=Devise::findOrFail($id);
+    public function destroy($id) {
+        $delete = Devise::findOrFail($id);
         $delete->delete();
+
+        event(new NotifyEvent(__FUNCTION__, 'Currency'));
+
         return redirect ("admin/devise");
     }
 

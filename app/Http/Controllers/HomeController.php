@@ -63,7 +63,7 @@ class HomeController extends Controller
         $exist = Devise::whereName($devise)->first();
     
         if ($exist) {
-            // notify()->success('Your favorite language has been changed successful.');
+            notify()->success('Your currency has been changed successful.');
             return back()->withCookie(cookie()->forever('devise', $devise));
         }
         return back();

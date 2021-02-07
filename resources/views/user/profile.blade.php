@@ -38,8 +38,10 @@
             <div class="col-md-8">
                 <div class="box-shadow radius-lg">
                     <div class="border-bottom px-4 py-3">
-                        {{-- <h3 class="text-center">Mes informations</h3> --}}
-                        <b>@awt('My informations')</b>
+                        <h3 class="text-center">
+                            @awt('My informations')
+                        </h3>
+                        {{-- <b>@awt('My informations')</b> --}}
                     </div>
                 
                     <div class="px-4 py-3">
@@ -133,8 +135,9 @@
                                     
                                     <div class="form-group">
                                         <label for="phone">@awt('Phone Number') <small class="text-danger">*</small></label>
-                                        <input type="tel" name="phone" id="phone" class="form-control @error('phone') is-invalid @enderror"
+                                        <input type="text" id="number" class="form-control @error('phone') is-invalid @enderror"
                                         placeholder="@awt('Phone Number')" value="{{ old('phone', Auth::user()->phone) }}">
+                                        <input type="hidden" name="phone" id="phone" value="{{ old('phone', Auth::user()->phone) }}">
                                         @error ('phone')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -179,6 +182,7 @@
 
     <script>
         populateCountriesWithDefault("nationality", "{{ old('nationality', Auth::user()->nationality) }}");
+        validatePhoneNumber('form', '#number', '#phone', true);
 
         $('.update-avatar .avatar').mouseenter(function () {
             $('.update-avatar .avatar span').hide();

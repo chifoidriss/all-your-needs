@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NotifyEvent;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\TypeShop;
@@ -17,7 +18,7 @@ class TypeShopController extends Controller
         ]));
     }
 
-    public function store(Request $request){
+    public function store(Request $request) {
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
@@ -29,12 +30,13 @@ class TypeShopController extends Controller
         ));
 
         $collection->save();
-            
-        return redirect('admin/type-shop');
 
+        event(new NotifyEvent(__FUNCTION__, 'Type Shop'));
+
+        return redirect('admin/type-shop');
     }
 
-    public function index(){
+    public function index() {
         $typeShops = TypeShop::all();
 
         return view('admin.type-shop.index', compact([
@@ -42,7 +44,7 @@ class TypeShopController extends Controller
         ]));
     }
 
-    public function edit($id){
+    public function edit($id) {
         $typeShop = TypeShop::findOrFail($id);
         $isEdit = true;
 
@@ -52,7 +54,7 @@ class TypeShopController extends Controller
         ]));
     }
     
-    public function update(Request $request, $id){
+    public function update(Request $request, $id) {
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
@@ -65,12 +67,18 @@ class TypeShopController extends Controller
         ]));
 
         $typeShop->save();
+
+        event(new NotifyEvent(__FUNCTION__, 'Type Shop'));
+
         return redirect('admin/type-shop');
     }
 
-    public function destroy($id){
+    public function destroy($id) {
         $typeShop = TypeShop::findOrFail($id);
         $typeShop->delete();
+
+        event(new NotifyEvent(__FUNCTION__, 'Type Shop'));
+        
         return redirect ("admin/type-shop");
     }
 }

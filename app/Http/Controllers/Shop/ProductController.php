@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Shop;
 
+use App\Events\NotifyEvent;
 use App\Models\Shop;
 use App\Models\Product;
 use App\Models\Category;
@@ -120,6 +121,8 @@ class ProductController extends Controller
             }
         }
 
+        event(new NotifyEvent(__FUNCTION__, 'Product'));
+
         return redirect()->route('shop.product.index');
     }
 
@@ -225,6 +228,8 @@ class ProductController extends Controller
             }
         }
 
+        event(new NotifyEvent(__FUNCTION__, 'Product'));
+
         return redirect()->route('shop.product.index');
     }
 
@@ -244,6 +249,8 @@ class ProductController extends Controller
 
         $product->delete();
 
+        event(new NotifyEvent(__FUNCTION__, 'Product'));
+
         return back();
     }
 
@@ -258,6 +265,8 @@ class ProductController extends Controller
 
         $product->status = !$product->status;
         $product->save();
+
+        notify()->warning('Status changed successful.', 'Product');
 
         return back();
     }
@@ -290,6 +299,8 @@ class ProductController extends Controller
         Storage::disk('upload')->delete($gallery->image);
         
         $gallery->delete();
+
+        event(new NotifyEvent('destroy', 'Image'));
 
         return back();
     }

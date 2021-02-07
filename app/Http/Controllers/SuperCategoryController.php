@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NotifyEvent;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\SuperCategory;
@@ -30,14 +31,13 @@ class SuperCategoryController extends Controller
         ]);
 
         SuperCategory::create($validateDate);
+
+        event(new NotifyEvent(__FUNCTION__, 'Super Category'));
         
         return redirect('admin/super_cat');
     }
 
     public function index() {
-
-        // $recup_collection = DB::table('super_categories')->join('collections','collections.id','=','super_categories.collection_id')->select('super_categories.*','collections.name as namec')->get();
-
         $superCategories = SuperCategory::with(['collection'])->get();
 
         return view('admin.super_category.index', compact('superCategories'));
@@ -56,7 +56,6 @@ class SuperCategoryController extends Controller
     }
     
     public function update(Request $request, $id){
-   
         $validateDate=$request->validate([
             'name'=>'required',
             'description'=>'required',
@@ -66,22 +65,18 @@ class SuperCategoryController extends Controller
 
         $superCategory = SuperCategory::findOrFail($id);
         $superCategory->update($validateDate);
+
+        event(new NotifyEvent(__FUNCTION__, 'Super Category'));
             
         return redirect('admin/super_cat');
-
-
     }
 
-    public function destroy($id){
-
+    public function destroy($id) {
         $delete=SuperCategory::findOrFail($id);
         $delete->delete();
-        return redirect ("admin/super_cat");
-    }
 
-    public function show($id){
-        // $data = DB::table('collections')->select('$collection.*')->where('id_$collection','=',$id)->get();
-    
-        // return view ('collection/detail_$collection',compact('data'));
+        event(new NotifyEvent(__FUNCTION__, 'Super Category'));
+
+        return redirect ("admin/super_cat");
     }
 }

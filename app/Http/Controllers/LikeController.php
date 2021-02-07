@@ -18,11 +18,13 @@ class LikeController extends Controller
 
         if ($like) {
             $like->delete();
+            notify()->error('Product removed from liked successful.');
         } else {
             Like::create([
                 'user_id' => Auth::id(),
                 'product_id' => $id
             ]);
+            notify()->success('Product liked successful.');
         }
 
         return back();
