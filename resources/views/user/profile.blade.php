@@ -163,7 +163,7 @@
     
                                 <div class="col-12">
                                     <div class="text-right-">
-                                        <button class="btn btn-primary" type="submit">
+                                        <button class="btn btn-danger red_button-" type="submit">
                                             @awt('Save')
                                         </button>
                                     </div>
