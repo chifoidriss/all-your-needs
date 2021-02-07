@@ -26,7 +26,7 @@ class NotifyListener
     public function handle($event)
     {
         if ($event->type == 'store') {
-            notify()->success('Stored successful.', $event->message);
+            notify()->success('Created successful.', $event->message);
         }
         if ($event->type == 'update') {
             notify()->info('Updated successful.', $event->message);
